@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<unity:PrismApplication
+    x:Class="NumericMethods.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:unity="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--  Global Styles  -->
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+        </ResourceDictionary>
+    </Application.Resources>
+</unity:PrismApplication>
