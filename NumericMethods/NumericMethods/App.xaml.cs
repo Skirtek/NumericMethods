@@ -1,7 +1,6 @@
 ﻿using NumericMethods.Settings;
 using NumericMethods.ViewModels;
 using NumericMethods.Views;
-using NumericMethods.Views.Navigation;
 using Plugin.Connectivity;
 using Prism;
 using Prism.Ioc;

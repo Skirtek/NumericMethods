@@ -1,4 +1,4 @@
-﻿namespace NumericMethods.Views.Navigation
+﻿namespace NumericMethods.Settings
 {
     public class NavSettings
     {

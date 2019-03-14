@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="NumericMethods.Views.Controls.MenuItemRow"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentView.Content>
+        <StackLayout Padding="16,16,0,16" Orientation="Horizontal">
+            <Label
+                x:Name="MenuLabel"
+                FontAttributes="Bold"
+                FontSize="14"
+                TextColor="Black"
+                VerticalOptions="Center" />
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Command}" CommandParameter="{Binding CommandParameter}" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
