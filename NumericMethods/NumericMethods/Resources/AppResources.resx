@@ -123,4 +123,10 @@
   <data name="Menu_QuadraticEquation" xml:space="preserve">
     <value>Równanie kwadratowe</value>
   </data>
+  <data name="Menu_AboutApp" xml:space="preserve">
+    <value>O aplikacji</value>
+  </data>
+  <data name="Common_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

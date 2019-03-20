@@ -61,6 +61,24 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string Common_Ok {
+            get {
+                return ResourceManager.GetString("Common_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O aplikacji.
+        /// </summary>
+        internal static string Menu_AboutApp {
+            get {
+                return ResourceManager.GetString("Menu_AboutApp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Równanie liniowe.
         /// </summary>
         internal static string Menu_LinearEquation {

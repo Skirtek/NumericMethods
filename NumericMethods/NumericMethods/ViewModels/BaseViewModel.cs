@@ -2,11 +2,25 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using NumericMethods.Resources;
+using Prism.Services;
 
 namespace NumericMethods.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public abstract class BaseViewModel : INotifyPropertyChanged
     {
+        public IPageDialogService PageDialogService { get; }
+        private string _pageTitle;
+        public string PageTitle
+        {
+            get => _pageTitle;
+            set => SetProperty(ref _pageTitle, value);
+        }
+
+        protected BaseViewModel(IPageDialogService pageDialogService) => PageDialogService = pageDialogService;
+
+
         private bool _isBusy;
         public bool IsBusy
         {
@@ -39,11 +53,12 @@ namespace NumericMethods.ViewModels
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             var changed = PropertyChanged;
-            if (changed == null)
-                return;
 
-            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            changed?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+        protected async Task ShowAlert(string title, string message)
+            => await PageDialogService.DisplayAlertAsync(title, message, AppResources.Common_Ok);
     }
 }

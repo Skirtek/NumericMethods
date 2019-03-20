@@ -9,7 +9,7 @@
                 x:Name="MenuLabel"
                 FontAttributes="Bold"
                 FontSize="14"
-                TextColor="Black"
+                TextColor="#002a4b"
                 VerticalOptions="Center" />
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding Command}" CommandParameter="{Binding CommandParameter}" />

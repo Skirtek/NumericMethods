@@ -3,12 +3,36 @@
     x:Class="NumericMethods.Views.MainMenuPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:NumericMethods.Views.Behaviors;assembly=NumericMethods"
     xmlns:controls="clr-namespace:NumericMethods.Views.Controls;assembly=NumericMethods"
-    xmlns:res="clr-namespace:NumericMethods.Resources;assembly=NumericMethods">
+    xmlns:res="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
+    x:Name="MainMenuPageName">
     <ContentPage.Content>
         <StackLayout>
             <controls:MenuItemRow LabelText="{res:Translate Menu_LinearEquation}" />
             <controls:MenuItemRow LabelText="{res:Translate Menu_QuadraticEquation}" />
+            <StackLayout
+                Margin="0,24"
+                HorizontalOptions="Center"
+                Orientation="Horizontal"
+                VerticalOptions="EndAndExpand">
+                <Image
+                    Margin="0,0,16,0"
+                    Source="ic_info"
+                    VerticalOptions="Center" />
+                <Label
+                    FontSize="14"
+                    HorizontalTextAlignment="Center"
+                    Text="{res:Translate Menu_AboutApp}"
+                    TextColor="#002a4b"
+                    VerticalOptions="Center" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer />
+                </StackLayout.GestureRecognizers>
+                <StackLayout.Behaviors>
+                    <behaviors:ViewTappedWithAnimationBehavior Command="{Binding BindingContext.AboutAppCommand, Source={x:Reference MainMenuPageName}}" />
+                </StackLayout.Behaviors>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
