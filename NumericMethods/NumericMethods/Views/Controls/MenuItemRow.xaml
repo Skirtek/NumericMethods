@@ -2,18 +2,26 @@
 <ContentView
     x:Class="NumericMethods.Views.Controls.MenuItemRow"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:NumericMethods.Views.Behaviors;assembly=NumericMethods"
+    x:Name="MenuItemRowControl">
     <ContentView.Content>
-        <StackLayout Padding="16,16,0,16" Orientation="Horizontal">
-            <Label
-                x:Name="MenuLabel"
-                FontAttributes="Bold"
-                FontSize="14"
-                TextColor="#002a4b"
-                VerticalOptions="Center" />
-            <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding Command}" CommandParameter="{Binding CommandParameter}" />
-            </StackLayout.GestureRecognizers>
-        </StackLayout>
+        <Frame HasShadow="True">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Image x:Name="MenuIconName" />
+                <Label
+                    x:Name="MenuLabel"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    HorizontalTextAlignment="Center"
+                    TextColor="#002a4b" />
+            </StackLayout>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer CommandParameter="{Binding CommandParameter}" />
+            </Frame.GestureRecognizers>
+            <Frame.Behaviors>
+                <behaviors:ViewTappedWithAnimationBehavior Command="{Binding Command, Source={x:Reference MenuItemRowControl}}" />
+            </Frame.Behaviors>
+        </Frame>
     </ContentView.Content>
 </ContentView>

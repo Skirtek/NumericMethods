@@ -46,6 +46,22 @@ namespace NumericMethods.Views.Controls
             set => SetValue(CommandParameterProperty, value);
         }
 
+        public static readonly BindableProperty MenuIconProperty =
+            BindableProperty.Create(nameof(MenuIcon),
+                typeof(FileImageSource),
+                typeof(MenuItemRow),
+                default(FileImageSource),
+                propertyChanged: (bindable, oldVal, newVal) =>
+                {
+                    ((MenuItemRow)bindable).MenuIconName.Source = (FileImageSource)newVal;
+                });
+
+        public FileImageSource MenuIcon
+        {
+            get => (FileImageSource)GetValue(MenuIconProperty);
+            set => SetValue(MenuIconProperty, value);
+        }
+
         public MenuItemRow()
         {
             InitializeComponent();

@@ -79,7 +79,8 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Równanie liniowe.
+        ///   Looks up a localized string similar to Równania
+        ///liniowe.
         /// </summary>
         internal static string Menu_LinearEquation {
             get {

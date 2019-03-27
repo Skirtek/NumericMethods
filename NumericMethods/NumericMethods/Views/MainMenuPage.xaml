@@ -8,31 +8,78 @@
     xmlns:res="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
     x:Name="MainMenuPageName">
     <ContentPage.Content>
-        <StackLayout>
-            <controls:MenuItemRow LabelText="{res:Translate Menu_LinearEquation}" />
-            <controls:MenuItemRow LabelText="{res:Translate Menu_QuadraticEquation}" />
-            <StackLayout
-                Margin="0,24"
-                HorizontalOptions="Center"
-                Orientation="Horizontal"
-                VerticalOptions="EndAndExpand">
-                <Image
-                    Margin="0,0,16,0"
-                    Source="ic_info"
-                    VerticalOptions="Center" />
-                <Label
-                    FontSize="14"
-                    HorizontalTextAlignment="Center"
-                    Text="{res:Translate Menu_AboutApp}"
-                    TextColor="#002a4b"
-                    VerticalOptions="Center" />
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer />
-                </StackLayout.GestureRecognizers>
-                <StackLayout.Behaviors>
-                    <behaviors:ViewTappedWithAnimationBehavior Command="{Binding BindingContext.AboutAppCommand, Source={x:Reference MainMenuPageName}}" />
-                </StackLayout.Behaviors>
-            </StackLayout>
-        </StackLayout>
+        <ScrollView BackgroundColor="#eeeeee" Orientation="Vertical">
+            <Grid
+                Margin="16"
+                ColumnSpacing="16"
+                RowSpacing="16">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <controls:MenuItemRow
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Command="{Binding BindingContext.AboutAppCommand, Source={x:Reference MainMenuPageName}}"
+                    LabelText="{res:Translate Menu_LinearEquation}"
+                    MenuIcon="ic_bus" />
+                <controls:MenuItemRow
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    LabelText="Równania nieliniowe"
+                    MenuIcon="ic_bus" />
+                <controls:MenuItemRow
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    LabelText="Interpolacja"
+                    MenuIcon="ic_bus" />
+                <controls:MenuItemRow
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    LabelText="Aproksymacja"
+                    MenuIcon="ic_bus" />
+                <controls:MenuItemRow
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    LabelText="Całkowanie numeryczne"
+                    MenuIcon="ic_bus" />
+                <controls:MenuItemRow
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    LabelText="Równania różniczkowe"
+                    MenuIcon="ic_bus" />
+                <StackLayout
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="0,8,0,24"
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    VerticalOptions="EndAndExpand">
+                    <Image
+                        Margin="0,0,16,0"
+                        Source="ic_info"
+                        VerticalOptions="Center" />
+                    <Label
+                        FontSize="14"
+                        HorizontalTextAlignment="Center"
+                        Text="{res:Translate Menu_AboutApp}"
+                        TextColor="#002a4b"
+                        VerticalOptions="Center" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer />
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout.Behaviors>
+                        <behaviors:ViewTappedWithAnimationBehavior Command="{Binding BindingContext.AboutAppCommand, Source={x:Reference MainMenuPageName}}" />
+                    </StackLayout.Behaviors>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
