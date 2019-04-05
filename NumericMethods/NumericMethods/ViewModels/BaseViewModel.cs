@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using NumericMethods.Resources;
+using Prism.Navigation;
 using Prism.Services;
 
 namespace NumericMethods.ViewModels
@@ -11,6 +12,8 @@ namespace NumericMethods.ViewModels
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
         public IPageDialogService PageDialogService { get; }
+        public INavigationService NavigationService { get; }
+
         private string _pageTitle;
         public string PageTitle
         {
@@ -20,6 +23,10 @@ namespace NumericMethods.ViewModels
 
         protected BaseViewModel(IPageDialogService pageDialogService) => PageDialogService = pageDialogService;
 
+        protected BaseViewModel(
+            INavigationService navigationService,
+            IPageDialogService pageDialogService) :
+            this(pageDialogService) => NavigationService = navigationService;
 
         private bool _isBusy;
         public bool IsBusy

@@ -26,9 +26,9 @@
                 <controls:MenuItemRow
                     Grid.Row="0"
                     Grid.Column="0"
-                    Command="{Binding BindingContext.AboutAppCommand, Source={x:Reference MainMenuPageName}}"
+                    Command="{Binding BindingContext.GoToLinearChartCommand, Source={x:Reference MainMenuPageName}}"
                     LabelText="{res:Translate Menu_LinearEquation}"
-                    MenuIcon="ic_bus" />
+                    MenuIcon="ic_linear" />
                 <controls:MenuItemRow
                     Grid.Row="0"
                     Grid.Column="1"

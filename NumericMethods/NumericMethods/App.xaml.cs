@@ -27,6 +27,7 @@ namespace NumericMethods
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainMenuPage, MainMenuPageViewModel>(NavSettings.MainMenuPage);
+            containerRegistry.RegisterForNavigation<LinearChart, LinearChartViewModel>(NavSettings.LinearChart);
         }
         private void RegisterAddOns(IContainerRegistry containerRegistry)
         {
