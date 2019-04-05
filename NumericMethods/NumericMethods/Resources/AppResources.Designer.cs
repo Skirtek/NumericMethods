@@ -79,8 +79,43 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Równania
-        ///liniowe.
+        ///   Looks up a localized string similar to Aproksymacja.
+        /// </summary>
+        internal static string Menu_Approximation {
+            get {
+                return ResourceManager.GetString("Menu_Approximation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Równania różniczkowe.
+        /// </summary>
+        internal static string Menu_DifferentialEquation {
+            get {
+                return ResourceManager.GetString("Menu_DifferentialEquation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Całkowanie numeryczne.
+        /// </summary>
+        internal static string Menu_Integral {
+            get {
+                return ResourceManager.GetString("Menu_Integral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interpolacja.
+        /// </summary>
+        internal static string Menu_Interpolation {
+            get {
+                return ResourceManager.GetString("Menu_Interpolation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Równania liniowe.
         /// </summary>
         internal static string Menu_LinearEquation {
             get {
@@ -89,11 +124,11 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Równanie kwadratowe.
+        ///   Looks up a localized string similar to Równania nieliniowe.
         /// </summary>
-        internal static string Menu_QuadraticEquation {
+        internal static string Menu_NonLinearEquation {
             get {
-                return ResourceManager.GetString("Menu_QuadraticEquation", resourceCulture);
+                return ResourceManager.GetString("Menu_NonLinearEquation", resourceCulture);
             }
         }
     }

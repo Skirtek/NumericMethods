@@ -4,12 +4,14 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using NumericMethods.Resources;
+using Prism.Commands;
+using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
 
 namespace NumericMethods.ViewModels
 {
-    public abstract class BaseViewModel : INotifyPropertyChanged
+    public abstract class BaseViewModel : BindableBase, INotifyPropertyChanged
     {
         public IPageDialogService PageDialogService { get; }
         public INavigationService NavigationService { get; }
@@ -64,6 +66,12 @@ namespace NumericMethods.ViewModels
             changed?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+        protected DelegateCommand<T> GetBusyDependedCommand<T>(Action<T> executeMethod)
+            => new DelegateCommand<T>(executeMethod, (T arg) => !IsBusy).ObservesProperty(() => IsBusy);
+
+        protected DelegateCommand GetBusyDependedCommand(Action executeMethod)
+            => new DelegateCommand(executeMethod, () => !IsBusy).ObservesProperty(() => IsBusy);
 
         protected async Task ShowAlert(string title, string message)
             => await PageDialogService.DisplayAlertAsync(title, message, AppResources.Common_Ok);

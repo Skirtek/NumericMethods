@@ -28,31 +28,31 @@
                     Grid.Column="0"
                     Command="{Binding BindingContext.GoToLinearChartCommand, Source={x:Reference MainMenuPageName}}"
                     LabelText="{res:Translate Menu_LinearEquation}"
-                    MenuIcon="ic_linear" />
+                    MenuIcon="ic_bus" />
                 <controls:MenuItemRow
                     Grid.Row="0"
                     Grid.Column="1"
-                    LabelText="Równania nieliniowe"
+                    LabelText="{res:Translate Menu_NonLinearEquation}"
                     MenuIcon="ic_bus" />
                 <controls:MenuItemRow
                     Grid.Row="1"
                     Grid.Column="0"
-                    LabelText="Interpolacja"
+                    LabelText="{res:Translate Menu_Interpolation}"
                     MenuIcon="ic_bus" />
                 <controls:MenuItemRow
                     Grid.Row="1"
                     Grid.Column="1"
-                    LabelText="Aproksymacja"
+                    LabelText="{res:Translate Menu_Approximation}"
                     MenuIcon="ic_bus" />
                 <controls:MenuItemRow
                     Grid.Row="2"
                     Grid.Column="0"
-                    LabelText="Całkowanie numeryczne"
+                    LabelText="{res:Translate Menu_Integral}"
                     MenuIcon="ic_bus" />
                 <controls:MenuItemRow
                     Grid.Row="2"
                     Grid.Column="1"
-                    LabelText="Równania różniczkowe"
+                    LabelText="{res:Translate Menu_DifferentialEquation}"
                     MenuIcon="ic_bus" />
                 <StackLayout
                     Grid.Row="3"

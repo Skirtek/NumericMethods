@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using OxyPlot.Xamarin.Forms.Platform.Android;
 using Prism;
 using Prism.Ioc;
 
@@ -16,6 +17,7 @@ namespace NumericMethods.Android
 
             base.OnCreate(savedInstanceState);
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            PlotViewRenderer.Init();
             App numericMethods = new App(new AndroidInitializer());
             LoadApplication(numericMethods);
         }
