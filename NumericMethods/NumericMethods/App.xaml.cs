@@ -28,6 +28,8 @@ namespace NumericMethods
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainMenuPage, MainMenuPageViewModel>(NavSettings.MainMenuPage);
             containerRegistry.RegisterForNavigation<LinearChart, LinearChartViewModel>(NavSettings.LinearChart);
+            containerRegistry.RegisterForNavigation<LinearEquationPage, LinearEquationPageViewModel>(NavSettings.LinearEquationPage);
+            containerRegistry.RegisterForNavigation<SolveEquationPage, SolveEquationPageViewModel>(NavSettings.SolveEquationPage);
         }
         private void RegisterAddOns(IContainerRegistry containerRegistry)
         {

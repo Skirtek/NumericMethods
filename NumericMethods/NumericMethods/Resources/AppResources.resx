@@ -138,6 +138,31 @@
   <data name="Menu_AboutApp" xml:space="preserve">
     <value>O aplikacji</value>
   </data>
+  <data name="Menu_AboutAppDescription" xml:space="preserve">
+    <value>Twórcami aplikacji są studenci grupy 5:
+Igor Kowalewski,
+Dominik Guziałek,
+Mariusz Jackowski,
+Bartosz Mróz
+
+Do rysowania wykresów została użyta darmowa biblioteka OxyPlot
+©2019</value>
+  </data>
+  <data name="LinearChart_AxisXDescription" xml:space="preserve">
+    <value>x</value>
+  </data>
+  <data name="LinearChart_AxisYDescription" xml:space="preserve">
+    <value>y</value>
+  </data>
+  <data name="LinearChart_LegendTitle" xml:space="preserve">
+    <value>Funkcje</value>
+  </data>
+  <data name="LinearChart_FirstFunction" xml:space="preserve">
+    <value>y₁ = {0}</value>
+  </data>
+  <data name="LinearChart_SecondFunction" xml:space="preserve">
+    <value>y₂ = {0}</value>
+  </data>
   <data name="Common_Ok" xml:space="preserve">
     <value>OK</value>
   </data>

@@ -9,25 +9,30 @@ namespace NumericMethods.ViewModels
 {
     public class MainMenuPageViewModel : BaseViewModel
     {
-        public MainMenuPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
+        public MainMenuPageViewModel(
+            INavigationService navigationService,
+            IPageDialogService pageDialogService)
+            : base(navigationService, pageDialogService)
         {
             AboutAppCommand = new DelegateCommand(async () => await AboutApp());
-            GoToLinearChartCommand = new DelegateCommand(async () => await GoToLinearChart());
+            GoToLinearEquationPageCommand = new DelegateCommand(async () => await GoToLinearEquationPage());
         }
 
-        public DelegateCommand GoToLinearChartCommand { get; set; }
+        public DelegateCommand GoToLinearEquationPageCommand { get; set; }
         public DelegateCommand AboutAppCommand { get; set; }
 
-        private async Task GoToLinearChart()
+        private async Task GoToLinearEquationPage()
         {
             IsBusy = true;
-            await NavigationService.NavigateAsync(NavSettings.LinearChart);
+
+            await NavigationService.NavigateAsync(NavSettings.LinearEquationPage);
+
             IsBusy = false;
         }
 
         private async Task AboutApp()
         {
-            await ShowAlert(AppResources.Menu_AboutApp, "Twórcami aplikacji są");
+            await ShowAlert(AppResources.Menu_AboutApp, AppResources.Menu_AboutAppDescription);
         }
     }
 }

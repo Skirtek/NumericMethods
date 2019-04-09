@@ -8,6 +8,12 @@
         <ResourceDictionary>
             <!--  Global Styles  -->
             <Color x:Key="NavigationPrimary">#2196F3</Color>
+
+            <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+                <Setter Property="CornerRadius" Value="34" />
+                <Setter Property="WidthRequest" Value="68" />
+                <Setter Property="HeightRequest" Value="68" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </unity:PrismApplication>

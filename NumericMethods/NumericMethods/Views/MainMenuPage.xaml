@@ -26,7 +26,7 @@
                 <controls:MenuItemRow
                     Grid.Row="0"
                     Grid.Column="0"
-                    Command="{Binding BindingContext.GoToLinearChartCommand, Source={x:Reference MainMenuPageName}}"
+                    Command="{Binding BindingContext.GoToLinearEquationPageCommand, Source={x:Reference MainMenuPageName}}"
                     LabelText="{res:Translate Menu_LinearEquation}"
                     MenuIcon="ic_bus" />
                 <controls:MenuItemRow
@@ -43,7 +43,7 @@
                     Grid.Row="1"
                     Grid.Column="1"
                     LabelText="{res:Translate Menu_Approximation}"
-                    MenuIcon="ic_bus" />
+                    MenuIcon="ic_approx" />
                 <controls:MenuItemRow
                     Grid.Row="2"
                     Grid.Column="0"

@@ -1,6 +1,8 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using NumericMethods.Android.Dependencies;
+using NumericMethods.PlatformImplementations;
 using OxyPlot.Xamarin.Forms.Platform.Android;
 using Prism;
 using Prism.Ioc;
@@ -10,8 +12,13 @@ namespace NumericMethods.Android
     [Activity(Label = "NumericMethods", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        internal static MainActivity Instance { get; private set; }
+        private static readonly KeyboardHelper KeyboardHelper = new KeyboardHelper();
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            Instance = this;
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
@@ -26,6 +33,7 @@ namespace NumericMethods.Android
         {
             public void RegisterTypes(IContainerRegistry containerRegistry)
             {
+                containerRegistry.RegisterInstance<IKeyboardHelper>(KeyboardHelper);
             }
         }
     }

@@ -70,11 +70,72 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to x.
+        /// </summary>
+        internal static string LinearChart_AxisXDescription {
+            get {
+                return ResourceManager.GetString("LinearChart_AxisXDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to y.
+        /// </summary>
+        internal static string LinearChart_AxisYDescription {
+            get {
+                return ResourceManager.GetString("LinearChart_AxisYDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to y₁ = {0}.
+        /// </summary>
+        internal static string LinearChart_FirstFunction {
+            get {
+                return ResourceManager.GetString("LinearChart_FirstFunction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Funkcje.
+        /// </summary>
+        internal static string LinearChart_LegendTitle {
+            get {
+                return ResourceManager.GetString("LinearChart_LegendTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to y₂ = {0}.
+        /// </summary>
+        internal static string LinearChart_SecondFunction {
+            get {
+                return ResourceManager.GetString("LinearChart_SecondFunction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O aplikacji.
         /// </summary>
         internal static string Menu_AboutApp {
             get {
                 return ResourceManager.GetString("Menu_AboutApp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Twórcami aplikacji są studenci grupy 5:
+        ///Igor Kowalewski,
+        ///Dominik Guziałek,
+        ///Mariusz Jackowski,
+        ///Bartosz Mróz
+        ///
+        ///Do rysowania wykresów została użyta darmowa biblioteka OxyPlot
+        ///©2019.
+        /// </summary>
+        internal static string Menu_AboutAppDescription {
+            get {
+                return ResourceManager.GetString("Menu_AboutAppDescription", resourceCulture);
             }
         }
         
