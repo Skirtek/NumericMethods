@@ -173,5 +173,8 @@
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\NewFolder1\" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\splashscreen.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
