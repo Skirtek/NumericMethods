@@ -16,7 +16,7 @@ namespace NumericMethods.ViewModels
             IKeyboardHelper keyboardHelper)
             : base(navigationService, pageDialogService)
         {
-            keyboardHelper = _keyboardHelper;
+            _keyboardHelper = keyboardHelper;
             AppendPatternCommand = GetBusyDependedCommand<string>(AppendPattern);
             RemovePatternCharacterCommand = GetBusyDependedCommand(RemovePatternCharacter);
             GoToSolveEquationPageCommand = GetBusyDependedCommand(GoToSolveEquationPage);
