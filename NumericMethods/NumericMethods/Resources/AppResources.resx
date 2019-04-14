@@ -146,6 +146,7 @@ Mariusz Jackowski,
 Bartosz Mróz
 
 Do rysowania wykresów została użyta darmowa biblioteka OxyPlot
+Wykorzystano ikonki pochodzące z zasobów icons8.com
 ©2019</value>
   </data>
   <data name="LinearChart_AxisXDescription" xml:space="preserve">
@@ -165,5 +166,26 @@ Do rysowania wykresów została użyta darmowa biblioteka OxyPlot
   </data>
   <data name="Common_Ok" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="IntegralPage_UpperLimit" xml:space="preserve">
+    <value>1. Podaj górną granicę całkowania</value>
+  </data>
+  <data name="IntegralPage_LowerLimit" xml:space="preserve">
+    <value>2. Podaj dolną granicę całkowania</value>
+  </data>
+  <data name="IntegralPage_Formula" xml:space="preserve">
+    <value>3. Podaj wzór funkcji</value>
+  </data>
+  <data name="IntegralPage_Precision" xml:space="preserve">
+    <value>4. Wybierz dokładność całkowania</value>
+  </data>
+  <data name="IntegralPage_Precision_PickerTitle" xml:space="preserve">
+    <value>Wybierz poziom dokładności</value>
+  </data>
+  <data name="IntegralPage_CustomPrecision" xml:space="preserve">
+    <value>5. Podaj własną dokładność całkowania</value>
+  </data>
+  <data name="Common_Calculate" xml:space="preserve">
+    <value>Oblicz</value>
   </data>
 </root>

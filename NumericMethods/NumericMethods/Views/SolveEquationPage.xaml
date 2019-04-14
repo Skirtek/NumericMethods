@@ -11,7 +11,7 @@
                 VerticalOptions="CenterAndExpand" />
 
             <Button
-                BackgroundColor="#4CAF50"
+                BackgroundColor="{StaticResource GreenButtonColor}"
                 Command="{Binding GoToLinearChartPageCommand}"
                 Image="ic_linear_plot"
                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,

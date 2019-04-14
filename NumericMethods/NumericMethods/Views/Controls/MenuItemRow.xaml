@@ -17,7 +17,7 @@
                     TextColor="#002a4b" />
             </StackLayout>
             <Frame.GestureRecognizers>
-                <TapGestureRecognizer CommandParameter="{Binding CommandParameter}" />
+                <TapGestureRecognizer CommandParameter="{Binding Parameter, Source={x:Reference MenuItemRowControl}}" />
             </Frame.GestureRecognizers>
             <Frame.Behaviors>
                 <behaviors:ViewTappedWithAnimationBehavior Command="{Binding Command, Source={x:Reference MenuItemRowControl}}" />

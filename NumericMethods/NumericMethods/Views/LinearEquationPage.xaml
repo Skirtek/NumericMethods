@@ -5,8 +5,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="clr-namespace:NumericMethods.Views.Behaviors;assembly=NumericMethods"
     xmlns:controls="clr-namespace:NumericMethods.Views.Controls;assembly=NumericMethods"
-    xmlns:renderers="clr-namespace:NumericMethods.Renderers;assembly=NumericMethods"
-    x:Name="LinearEquationPageName">
+    xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
+    x:Name="LinearEquationPageName"
+    Title="{resources:Translate Menu_LinearEquation}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_help" Order="Primary" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <controls:LinearEquationControl />

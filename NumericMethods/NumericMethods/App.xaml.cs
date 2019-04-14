@@ -30,6 +30,9 @@ namespace NumericMethods
             containerRegistry.RegisterForNavigation<LinearChart, LinearChartViewModel>(NavSettings.LinearChart);
             containerRegistry.RegisterForNavigation<LinearEquationPage, LinearEquationPageViewModel>(NavSettings.LinearEquationPage);
             containerRegistry.RegisterForNavigation<SolveEquationPage, SolveEquationPageViewModel>(NavSettings.SolveEquationPage);
+            containerRegistry.RegisterForNavigation<IntegralPage, IntegralPageViewModel>(NavSettings.IntegralPage);
+            containerRegistry.RegisterForNavigation<IntegralResultPage, IntegralResultPageViewModel>(NavSettings.IntegralResultPage);
+
         }
         private void RegisterAddOns(IContainerRegistry containerRegistry)
         {
@@ -39,7 +42,7 @@ namespace NumericMethods
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync(NavSettings.MainMenuPage);
+            await NavigationService.NavigateAsync($"NavigationPage/{NavSettings.MainMenuPage}");
         }
 
         protected override void OnStart()

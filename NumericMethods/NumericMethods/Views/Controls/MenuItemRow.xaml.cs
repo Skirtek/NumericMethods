@@ -35,15 +35,15 @@ namespace NumericMethods.Views.Controls
             set => SetValue(CommandProperty, value);
         }
 
-        public static readonly BindableProperty CommandParameterProperty =
-            BindableProperty.Create(nameof(CommandParameter),
+        public static readonly BindableProperty ParameterProperty =
+            BindableProperty.Create(nameof(Parameter),
                 typeof(object),
                 typeof(MenuItemRow));
 
-        public object CommandParameter
+        public object Parameter
         {
-            get => GetValue(CommandParameterProperty);
-            set => SetValue(CommandParameterProperty, value);
+            get => GetValue(ParameterProperty);
+            set => SetValue(ParameterProperty, value);
         }
 
         public static readonly BindableProperty MenuIconProperty =

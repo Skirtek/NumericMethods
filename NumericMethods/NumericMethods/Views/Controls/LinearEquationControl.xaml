@@ -2,13 +2,15 @@
 <ContentView
     x:Class="NumericMethods.Views.Controls.LinearEquationControl"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:renderers="clr-namespace:NumericMethods.Renderers;assembly=NumericMethods">
     <ContentView.Content>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
@@ -27,10 +29,20 @@
                 Keyboard="Numeric" />
             <Label
                 Grid.Column="3"
-                Text="x + "
+                Text="x"
                 VerticalOptions="CenterAndExpand" />
-            <Entry
+            <renderers:CustomPicker
+                Title="Znak"
                 Grid.Column="4"
+                SelectedIndex="0"
+                VerticalOptions="CenterAndExpand">
+                <Picker.Items>
+                    <x:String>+</x:String>
+                    <x:String>-</x:String>
+                </Picker.Items>
+            </renderers:CustomPicker>
+            <Entry
+                Grid.Column="5"
                 FontSize="16"
                 Keyboard="Numeric" />
         </Grid>

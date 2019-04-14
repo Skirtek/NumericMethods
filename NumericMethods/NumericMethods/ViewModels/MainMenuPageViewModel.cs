@@ -15,17 +15,18 @@ namespace NumericMethods.ViewModels
             : base(navigationService, pageDialogService)
         {
             AboutAppCommand = new DelegateCommand(async () => await AboutApp());
-            GoToLinearEquationPageCommand = new DelegateCommand(async () => await GoToLinearEquationPage());
+            NavigateToPageCommand = GetBusyDependedCommand<string>(NavigateToPage);
         }
 
-        public DelegateCommand GoToLinearEquationPageCommand { get; set; }
+        public DelegateCommand<string> NavigateToPageCommand { get; set; }
+
         public DelegateCommand AboutAppCommand { get; set; }
 
-        private async Task GoToLinearEquationPage()
+        private async void NavigateToPage(string page)
         {
             IsBusy = true;
 
-            await NavigationService.NavigateAsync(NavSettings.LinearEquationPage);
+            await NavigationService.NavigateAsync(page);
 
             IsBusy = false;
         }

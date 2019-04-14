@@ -26,19 +26,20 @@
                 <controls:MenuItemRow
                     Grid.Row="0"
                     Grid.Column="0"
-                    Command="{Binding BindingContext.GoToLinearEquationPageCommand, Source={x:Reference MainMenuPageName}}"
+                    Command="{Binding BindingContext.NavigateToPageCommand, Source={x:Reference MainMenuPageName}}"
                     LabelText="{res:Translate Menu_LinearEquation}"
-                    MenuIcon="ic_bus" />
+                    MenuIcon="ic_linear"
+                    Parameter="LinearEquationPage" />
                 <controls:MenuItemRow
                     Grid.Row="0"
                     Grid.Column="1"
                     LabelText="{res:Translate Menu_NonLinearEquation}"
-                    MenuIcon="ic_bus" />
+                    MenuIcon="ic_notlinear" />
                 <controls:MenuItemRow
                     Grid.Row="1"
                     Grid.Column="0"
                     LabelText="{res:Translate Menu_Interpolation}"
-                    MenuIcon="ic_bus" />
+                    MenuIcon="ic_interpolation" />
                 <controls:MenuItemRow
                     Grid.Row="1"
                     Grid.Column="1"
@@ -47,13 +48,15 @@
                 <controls:MenuItemRow
                     Grid.Row="2"
                     Grid.Column="0"
+                    Command="{Binding NavigateToPageCommand}"
                     LabelText="{res:Translate Menu_Integral}"
-                    MenuIcon="ic_bus" />
+                    MenuIcon="ic_integral"
+                    Parameter="IntegralPage" />
                 <controls:MenuItemRow
                     Grid.Row="2"
                     Grid.Column="1"
                     LabelText="{res:Translate Menu_DifferentialEquation}"
-                    MenuIcon="ic_bus" />
+                    MenuIcon="ic_differential" />
                 <StackLayout
                     Grid.Row="3"
                     Grid.Column="0"

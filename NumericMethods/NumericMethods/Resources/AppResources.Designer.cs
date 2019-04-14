@@ -61,11 +61,74 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Oblicz.
+        /// </summary>
+        internal static string Common_Calculate {
+            get {
+                return ResourceManager.GetString("Common_Calculate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string Common_Ok {
             get {
                 return ResourceManager.GetString("Common_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 5. Podaj własną dokładność całkowania.
+        /// </summary>
+        internal static string IntegralPage_CustomPrecision {
+            get {
+                return ResourceManager.GetString("IntegralPage_CustomPrecision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3. Podaj wzór funkcji.
+        /// </summary>
+        internal static string IntegralPage_Formula {
+            get {
+                return ResourceManager.GetString("IntegralPage_Formula", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2. Podaj dolną granicę całkowania.
+        /// </summary>
+        internal static string IntegralPage_LowerLimit {
+            get {
+                return ResourceManager.GetString("IntegralPage_LowerLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4. Wybierz dokładność całkowania.
+        /// </summary>
+        internal static string IntegralPage_Precision {
+            get {
+                return ResourceManager.GetString("IntegralPage_Precision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wybierz poziom dokładności.
+        /// </summary>
+        internal static string IntegralPage_Precision_PickerTitle {
+            get {
+                return ResourceManager.GetString("IntegralPage_Precision_PickerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1. Podaj górną granicę całkowania.
+        /// </summary>
+        internal static string IntegralPage_UpperLimit {
+            get {
+                return ResourceManager.GetString("IntegralPage_UpperLimit", resourceCulture);
             }
         }
         
@@ -131,6 +194,7 @@ namespace NumericMethods.Resources {
         ///Bartosz Mróz
         ///
         ///Do rysowania wykresów została użyta darmowa biblioteka OxyPlot
+        ///Wykorzystano ikonki pochodzące z zasobów icons8.com
         ///©2019.
         /// </summary>
         internal static string Menu_AboutAppDescription {

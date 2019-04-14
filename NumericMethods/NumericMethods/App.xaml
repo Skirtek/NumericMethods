@@ -8,11 +8,23 @@
         <ResourceDictionary>
             <!--  Global Styles  -->
             <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Color x:Key="GreenButtonColor">#4CAF50</Color>
+            <Color x:Key="NavyBlueColor">#002a4c</Color>
+            <Color x:Key="WhiteColor">#ffffff</Color>
 
             <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
                 <Setter Property="CornerRadius" Value="34" />
                 <Setter Property="WidthRequest" Value="68" />
                 <Setter Property="HeightRequest" Value="68" />
+            </Style>
+            <Style x:Key="GreenButtonStyle" TargetType="{x:Type Button}">
+                <Setter Property="BackgroundColor" Value="{StaticResource GreenButtonColor}" />
+                <Setter Property="BorderColor" Value="{StaticResource GreenButtonColor}" />
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="CornerRadius" Value="25" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

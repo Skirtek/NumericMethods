@@ -4,12 +4,11 @@ using Xamarin.Forms.Xaml;
 namespace NumericMethods.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainMenuPage : ContentPage
+    public partial class IntegralPage : ContentPage
     {
-        public MainMenuPage()
+        public IntegralPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }
