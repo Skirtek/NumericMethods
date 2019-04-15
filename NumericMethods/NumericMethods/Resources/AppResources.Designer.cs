@@ -79,6 +79,33 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Coś poszło nie tak.
+        /// </summary>
+        internal static string Common_SomethingWentWrong {
+            get {
+                return ResourceManager.GetString("Common_SomethingWentWrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ups!.
+        /// </summary>
+        internal static string Common_Ups {
+            get {
+                return ResourceManager.GetString("Common_Ups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Twoja funkcja zawiera błędy. Spróbuj jeszcze raz!.
+        /// </summary>
+        internal static string Common_WrongFunction {
+            get {
+                return ResourceManager.GetString("Common_WrongFunction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 5. Podaj własną dokładność całkowania.
         /// </summary>
         internal static string IntegralPage_CustomPrecision {

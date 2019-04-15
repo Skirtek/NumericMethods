@@ -188,4 +188,13 @@ Wykorzystano ikonki pochodzące z zasobów icons8.com
   <data name="Common_Calculate" xml:space="preserve">
     <value>Oblicz</value>
   </data>
+  <data name="Common_Ups" xml:space="preserve">
+    <value>Ups!</value>
+  </data>
+  <data name="Common_SomethingWentWrong" xml:space="preserve">
+    <value>Coś poszło nie tak</value>
+  </data>
+  <data name="Common_WrongFunction" xml:space="preserve">
+    <value>Twoja funkcja zawiera błędy. Spróbuj jeszcze raz!</value>
+  </data>
 </root>

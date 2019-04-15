@@ -84,7 +84,9 @@ namespace NumericMethods.ViewModels
             {
                 LowerLimit = LowerLimit,
                 SelectedPrecision = SelectedPrecision,
-                UpperLimit = UpperLimit
+                UpperLimit = UpperLimit,
+                CustomPrecision = CustomPrecision,
+                Formula = Formula
             };
 
             await NavigationService.NavigateAsync(NavSettings.IntegralResultPage, new NavigationParameters { { NavParams.Integral, integral } });

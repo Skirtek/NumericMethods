@@ -7,7 +7,7 @@
         <StackLayout>
             <Label
                 HorizontalOptions="CenterAndExpand"
-                Text="{Binding UpperLimit}"
+                Text="{Binding Result}"
                 VerticalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage.Content>

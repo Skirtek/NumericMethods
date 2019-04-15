@@ -2,7 +2,7 @@
 
 namespace NumericMethods.Settings
 {
-    public class AppSettings
+    public static class AppSettings
     {
         public static List<string> IntegralPrecisionOptions = new List<string>
         {
@@ -12,5 +12,9 @@ namespace NumericMethods.Settings
             "Bardzo wysoka dokładność (n = 10 000)",
             "Własna..."
         };
+
+        public const string ArgumentRegex = "([0-9.,]*)[Xx](\\^\\d)?";
+
+        public const string ConstantTermRegex = "([+\\-]+)\\d*$";
     }
 }
