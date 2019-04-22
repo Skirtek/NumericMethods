@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="clr-namespace:NumericMethods.Views.Behaviors;assembly=NumericMethods"
+    xmlns:controls="clr-namespace:NumericMethods.Views.Controls;assembly=NumericMethods"
     xmlns:local="clr-namespace:NumericMethods.Settings;assembly=NumericMethods"
     xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
     x:Name="IntegralPageName"
@@ -18,20 +19,23 @@
         <ScrollView>
             <StackLayout Margin="24,24,24,0" Spacing="8">
                 <Label Style="{StaticResource InstructionLabelStyle}" Text="{resources:Translate IntegralPage_UpperLimit}" />
-                <Entry
-                    FontSize="18"
+                <controls:ValidationEntry
+                    EntryFontSize="18"
+                    EntryText="{Binding UpperLimit}"
                     Keyboard="Numeric"
-                    Text="{Binding UpperLimit}" />
+                    PropertyName="UpperLimit" />
                 <Label Style="{StaticResource InstructionLabelStyle}" Text="{resources:Translate IntegralPage_LowerLimit}" />
-                <Entry
-                    FontSize="18"
+                <controls:ValidationEntry
+                    EntryFontSize="18"
+                    EntryText="{Binding LowerLimit}"
                     Keyboard="Numeric"
-                    Text="{Binding LowerLimit}" />
+                    PropertyName="LowerLimit" />
                 <Label Style="{StaticResource InstructionLabelStyle}" Text="{resources:Translate IntegralPage_Formula}" />
-                <Entry
-                    FontSize="18"
-                    Keyboard="Text"
-                    Text="{Binding Formula}" />
+                <controls:ValidationEntry
+                    EntryFontSize="18"
+                    EntryText="{Binding Formula}"
+                    MaximumLength="40"
+                    PropertyName="Formula" />
                 <Label Style="{StaticResource InstructionLabelStyle}" Text="{resources:Translate IntegralPage_Precision}" />
                 <Picker
                     Title="{resources:Translate IntegralPage_Precision_PickerTitle}"
@@ -45,11 +49,12 @@
                     IsVisible="{Binding IsCustomPrecisionSet}"
                     Style="{StaticResource InstructionLabelStyle}"
                     Text="{resources:Translate IntegralPage_CustomPrecision}" />
-                <Entry
-                    FontSize="18"
+                <controls:ValidationEntry
+                    EntryFontSize="18"
+                    EntryText="{Binding CustomPrecision}"
                     IsVisible="{Binding IsCustomPrecisionSet}"
-                    Keyboard="Text"
-                    Text="{Binding CustomPrecision}" />
+                    Keyboard="Numeric"
+                    PropertyName="CustomPrecision" />
                 <Button
                     Margin="0,0,0,24"
                     Command="{Binding SolveIntegralCommand}"

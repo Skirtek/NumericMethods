@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Xamarin.Forms;
 
 namespace NumericMethods.Settings
 {
@@ -16,5 +17,9 @@ namespace NumericMethods.Settings
         public const string ArgumentRegex = "([+\\-]?)([0-9.,]*)[Xx](\\^\\d)?";
 
         public const string ConstantTermRegex = "[+\\-]?([0-9]*[.,])?[0-9]+$";
+
+        public const string FormulaRegex = "^[xX^,.+\\-0-9]+$";
+
+        public const int DefaultEntryMaxLength = 7;
     }
 }

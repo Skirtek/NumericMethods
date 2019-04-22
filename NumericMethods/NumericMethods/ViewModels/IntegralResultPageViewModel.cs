@@ -23,14 +23,42 @@ namespace NumericMethods.ViewModels
         #endregion
 
         #region Properties
-        private string _result;
-        public string Result
+        private string _resultTrapezeMethod;
+        public string ResultTrapezeMethod
         {
-            get => _result;
-            set => SetProperty(ref _result, value);
+            get => _resultTrapezeMethod;
+            set => SetProperty(ref _resultTrapezeMethod, value);
         }
 
-        private bool HasErrors { get; set; }
+        private string _resultRectangleMethod;
+        public string ResultRectangleMethod
+        {
+            get => _resultRectangleMethod;
+            set => SetProperty(ref _resultRectangleMethod, value);
+        }
+
+        private string _upperLimit;
+        public string UpperLimit
+        {
+            get => _upperLimit;
+            set => SetProperty(ref _upperLimit, value);
+        }
+
+        private string _lowerLimit;
+        public string LowerLimit
+        {
+            get => _lowerLimit;
+            set => SetProperty(ref _lowerLimit, value);
+        }
+
+        private float _precision;
+        public float Precision
+        {
+            get => _precision;
+            set => SetProperty(ref _precision, value);
+        }
+
+        private bool Errors { get; set; }
 
         private List<Operation> Operations = new List<Operation>();
         #endregion
@@ -44,10 +72,13 @@ namespace NumericMethods.ViewModels
         {
             if (!parameters.TryGetValue(NavParams.Integral, out Integral integral))
             {
-                await ShowAlert("Ups!", "Stało się coś złego");
+                await ShowAlert(AppResources.Common_Ups, AppResources.Common_SomethingWentWrong);
                 await NavigationService.GoBackAsync();
                 return;
             }
+
+            LowerLimit = integral.LowerLimit;
+            UpperLimit = integral.UpperLimit;
 
             await CalculateIntegral(integral);
         }
@@ -74,6 +105,19 @@ namespace NumericMethods.ViewModels
                     return 100;
             }
         }
+        private float Pole(float lowerLimit, float upperLimit, float precision)
+        {
+            float height = (upperLimit - lowerLimit) / precision;
+            float areas = 0;
+            float center = lowerLimit + (upperLimit - lowerLimit) / (2 * precision); 
+
+            for (int i = 0; i < precision; i++)
+            {
+                areas += FunctionResult(center);
+                center += height;  
+            }
+            return areas * height;
+        }
 
         private async Task CalculateIntegral(Integral integral)
         {
@@ -85,6 +129,7 @@ namespace NumericMethods.ViewModels
             }
 
             float precision = GetPrecision(integral);
+            Precision = precision;
 
             float height = (upperLimit - lowerLimit) / precision;
             float integralResult = 0;
@@ -100,7 +145,8 @@ namespace NumericMethods.ViewModels
             integralResult += FunctionResult(upperLimit) / 2;
             integralResult *= height;
 
-            Result = $"{integralResult}";
+            ResultTrapezeMethod = $"{integralResult}";
+            ResultRectangleMethod = $"{Pole(lowerLimit, upperLimit, precision)}";
         }
 
         private float FunctionResult(float x)
@@ -172,7 +218,7 @@ namespace NumericMethods.ViewModels
                     }
                 }
 
-                if (HasErrors)
+                if (Errors)
                 {
                     await ShowError(AppResources.Common_WrongFunction);
                 }
@@ -197,7 +243,7 @@ namespace NumericMethods.ViewModels
                 expression = expression.Replace(".", ",");
             }
 
-            HasErrors = !float.TryParse(expression, out float value);
+            Errors = !float.TryParse(expression, out float value);
 
             return value;
         }

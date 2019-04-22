@@ -2,13 +2,93 @@
 <ContentPage
     x:Class="NumericMethods.Views.IntegralResultPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Wynik">
     <ContentPage.Content>
-        <StackLayout>
-            <Label
-                HorizontalOptions="CenterAndExpand"
-                Text="{Binding Result}"
-                VerticalOptions="CenterAndExpand" />
+        <StackLayout Margin="24">
+            <Label Margin="0,16,0,0" HorizontalTextAlignment="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                            FontSize="16"
+                            Text="Wartość całki obliczona metodą trapezów: "
+                            TextColor="{StaticResource NavyBlueColor}" />
+                        <Span
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="{Binding ResultTrapezeMethod, Mode=OneWay}"
+                            TextColor="{StaticResource NavyBlueColor}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Margin="0,16,0,0" HorizontalTextAlignment="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                            FontSize="16"
+                            Text="Wartość całki obliczona metodą prostokątów: "
+                            TextColor="{StaticResource NavyBlueColor}" />
+                        <Span
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="{Binding ResultRectangleMethod, Mode=OneWay}"
+                            TextColor="{StaticResource NavyBlueColor}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Label
+                    FontSize="18"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="Wartość całki została obliczona dla parametrów"
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontSize="16"
+                                Text="Dolna granica całkowania: "
+                                TextColor="{StaticResource NavyBlueColor}" />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="{Binding LowerLimit, Mode=OneWay}"
+                                TextColor="{StaticResource NavyBlueColor}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontSize="16"
+                                Text="Górna granica całkowania: "
+                                TextColor="{StaticResource NavyBlueColor}" />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="{Binding UpperLimit, Mode=OneWay}"
+                                TextColor="{StaticResource NavyBlueColor}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontSize="16"
+                                Text="Dokładność całkowania: "
+                                TextColor="{StaticResource NavyBlueColor}" />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="{Binding Precision, Mode=OneWay}"
+                                TextColor="{StaticResource NavyBlueColor}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

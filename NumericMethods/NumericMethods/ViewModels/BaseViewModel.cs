@@ -4,14 +4,14 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using NumericMethods.Resources;
+using NumericMethods.Settings;
 using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
 
 namespace NumericMethods.ViewModels
 {
-    public abstract class BaseViewModel : BindableBase, INotifyPropertyChanged
+    public abstract class BaseViewModel : ValidationBase, INotifyPropertyChanged
     {
         public IPageDialogService PageDialogService { get; }
         public INavigationService NavigationService { get; }
@@ -35,13 +35,6 @@ namespace NumericMethods.ViewModels
         {
             get => _isBusy;
             set => SetProperty(ref _isBusy, value);
-        }
-
-        private string _title;
-        public string Title
-        {
-            get => _title;
-            set => SetProperty(ref _title, value);
         }
 
         protected bool SetProperty<T>(ref T backingStore, T value,

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="NumericMethods.Views.Controls.ValidationEntry"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:NumericMethods.Views.Behaviors;assembly=NumericMethods"
+    xmlns:settings="clr-namespace:NumericMethods.Settings;assembly=NumericMethods">
+    <ContentView.Content>
+        <StackLayout Spacing="0">
+            <Entry x:Name="Entry" MaxLength="{Binding Source={x:Static settings:AppSettings.DefaultEntryMaxLength}}" />
+            <Label x:Name="Errors" TextColor="Red" />
+        </StackLayout>
+    </ContentView.Content>
+    <ContentView.Behaviors>
+        <behaviors:EntryValidationBehavior />
+    </ContentView.Behaviors>
+</ContentView>

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using NumericMethods.Models;
+using NumericMethods.PlatformImplementations;
 using NumericMethods.Resources;
 using NumericMethods.Settings;
 using Prism.Commands;
@@ -8,39 +9,57 @@ using Prism.Services;
 
 namespace NumericMethods.ViewModels
 {
-    //TODO Wszystkie entries muszą być walidowane
-    //TODO Max lenght na własnym poziomie przybliżenia to 7 
     public class IntegralPageViewModel : BaseViewModel
     {
+        private readonly IToast _toast;
+
         public IntegralPageViewModel(
             INavigationService navigationService,
-            IPageDialogService pageDialogService)
+            IPageDialogService pageDialogService,
+            IToast toast)
             : base(navigationService, pageDialogService)
         {
             PrecisionChangedCommand = new DelegateCommand(PrecisionChanged);
             SolveIntegralCommand = GetBusyDependedCommand(SolveIntegral);
+            _toast = toast;
         }
 
         #region Properties      
         private string _upperLimit;
+        [Required(ErrorMessageResourceType = typeof(AppResources), ErrorMessageResourceName = nameof(AppResources.Validation_FieldEmpty))]
         public string UpperLimit
         {
             get => _upperLimit;
-            set => SetProperty(ref _upperLimit, value);
+            set
+            {
+                ValidateProperty(value);
+                SetProperty(ref _upperLimit, value);
+            }
         }
 
         private string _lowerLimit;
+        [Required(ErrorMessageResourceType = typeof(AppResources), ErrorMessageResourceName = nameof(AppResources.Validation_FieldEmpty))]
         public string LowerLimit
         {
             get => _lowerLimit;
-            set => SetProperty(ref _lowerLimit, value);
+            set
+            {
+                ValidateProperty(value);
+                SetProperty(ref _lowerLimit, value);
+            }
         }
 
         private string _formula;
+        [Required(ErrorMessageResourceType = typeof(AppResources), ErrorMessageResourceName = nameof(AppResources.Validation_FieldEmpty))]
+        [RegularExpression(AppSettings.FormulaRegex, ErrorMessageResourceType = typeof(AppResources), ErrorMessageResourceName = nameof(AppResources.Validation_FormulaIsNotValid))]
         public string Formula
         {
             get => _formula;
-            set => SetProperty(ref _formula, value);
+            set
+            {
+                ValidateProperty(value);
+                SetProperty(ref _formula, value);
+            }
         }
 
         private string _customPrecision;
@@ -51,7 +70,6 @@ namespace NumericMethods.ViewModels
         }
 
         private short _selectedPrecision;
-
         public short SelectedPrecision
         {
             get => _selectedPrecision;
@@ -80,6 +98,11 @@ namespace NumericMethods.ViewModels
 
         private async void SolveIntegral()
         {
+            if (HasErrors || !ValidateProperties())
+            {
+                return;
+            }
+
             IsBusy = true;
 
             var integral = new Integral
@@ -94,6 +117,31 @@ namespace NumericMethods.ViewModels
             await NavigationService.NavigateAsync(NavSettings.IntegralResultPage, new NavigationParameters { { NavParams.Integral, integral } });
 
             IsBusy = false;
+        }
+
+        private bool ValidateProperties()
+        {
+
+            if (!float.TryParse(LowerLimit, out float lowerLimit) || !float.TryParse(UpperLimit, out float upperLimit))
+            {
+                _toast.ShortAlert(AppResources.Common_SomethingWentWrong);
+                return false;
+            }
+
+
+            if (lowerLimit > upperLimit)
+            {
+                _toast.ShortAlert(AppResources.Validation_InvalidBorder);
+                return false;
+            }
+
+            if (IsCustomPrecisionSet && string.IsNullOrEmpty(CustomPrecision))
+            {
+                _toast.ShortAlert(AppResources.Validation_CustomPrecisionIsEmpty);
+                return false;
+            }
+
+            return true;
         }
         #endregion
     }

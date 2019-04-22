@@ -285,11 +285,38 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wartość dokładności całkowania nie może być pusta.
+        /// </summary>
+        internal static string Validation_CustomPrecisionIsEmpty {
+            get {
+                return ResourceManager.GetString("Validation_CustomPrecisionIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pole nie może być puste.
         /// </summary>
         internal static string Validation_FieldEmpty {
             get {
                 return ResourceManager.GetString("Validation_FieldEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wzór funkcji zawiera błędy.
+        /// </summary>
+        internal static string Validation_FormulaIsNotValid {
+            get {
+                return ResourceManager.GetString("Validation_FormulaIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Górna granica całkowania musi być większa niż dolna granica.
+        /// </summary>
+        internal static string Validation_InvalidBorder {
+            get {
+                return ResourceManager.GetString("Validation_InvalidBorder", resourceCulture);
             }
         }
     }

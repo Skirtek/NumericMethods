@@ -199,5 +199,14 @@ Wykorzystano ikonki pochodzące z zasobów icons8.com
   </data>
   <data name="Validation_FieldEmpty" xml:space="preserve">
     <value>Pole nie może być puste</value>
-  </data> 
+  </data>
+  <data name="Validation_FormulaIsNotValid" xml:space="preserve">
+    <value>Wzór funkcji zawiera błędy</value>
+  </data>
+  <data name="Validation_InvalidBorder" xml:space="preserve">
+    <value>Górna granica całkowania musi być większa niż dolna granica</value>
+  </data>
+  <data name="Validation_CustomPrecisionIsEmpty" xml:space="preserve">
+    <value>Wartość dokładności całkowania nie może być pusta</value>
+  </data>
 </root>
