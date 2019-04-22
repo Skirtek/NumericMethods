@@ -129,12 +129,10 @@ namespace NumericMethods.ViewModels
 
                 if (!string.IsNullOrWhiteSpace(lastExpression))
                 {
-                    int constantTerm = GetValue(lastExpression);
-
                     Operations.Add(new Operation
                     {
                         IsNegative = IsNegative(lastExpression),
-                        Value = constantTerm,
+                        Value = GetValue(lastExpression),
                         Weight = 0
                     });
                 }
@@ -187,14 +185,19 @@ namespace NumericMethods.ViewModels
 
         private bool IsNegative(string expression) => expression.Substring(0, 1).Equals("-");
 
-        private int GetValue(string expression)
+        private float GetValue(string expression)
         {
             if (expression.Substring(0, 1).Equals("-") || expression.Substring(0, 1).Equals("+"))
             {
                 expression = expression.Remove(0, 1);
             }
 
-            HasErrors = !int.TryParse(expression, out int value);
+            if (expression.Contains("."))
+            {
+                expression = expression.Replace(".", ",");
+            }
+
+            HasErrors = !float.TryParse(expression, out float value);
 
             return value;
         }

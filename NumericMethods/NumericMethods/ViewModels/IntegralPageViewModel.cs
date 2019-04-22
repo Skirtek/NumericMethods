@@ -1,4 +1,6 @@
-﻿using NumericMethods.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using NumericMethods.Models;
+using NumericMethods.Resources;
 using NumericMethods.Settings;
 using Prism.Commands;
 using Prism.Navigation;

@@ -197,4 +197,7 @@ Wykorzystano ikonki pochodzące z zasobów icons8.com
   <data name="Common_WrongFunction" xml:space="preserve">
     <value>Twoja funkcja zawiera błędy. Spróbuj jeszcze raz!</value>
   </data>
+  <data name="Validation_FieldEmpty" xml:space="preserve">
+    <value>Pole nie może być puste</value>
+  </data> 
 </root>

@@ -13,8 +13,8 @@ namespace NumericMethods.Settings
             "Własna..."
         };
 
-        public const string ArgumentRegex = "([0-9.,]*)[Xx](\\^\\d)?";
+        public const string ArgumentRegex = "([+\\-]?)([0-9.,]*)[Xx](\\^\\d)?";
 
-        public const string ConstantTermRegex = "([+\\-]+)\\d*$";
+        public const string ConstantTermRegex = "[+\\-]?([0-9]*[.,])?[0-9]+$";
     }
 }

@@ -283,5 +283,14 @@ namespace NumericMethods.Resources {
                 return ResourceManager.GetString("Menu_NonLinearEquation", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pole nie może być puste.
+        /// </summary>
+        internal static string Validation_FieldEmpty {
+            get {
+                return ResourceManager.GetString("Validation_FieldEmpty", resourceCulture);
+            }
+        }
     }
 }

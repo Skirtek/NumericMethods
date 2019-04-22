@@ -2,7 +2,7 @@
 {
     public class Operation
     {
-        public int Value { get; set; }
+        public float Value { get; set; }
 
         public bool IsNegative { get; set; }
 
