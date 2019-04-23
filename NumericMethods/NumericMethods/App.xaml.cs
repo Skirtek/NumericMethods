@@ -1,4 +1,6 @@
-﻿using NumericMethods.Settings;
+﻿using NumericMethods.Interfaces;
+using NumericMethods.Services;
+using NumericMethods.Settings;
 using NumericMethods.ViewModels;
 using NumericMethods.Views;
 using Plugin.Connectivity;
@@ -21,6 +23,7 @@ namespace NumericMethods
         {
             RegisterPagesWithViewModels(containerRegistry);
             RegisterAddOns(containerRegistry);
+            RegisterServicesAndUtils(containerRegistry);
         }
 
         private void RegisterPagesWithViewModels(IContainerRegistry containerRegistry)
@@ -39,6 +42,12 @@ namespace NumericMethods
             containerRegistry.RegisterInstance(CrossConnectivity.Current);
             containerRegistry.RegisterInstance(UserSettings.Instance);
         }
+
+        private void RegisterServicesAndUtils(IContainerRegistry containerRegistry)
+        {
+            containerRegistry.Register<IMatrix, Matrix>();
+        }
+
         protected override async void OnInitialized()
         {
             InitializeComponent();

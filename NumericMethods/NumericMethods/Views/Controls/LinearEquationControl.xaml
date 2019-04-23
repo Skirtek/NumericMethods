@@ -3,7 +3,8 @@
     x:Class="NumericMethods.Views.Controls.LinearEquationControl"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:renderers="clr-namespace:NumericMethods.Renderers;assembly=NumericMethods">
+    xmlns:renderers="clr-namespace:NumericMethods.Renderers;assembly=NumericMethods"
+    x:Name="LinearEquationControlName">
     <ContentView.Content>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -17,7 +18,8 @@
             <Entry
                 Grid.Column="0"
                 FontSize="16"
-                Keyboard="Numeric" />
+                Keyboard="Numeric"
+                Text="{Binding YValue, Source={x:Reference LinearEquationControlName}}" />
             <Label
                 Grid.Column="1"
                 FontSize="16"
@@ -26,7 +28,8 @@
             <Entry
                 Grid.Column="2"
                 FontSize="16"
-                Keyboard="Numeric" />
+                Keyboard="Numeric"
+                Text="{Binding XValue, Source={x:Reference LinearEquationControlName}}" />
             <Label
                 Grid.Column="3"
                 Text="x"
@@ -34,7 +37,7 @@
             <renderers:CustomPicker
                 Title="Znak"
                 Grid.Column="4"
-                SelectedIndex="0"
+                SelectedIndex="{Binding SelectedSign, Source={x:Reference LinearEquationControlName}}"
                 VerticalOptions="CenterAndExpand">
                 <Picker.Items>
                     <x:String>+</x:String>
@@ -44,7 +47,8 @@
             <Entry
                 Grid.Column="5"
                 FontSize="16"
-                Keyboard="Numeric" />
+                Keyboard="Numeric"
+                Text="{Binding ConstantTerm, Source={x:Reference LinearEquationControlName}}" />
         </Grid>
     </ContentView.Content>
 </ContentView>

@@ -10,12 +10,26 @@
     Title="{resources:Translate Menu_LinearEquation}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_help" Order="Primary" />
+        <ToolbarItem
+            Command="{Binding AddEquationCommand}"
+            Icon="ic_plus"
+            Order="Primary" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <controls:LinearEquationControl />
-            <controls:LinearEquationControl />
-            <controls:LinearEquationControl />
+            <ScrollView>
+                <controls:CustomListControl ItemsSource="{Binding EquationList}">
+                    <controls:CustomListControl.ItemTemplate>
+                        <DataTemplate>
+                            <controls:LinearEquationControl
+                                ConstantTerm="{Binding ConstantTerm}"
+                                SelectedSign="{Binding SelectedSign}"
+                                XValue="{Binding X}"
+                                YValue="{Binding Y}" />
+                        </DataTemplate>
+                    </controls:CustomListControl.ItemTemplate>
+                </controls:CustomListControl>
+            </ScrollView>
             <StackLayout
                 Margin="16,0,16,16"
                 BackgroundColor="#BF0C34"

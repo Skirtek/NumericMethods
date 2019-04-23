@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using NumericMethods.Views.Controls;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace NumericMethods.Views
