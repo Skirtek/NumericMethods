@@ -27,6 +27,7 @@ namespace NumericMethods.Android
             base.OnCreate(savedInstanceState);
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
             PlotViewRenderer.Init();
+            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             App numericMethods = new App(new AndroidInitializer());
             LoadApplication(numericMethods);
         }

@@ -58,7 +58,7 @@ namespace NumericMethods.ViewModels
             set => SetProperty(ref _precision, value);
         }
 
-        private bool Errors { get; set; }
+        private bool PrepareFunctionErrors { get; set; }
 
         private List<Operation> Operations = new List<Operation>();
         #endregion
@@ -77,10 +77,14 @@ namespace NumericMethods.ViewModels
                 return;
             }
 
+            IsBusy = true;
+
             LowerLimit = integral.LowerLimit;
             UpperLimit = integral.UpperLimit;
 
             await CalculateIntegral(integral);
+
+            IsBusy = false;
         }
         #endregion
 
@@ -218,7 +222,7 @@ namespace NumericMethods.ViewModels
                     }
                 }
 
-                if (Errors)
+                if (PrepareFunctionErrors)
                 {
                     await ShowError(AppResources.Common_WrongFunction);
                 }
@@ -243,7 +247,7 @@ namespace NumericMethods.ViewModels
                 expression = expression.Replace(".", ",");
             }
 
-            Errors = !float.TryParse(expression, out float value);
+            PrepareFunctionErrors = !float.TryParse(expression, out float value);
 
             return value;
         }

@@ -1,26 +1,24 @@
 ﻿using System.Collections.ObjectModel;
-using NumericMethods.Interfaces;
 using NumericMethods.Models;
-using NumericMethods.PlatformImplementations;
 using NumericMethods.Settings;
+using NumericMethods.Views.Controls;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
+using Rg.Plugins.Popup.Services;
 
 namespace NumericMethods.ViewModels
 {
     public class LinearEquationPageViewModel : BaseViewModel, INavigatingAware
     {
-        private readonly IMatrix _matrix;
-
+        //TODO Liczy się tak tak i tak metodą taką i taką pozostawienie niewypełnionego pola oznacza wstawienie 0
         public LinearEquationPageViewModel(
             INavigationService navigationService,
-            IPageDialogService pageDialogService,
-            IMatrix matrix)
+            IPageDialogService pageDialogService)
             : base(navigationService, pageDialogService)
         {
             GoToSolveEquationPageCommand = GetBusyDependedCommand(GoToSolveEquationPage);
-            _matrix = matrix;
+            ShowHelpCommand = new DelegateCommand(ShowHelp);
             MaxEquations = 3; //TODO Add popup with choice
         }
 
@@ -35,6 +33,15 @@ namespace NumericMethods.ViewModels
 
         public DelegateCommand GoToSolveEquationPageCommand { get; set; }
 
+        public DelegateCommand ShowHelpCommand { get; set; }
+
+        private async void ShowHelp()
+        {
+            HelpPopup popup = new HelpPopup();
+
+            await PopupNavigation.Instance.PushAsync(popup);
+        }
+
         private async void GoToSolveEquationPage()
         {
             IsBusy = true;
@@ -46,9 +53,6 @@ namespace NumericMethods.ViewModels
 
         private void PopulateEquations()
         {
-            var x = _matrix.MatrixDeterminant(new double[,] { { 1, -2, 5 }, { -2, 4, 1 } });
-            var y = _matrix.rankOfMatrix(2, 3, new double[,] { { 1, -2, 5 }, { -2, 4, 1 } });
-
             for (var i = 0; i < MaxEquations; i++)
             {
                 EquationList.Add(new Equation());
