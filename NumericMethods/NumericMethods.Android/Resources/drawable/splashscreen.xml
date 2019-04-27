@@ -5,8 +5,8 @@
   </item>
   <item>
     <bitmap
-      android:src="@drawable/ic_linear_plot"
+      android:src="@drawable/splashscreen_photo"
       android:tileMode="disabled"
-      android:gravity="center" />
+      android:gravity="fill_horizontal|fill_vertical" />
   </item>
 </layer-list>

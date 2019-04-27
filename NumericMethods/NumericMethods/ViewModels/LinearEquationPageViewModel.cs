@@ -9,26 +9,22 @@ using Prism.Services;
 
 namespace NumericMethods.ViewModels
 {
-    public class LinearEquationPageViewModel : BaseViewModel
+    public class LinearEquationPageViewModel : BaseViewModel, INavigatingAware
     {
         private readonly IMatrix _matrix;
-        private readonly IToast _toast;
 
         public LinearEquationPageViewModel(
             INavigationService navigationService,
             IPageDialogService pageDialogService,
-            IMatrix matrix,
-            IToast toast)
+            IMatrix matrix)
             : base(navigationService, pageDialogService)
         {
             GoToSolveEquationPageCommand = GetBusyDependedCommand(GoToSolveEquationPage);
-            AddEquationCommand = new DelegateCommand(AddEquation);
             _matrix = matrix;
-            _toast = toast;
             MaxEquations = 3; //TODO Add popup with choice
         }
 
-        private ObservableCollection<Equation> _equationList = new ObservableCollection<Equation> { new Equation() };
+        private ObservableCollection<Equation> _equationList = new ObservableCollection<Equation>();
         public ObservableCollection<Equation> EquationList
         {
             get => _equationList;
@@ -39,8 +35,6 @@ namespace NumericMethods.ViewModels
 
         public DelegateCommand GoToSolveEquationPageCommand { get; set; }
 
-        public DelegateCommand AddEquationCommand { get; set; }
-
         private async void GoToSolveEquationPage()
         {
             IsBusy = true;
@@ -50,17 +44,20 @@ namespace NumericMethods.ViewModels
             IsBusy = false;
         }
 
-        private void AddEquation()
+        private void PopulateEquations()
         {
             var x = _matrix.MatrixDeterminant(new double[,] { { 1, -2, 5 }, { -2, 4, 1 } });
             var y = _matrix.rankOfMatrix(2, 3, new double[,] { { 1, -2, 5 }, { -2, 4, 1 } });
-            if (EquationList.Count < MaxEquations)
+
+            for (var i = 0; i < MaxEquations; i++)
             {
                 EquationList.Add(new Equation());
-                return;
             }
+        }
 
-            _toast.ShortAlert($"Osiągnięto maksymalną liczbę równań dla { MaxEquations - 1 } niewiadomych");
+        public void OnNavigatingTo(INavigationParameters parameters)
+        {
+            PopulateEquations();
         }
     }
 }

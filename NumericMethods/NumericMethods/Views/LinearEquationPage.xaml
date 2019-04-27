@@ -10,10 +10,6 @@
     Title="{resources:Translate Menu_LinearEquation}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_help" Order="Primary" />
-        <ToolbarItem
-            Command="{Binding AddEquationCommand}"
-            Icon="ic_plus"
-            Order="Primary" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
