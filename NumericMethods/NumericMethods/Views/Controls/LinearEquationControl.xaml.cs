@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using NumericMethods.Models;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace NumericMethods.Views.Controls
@@ -28,6 +29,42 @@ namespace NumericMethods.Views.Controls
         {
             get => (string)GetValue(XValueProperty);
             set => SetValue(XValueProperty, value);
+        }
+
+        public static readonly BindableProperty ZValueProperty =
+            BindableProperty.Create(nameof(ZValue),
+                typeof(string),
+                typeof(LinearEquationControl),
+                default(string), BindingMode.TwoWay);
+
+        public string ZValue
+        {
+            get => (string)GetValue(ZValueProperty);
+            set => SetValue(ZValueProperty, value);
+        }
+
+        public static readonly BindableProperty AValueProperty =
+            BindableProperty.Create(nameof(AValue),
+                typeof(string),
+                typeof(LinearEquationControl),
+                default(string), BindingMode.TwoWay);
+
+        public string AValue
+        {
+            get => (string)GetValue(AValueProperty);
+            set => SetValue(AValueProperty, value);
+        }
+
+        public static readonly BindableProperty EquationSizeProperty =
+            BindableProperty.Create(nameof(EquationsSize),
+                typeof(EquationSize),
+                typeof(LinearEquationControl),
+                default(EquationSize), BindingMode.TwoWay);
+
+        public EquationSize EquationsSize
+        {
+            get => (EquationSize)GetValue(EquationSizeProperty);
+            set => SetValue(EquationSizeProperty, value);
         }
 
         public static readonly BindableProperty ConstantTermProperty =

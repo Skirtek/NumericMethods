@@ -7,6 +7,8 @@ using NumericMethods.PlatformImplementations;
 using OxyPlot.Xamarin.Forms.Platform.Android;
 using Prism;
 using Prism.Ioc;
+using Rg.Plugins.Popup;
+using Rg.Plugins.Popup.Services;
 
 namespace NumericMethods.Android
 {
@@ -37,6 +39,14 @@ namespace NumericMethods.Android
             public void RegisterTypes(IContainerRegistry containerRegistry)
             {
                 containerRegistry.RegisterInstance<IToast>(Toast);
+            }
+        }
+
+        public override void OnBackPressed()
+        {
+            if (Popup.SendBackPressed(base.OnBackPressed))
+            {
+                PopupNavigation.Instance.PopAsync();
             }
         }
     }

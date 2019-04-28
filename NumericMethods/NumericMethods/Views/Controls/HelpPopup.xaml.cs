@@ -1,8 +1,6 @@
 using System;
-using System.Threading.Tasks;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
-using Xamarin.Forms;
 
 namespace NumericMethods.Views.Controls
 {
@@ -13,7 +11,7 @@ namespace NumericMethods.Views.Controls
             InitializeComponent();
         }
 
-        private async void OnClose(object sender, EventArgs e)
+        private async void Button_OnClicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PopAsync();
         }

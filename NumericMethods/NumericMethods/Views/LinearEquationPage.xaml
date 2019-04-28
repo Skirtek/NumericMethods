@@ -22,32 +22,22 @@
                         <controls:CustomListControl.ItemTemplate>
                             <DataTemplate>
                                 <controls:LinearEquationControl
+                                    AValue="{Binding A}"
                                     ConstantTerm="{Binding ConstantTerm}"
+                                    EquationSize="{Binding EquationCount}"
                                     XValue="{Binding X}"
-                                    YValue="{Binding Y}" />
+                                    YValue="{Binding Y}"
+                                    ZValue="{Binding Z}" />
                             </DataTemplate>
                         </controls:CustomListControl.ItemTemplate>
                     </controls:CustomListControl>
                 </ScrollView>
-                <StackLayout
+                <Button
                     Margin="16,0,16,16"
-                    BackgroundColor="#BF0C34"
-                    VerticalOptions="EndAndExpand">
-                    <Label
-                        Margin="16"
-                        FontAttributes="Bold"
-                        FontSize="16"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="Oblicz"
-                        TextColor="White"
-                        VerticalOptions="CenterAndExpand" />
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer />
-                    </StackLayout.GestureRecognizers>
-                    <StackLayout.Behaviors>
-                        <behaviors:ViewTappedWithAnimationBehavior Command="{Binding BindingContext.GoToSolveEquationPageCommand, Source={x:Reference LinearEquationPageName}}" />
-                    </StackLayout.Behaviors>
-                </StackLayout>
+                    Command="{Binding GoToSolveEquationPageCommand}"
+                    Style="{StaticResource GreenButtonStyle}"
+                    Text="{resources:Translate Common_Calculate}"
+                    VerticalOptions="EndAndExpand" />
             </StackLayout>
             <controls:LoaderView BackgroundColor="{StaticResource WhiteColor}" IsVisible="{Binding IsBusy}" />
         </Grid>

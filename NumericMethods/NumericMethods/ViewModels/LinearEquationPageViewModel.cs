@@ -37,18 +37,9 @@ namespace NumericMethods.ViewModels
 
         public DelegateCommand ShowHelpCommand { get; set; }
 
-
-        private string _result;
-        public string Result
-        {
-            get => _result;
-            set => SetProperty(ref _result, value);
-        }
-
         private async void ShowHelp()
         {
             var popup = new HelpPopup();
-
             await PopupNavigation.Instance.PushAsync(popup);
         }
 
@@ -72,9 +63,11 @@ namespace NumericMethods.ViewModels
                 return;
             }
 
+            EquationList.Clear();
+
             for (var i = 0; i < MaxEquations; i++)
             {
-                EquationList.Add(new Equation());
+                EquationList.Add(new Equation { EquationCount = (EquationSize)MaxEquations });
             }
         }
 

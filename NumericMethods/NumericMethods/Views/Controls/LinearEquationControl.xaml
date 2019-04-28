@@ -3,6 +3,7 @@
     x:Class="NumericMethods.Views.Controls.LinearEquationControl"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:NumericMethods.Models;assembly=NumericMethods"
     x:Name="LinearEquationControlName">
     <ContentView.Content>
         <Grid>
@@ -11,6 +12,10 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="{Binding EquationsSize, Converter={StaticResource EquationSizeToStarSizeConverter}, ConverterParameter=0, Source={x:Reference LinearEquationControlName}}" />
+                <ColumnDefinition Width="{Binding EquationsSize, Converter={StaticResource EquationSizeToAutoSizeConverter}, ConverterParameter=0, Source={x:Reference LinearEquationControlName}}" />
+                <ColumnDefinition Width="{Binding EquationsSize, Converter={StaticResource EquationSizeToStarSizeConverter}, ConverterParameter=1, Source={x:Reference LinearEquationControlName}}" />
+                <ColumnDefinition Width="{Binding EquationsSize, Converter={StaticResource EquationSizeToAutoSizeConverter}, ConverterParameter=1, Source={x:Reference LinearEquationControlName}}" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Entry
@@ -30,11 +35,93 @@
             <Label
                 Grid.Column="3"
                 FontSize="16"
-                Text="y = "
-                VerticalOptions="CenterAndExpand" />
+                Text="y"
+                VerticalOptions="CenterAndExpand">
+                <Label.Triggers>
+                    <DataTrigger
+                        Binding="{Binding EquationsSize, Source={x:Reference LinearEquationControlName}}"
+                        TargetType="Label"
+                        Value="{x:Static models:EquationSize.Two}">
+                        <Setter Property="Text" Value="y = " />
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
             <Entry
                 Grid.Column="4"
                 FontSize="16"
+                IsVisible="True"
+                Keyboard="Numeric"
+                Text="{Binding ZValue, Source={x:Reference LinearEquationControlName}}">
+                <Entry.Triggers>
+                    <DataTrigger
+                        Binding="{Binding EquationsSize, Source={x:Reference LinearEquationControlName}}"
+                        TargetType="Entry"
+                        Value="{x:Static models:EquationSize.Two}">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+            <Label
+                Grid.Column="5"
+                FontSize="16"
+                IsVisible="True"
+                Text="z"
+                VerticalOptions="CenterAndExpand">
+                <Label.Triggers>
+                    <DataTrigger
+                        Binding="{Binding EquationsSize, Source={x:Reference LinearEquationControlName}}"
+                        TargetType="Label"
+                        Value="{x:Static models:EquationSize.Three}">
+                        <Setter Property="Text" Value="z = " />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{Binding EquationsSize, Source={x:Reference LinearEquationControlName}}"
+                        TargetType="Label"
+                        Value="{x:Static models:EquationSize.Two}">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            <Entry
+                Grid.Column="6"
+                FontSize="16"
+                IsVisible="False"
+                Keyboard="Numeric"
+                Text="{Binding AValue, Source={x:Reference LinearEquationControlName}}">
+                <Entry.Triggers>
+                    <DataTrigger
+                        Binding="{Binding EquationsSize, Source={x:Reference LinearEquationControlName}}"
+                        TargetType="Entry"
+                        Value="{x:Static models:EquationSize.Four}">
+                        <Setter Property="IsVisible" Value="True" />
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+            <Label
+                Grid.Column="7"
+                FontSize="16"
+                IsVisible="False"
+                Text="a"
+                VerticalOptions="CenterAndExpand">
+                <Label.Triggers>
+                    <DataTrigger
+                        Binding="{Binding EquationsSize, Source={x:Reference LinearEquationControlName}}"
+                        TargetType="Label"
+                        Value="{x:Static models:EquationSize.Four}">
+                        <Setter Property="Text" Value="a = " />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{Binding EquationsSize, Source={x:Reference LinearEquationControlName}}"
+                        TargetType="Label"
+                        Value="{x:Static models:EquationSize.Four}">
+                        <Setter Property="IsVisible" Value="True" />
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            <Entry
+                Grid.Column="8"
+                FontSize="16"
+                HorizontalTextAlignment="Center"
                 Keyboard="Numeric"
                 Text="{Binding ConstantTerm, Source={x:Reference LinearEquationControlName}}" />
         </Grid>
