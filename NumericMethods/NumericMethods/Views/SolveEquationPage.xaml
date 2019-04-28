@@ -2,25 +2,40 @@
 <ContentPage
     x:Class="NumericMethods.Views.SolveEquationPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:NumericMethods.Views.Controls;assembly=NumericMethods"
+    xmlns:fabControl="clr-namespace:Refractored.FabControl;assembly=Refractored.FabControl"
+    xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
+    Title="{resources:Translate Common_Result}">
     <ContentPage.Content>
-        <RelativeLayout>
-            <Label
-                HorizontalOptions="CenterAndExpand"
-                Text="{Binding Result}"
-                VerticalOptions="CenterAndExpand" />
-            <Button
-                BackgroundColor="{StaticResource GreenButtonColor}"
-                Image="ic_linear_plot"
-                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
-                                                                  Property=Width,
-                                                                  Factor=1,
-                                                                  Constant=-85}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
-                                                                  Property=Height,
-                                                                  Factor=1,
-                                                                  Constant=-85}"
-                Style="{StaticResource RoundedButtonStyle}" />
-        </RelativeLayout>
+        <Grid>
+            <AbsoluteLayout>
+                <StackLayout
+                    Margin="24,0"
+                    AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
+                    AbsoluteLayout.LayoutFlags="PositionProportional">
+                    <Label
+                        Margin="0,16,0,0"
+                        FontSize="16"
+                        HorizontalTextAlignment="Center"
+                        Text="Rozwiązanie układu równań to:"
+                        TextColor="{StaticResource NavyBlueColor}" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding Result}"
+                        TextColor="{StaticResource NavyBlueColor}" />
+                </StackLayout>
+                <fabControl:FloatingActionButtonView
+                    AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    ColorNormal="{StaticResource GreenButtonColor}"
+                    ColorPressed="{StaticResource GreenButtonColor}"
+                    Command="{Binding GoToLinearChartPageCommand}"
+                    ImageName="ic_linear_plot" />
+            </AbsoluteLayout>
+            <controls:LoaderView BackgroundColor="{StaticResource WhiteColor}" IsVisible="{Binding IsBusy}" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

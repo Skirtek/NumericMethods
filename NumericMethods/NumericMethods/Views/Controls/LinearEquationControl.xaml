@@ -6,6 +6,7 @@
     xmlns:models="clr-namespace:NumericMethods.Models;assembly=NumericMethods"
     x:Name="LinearEquationControlName">
     <ContentView.Content>
+        <!--  TODO Wyrzucić wszystkie stałe teksty (w całym projekcie) do AppResourców  -->
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -87,7 +88,7 @@
                 FontSize="16"
                 IsVisible="False"
                 Keyboard="Numeric"
-                Text="{Binding AValue, Source={x:Reference LinearEquationControlName}}">
+                Text="{Binding TValue, Source={x:Reference LinearEquationControlName}}">
                 <Entry.Triggers>
                     <DataTrigger
                         Binding="{Binding EquationsSize, Source={x:Reference LinearEquationControlName}}"
@@ -101,14 +102,14 @@
                 Grid.Column="7"
                 FontSize="16"
                 IsVisible="False"
-                Text="a"
+                Text="t"
                 VerticalOptions="CenterAndExpand">
                 <Label.Triggers>
                     <DataTrigger
                         Binding="{Binding EquationsSize, Source={x:Reference LinearEquationControlName}}"
                         TargetType="Label"
                         Value="{x:Static models:EquationSize.Four}">
-                        <Setter Property="Text" Value="a = " />
+                        <Setter Property="Text" Value="t = " />
                     </DataTrigger>
                     <DataTrigger
                         Binding="{Binding EquationsSize, Source={x:Reference LinearEquationControlName}}"

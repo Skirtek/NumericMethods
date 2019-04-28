@@ -79,6 +79,15 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wynik.
+        /// </summary>
+        internal static string Common_Result {
+            get {
+                return ResourceManager.GetString("Common_Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Coś poszło nie tak.
         /// </summary>
         internal static string Common_SomethingWentWrong {

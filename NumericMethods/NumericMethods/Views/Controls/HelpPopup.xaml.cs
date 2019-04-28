@@ -1,6 +1,4 @@
-using System;
 using Rg.Plugins.Popup.Pages;
-using Rg.Plugins.Popup.Services;
 
 namespace NumericMethods.Views.Controls
 {
@@ -9,11 +7,6 @@ namespace NumericMethods.Views.Controls
         public HelpPopup()
         {
             InitializeComponent();
-        }
-
-        private async void Button_OnClicked(object sender, EventArgs e)
-        {
-            await PopupNavigation.Instance.PopAsync();
         }
     }
 }

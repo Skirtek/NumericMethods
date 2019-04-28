@@ -8,7 +8,7 @@
 
         public string Z { get; set; }
 
-        public string A { get; set; }
+        public string T { get; set; }
 
         public EquationSize EquationCount { get; set; }
 

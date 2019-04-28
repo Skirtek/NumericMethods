@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Xamarin.Forms;
 
 namespace NumericMethods.Settings
 {
@@ -21,5 +20,7 @@ namespace NumericMethods.Settings
         public const string FormulaRegex = "^[xX^,.+\\-0-9]+$";
 
         public const int DefaultEntryMaxLength = 7;
+
+        public const string ChangeEquationNumber = nameof(ChangeEquationNumber);
     }
 }

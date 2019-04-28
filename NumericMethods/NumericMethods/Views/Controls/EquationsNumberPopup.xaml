@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage
-    x:Class="NumericMethods.Views.Controls.HelpPopup"
+    x:Class="NumericMethods.Views.Controls.EquationsNumberPopup"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
@@ -17,6 +17,7 @@
             ScaleIn="1.2"
             ScaleOut="0.8" />
     </pages:PopupPage.Animation>
+    <!--  TODO Przenieść to do właściwego popupa, a tu zrobić z helpem  -->
     <ScrollView HorizontalOptions="Center" VerticalOptions="Center">
         <AbsoluteLayout>
             <Frame
@@ -31,6 +32,38 @@
                         Text="Wybierz ilość niewiadomych w równaniach"
                         TextColor="{StaticResource NavyBlueColor}"
                         VerticalOptions="StartAndExpand" />
+                    <Picker
+                        x:Name="EquationsNumberPicker"
+                        Title="Ilość niewiadomych"
+                        SelectedIndex="0">
+                        <Picker.Items>
+                            <x:String>2</x:String>
+                            <x:String>3</x:String>
+                            <x:String>4</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Grid Margin="0,16,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*" />
+                            <ColumnDefinition Width="0.5*" />
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            Grid.Column="0"
+                            BackgroundColor="Transparent"
+                            Clicked="OnClosed"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Text="Anuluj"
+                            TextColor="{StaticResource BlackColor}" />
+                        <Button
+                            Grid.Column="1"
+                            BackgroundColor="Transparent"
+                            Clicked="OnApply"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Text="Zastosuj"
+                            TextColor="{StaticResource GreenButtonColor}" />
+                    </Grid>
                 </StackLayout>
             </Frame>
             <ContentView AbsoluteLayout.LayoutBounds="1, 0, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">

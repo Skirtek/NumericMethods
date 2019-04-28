@@ -3,7 +3,6 @@
     x:Class="NumericMethods.Views.LinearEquationPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:behaviors="clr-namespace:NumericMethods.Views.Behaviors;assembly=NumericMethods"
     xmlns:controls="clr-namespace:NumericMethods.Views.Controls;assembly=NumericMethods"
     xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
     x:Name="LinearEquationPageName"
@@ -13,32 +12,36 @@
             Command="{Binding ShowHelpCommand}"
             Icon="ic_help"
             Order="Primary" />
+        <ToolbarItem
+            Command="{Binding ChangeEquationsNumberCommand}"
+            Icon="ic_plus"
+            Order="Primary" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid>
-            <StackLayout>
-                <ScrollView>
+            <ScrollView>
+                <StackLayout>
                     <controls:CustomListControl ItemsSource="{Binding EquationList}">
                         <controls:CustomListControl.ItemTemplate>
                             <DataTemplate>
                                 <controls:LinearEquationControl
-                                    AValue="{Binding A}"
                                     ConstantTerm="{Binding ConstantTerm}"
                                     EquationSize="{Binding EquationCount}"
+                                    TValue="{Binding T}"
                                     XValue="{Binding X}"
                                     YValue="{Binding Y}"
                                     ZValue="{Binding Z}" />
                             </DataTemplate>
                         </controls:CustomListControl.ItemTemplate>
                     </controls:CustomListControl>
-                </ScrollView>
-                <Button
-                    Margin="16,0,16,16"
-                    Command="{Binding GoToSolveEquationPageCommand}"
-                    Style="{StaticResource GreenButtonStyle}"
-                    Text="{resources:Translate Common_Calculate}"
-                    VerticalOptions="EndAndExpand" />
-            </StackLayout>
+                    <Button
+                        Margin="16,0,16,16"
+                        Command="{Binding GoToSolveEquationPageCommand}"
+                        Style="{StaticResource GreenButtonStyle}"
+                        Text="{resources:Translate Common_Calculate}"
+                        VerticalOptions="EndAndExpand" />
+                </StackLayout>
+            </ScrollView>
             <controls:LoaderView BackgroundColor="{StaticResource WhiteColor}" IsVisible="{Binding IsBusy}" />
         </Grid>
     </ContentPage.Content>

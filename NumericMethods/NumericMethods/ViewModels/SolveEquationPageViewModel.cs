@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using NumericMethods.Interfaces;
 using NumericMethods.Models;
 using NumericMethods.Resources;
@@ -13,15 +12,15 @@ namespace NumericMethods.ViewModels
 {
     public class SolveEquationPageViewModel : BaseViewModel, INavigatingAware
     {
-        private readonly IMatrix _matrix;
+        private readonly IEquation _equation;
 
         public SolveEquationPageViewModel(
             INavigationService navigationService,
             IPageDialogService pageDialogService,
-            IMatrix matrix)
+            IEquation equation)
             : base(navigationService, pageDialogService)
         {
-            _matrix = matrix;
+            _equation = equation;
             GoToLinearChartPageCommand = GetBusyDependedCommand(GoToLinearChartPage);
         }
 
@@ -48,74 +47,36 @@ namespace NumericMethods.ViewModels
 
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
-            bool canGetList = parameters.TryGetValue(NavParams.Equations, out List<Equation> equations);
+            try
+            {
+                bool canGetList = parameters.TryGetValue(NavParams.Equations, out List<Equation> equations);
 
-            if (!canGetList)
+                if (!canGetList)
+                {
+                    await ShowAlert(AppResources.Common_Ups, AppResources.Common_SomethingWentWrong);
+                    await NavigationService.GoBackAsync();
+                    return;
+                }
+
+                EquationsList = equations;
+
+                switch (EquationsList.Count)
+                {
+                    case 2:
+                        Result = _equation.TwoVariablesEquation(EquationsList);
+                        break;
+                    case 3:
+                        Result = _equation.ThreeVariablesEquation(EquationsList);
+                        break;
+                    case 4:
+                        Result = _equation.FourVariablesEquation(EquationsList);
+                        break;
+                }
+            }
+            catch (Exception)
             {
                 await ShowAlert(AppResources.Common_Ups, AppResources.Common_SomethingWentWrong);
                 await NavigationService.GoBackAsync();
-                return;
-            }
-
-            EquationsList = equations;
-
-            await TwoVariablesEquation();
-        }
-
-        private async Task TwoVariablesEquation()
-        {
-            try
-            {
-                IsBusy = true;
-                var constantTerms = new List<double>();
-                var mainMatrix = new double[2, 2];
-
-                short rowIterator = 0;
-
-                foreach (var equation in EquationsList)
-                {
-                    mainMatrix[rowIterator, 0] = double.Parse(equation.X);
-                    mainMatrix[rowIterator, 1] = double.Parse(equation.Y);
-
-                    constantTerms.Add(double.Parse(equation.ConstantTerm));
-                    rowIterator++;
-                }
-
-                double[,] xMatrix = new double[2, 2];
-                double[,] yMatrix = new double[2, 2];
-
-                Array.Copy(mainMatrix, xMatrix, mainMatrix.Length);
-                Array.Copy(mainMatrix, yMatrix, mainMatrix.Length);
-
-                for (short i = 0; i < EquationsList.Count; i++)
-                {
-                    xMatrix[i, 0] = constantTerms[i];
-                    yMatrix[i, 1] = constantTerms[i];
-                }
-
-                double w = _matrix.MatrixDeterminant(mainMatrix);
-                double wx = _matrix.MatrixDeterminant(xMatrix);
-                double wy = _matrix.MatrixDeterminant(yMatrix);
-
-                switch (w)
-                {
-                    case 0 when (wx == 0 || wy == 0):
-                        Result = "Układ sprzeczny";
-                        return;
-                    case 0 when wx == 0 && wy == 0:
-                        Result = "Układ nieoznaczony";
-                        return;
-                }
-
-                Result = $"x = {wx / w} y = {wy / w}";
-            }
-            catch (Exception ex)
-            {
-                await ShowAlert(AppResources.Common_Ups, AppResources.Common_SomethingWentWrong);
-            }
-            finally
-            {
-                IsBusy = false;
             }
         }
     }

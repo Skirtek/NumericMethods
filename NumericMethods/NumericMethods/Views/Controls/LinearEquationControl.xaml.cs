@@ -43,16 +43,16 @@ namespace NumericMethods.Views.Controls
             set => SetValue(ZValueProperty, value);
         }
 
-        public static readonly BindableProperty AValueProperty =
-            BindableProperty.Create(nameof(AValue),
+        public static readonly BindableProperty TValueProperty =
+            BindableProperty.Create(nameof(TValue),
                 typeof(string),
                 typeof(LinearEquationControl),
                 default(string), BindingMode.TwoWay);
 
-        public string AValue
+        public string TValue
         {
-            get => (string)GetValue(AValueProperty);
-            set => SetValue(AValueProperty, value);
+            get => (string)GetValue(TValueProperty);
+            set => SetValue(TValueProperty, value);
         }
 
         public static readonly BindableProperty EquationSizeProperty =

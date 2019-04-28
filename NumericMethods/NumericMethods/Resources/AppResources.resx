@@ -209,4 +209,7 @@ Wykorzystano ikonki pochodzące z zasobów icons8.com
   <data name="Validation_CustomPrecisionIsEmpty" xml:space="preserve">
     <value>Wartość dokładności całkowania nie może być pusta</value>
   </data>
+  <data name="Common_Result" xml:space="preserve">
+    <value>Wynik</value>
+  </data>
 </root>

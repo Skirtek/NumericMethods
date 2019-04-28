@@ -7,6 +7,7 @@ using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Forms;
 
 namespace NumericMethods.ViewModels
 {
@@ -21,7 +22,8 @@ namespace NumericMethods.ViewModels
         {
             GoToSolveEquationPageCommand = GetBusyDependedCommand(GoToSolveEquationPage);
             ShowHelpCommand = new DelegateCommand(ShowHelp);
-            MaxEquations = 2; //TODO Add popup with choice
+            ChangeEquationsNumberCommand = new DelegateCommand(ChangeEquationsNumber);
+            MaxEquations = 2;
         }
 
         private ObservableCollection<Equation> _equationList = new ObservableCollection<Equation>();
@@ -37,10 +39,31 @@ namespace NumericMethods.ViewModels
 
         public DelegateCommand ShowHelpCommand { get; set; }
 
+        public DelegateCommand ChangeEquationsNumberCommand { get; set; }
+
         private async void ShowHelp()
         {
-            var popup = new HelpPopup();
+
+        }
+
+        private async void ChangeEquationsNumber()
+        {
+            var popup = new EquationsNumberPopup();
+            popup.SetValue(MaxEquations.ToString());
             await PopupNavigation.Instance.PushAsync(popup);
+
+            MessagingCenter.Subscribe<EquationsNumberPopup, object>(this, AppSettings.ChangeEquationNumber, (sender, arg) =>
+            {
+                short.TryParse((string)arg, out short maxEquations);
+                if (maxEquations == MaxEquations)
+                {
+                    return;
+                }
+
+                MaxEquations = maxEquations;
+
+                PopulateEquations();
+            });
         }
 
         private async void GoToSolveEquationPage()
@@ -58,11 +81,6 @@ namespace NumericMethods.ViewModels
 
         private void PopulateEquations()
         {
-            if (EquationList.Count >= MaxEquations)
-            {
-                return;
-            }
-
             EquationList.Clear();
 
             for (var i = 0; i < MaxEquations; i++)
