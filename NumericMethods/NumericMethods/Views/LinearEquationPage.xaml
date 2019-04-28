@@ -5,7 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:NumericMethods.Views.Controls;assembly=NumericMethods"
     xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
-    x:Name="LinearEquationPageName"
     Title="{resources:Translate Menu_LinearEquation}">
     <ContentPage.ToolbarItems>
         <ToolbarItem
@@ -14,7 +13,7 @@
             Order="Primary" />
         <ToolbarItem
             Command="{Binding ChangeEquationsNumberCommand}"
-            Icon="ic_plus"
+            Icon="ic_list"
             Order="Primary" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
