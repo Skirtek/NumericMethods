@@ -12,7 +12,7 @@
             <Color x:Key="NavyBlueColor">#002a4c</Color>
             <Color x:Key="WhiteColor">#ffffff</Color>
 
-            <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Style x:Key="RoundedButtonStyle" TargetType="{x:Type ImageButton}">
                 <Setter Property="CornerRadius" Value="34" />
                 <Setter Property="WidthRequest" Value="68" />
                 <Setter Property="HeightRequest" Value="68" />

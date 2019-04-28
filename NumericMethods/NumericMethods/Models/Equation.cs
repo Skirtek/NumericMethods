@@ -6,8 +6,6 @@
 
         public string Y { get; set; }
 
-        public short SelectedSign { get; set; }
-
         public string ConstantTerm { get; set; }
     }
 }

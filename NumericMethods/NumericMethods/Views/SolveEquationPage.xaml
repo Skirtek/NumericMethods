@@ -7,12 +7,10 @@
         <RelativeLayout>
             <Label
                 HorizontalOptions="CenterAndExpand"
-                Text="Welcome to Xamarin.Forms!"
+                Text="{Binding Result}"
                 VerticalOptions="CenterAndExpand" />
-
             <Button
                 BackgroundColor="{StaticResource GreenButtonColor}"
-                Command="{Binding GoToLinearChartPageCommand}"
                 Image="ic_linear_plot"
                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
                                                                   Property=Width,

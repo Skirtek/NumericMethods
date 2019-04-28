@@ -14,5 +14,6 @@
     public static class NavParams
     {
         public const string Integral = nameof(Integral);
+        public const string Equations = nameof(Equations);
     }
 }

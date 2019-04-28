@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using NumericMethods.Models;
 using NumericMethods.Settings;
 using NumericMethods.Views.Controls;
@@ -12,6 +13,7 @@ namespace NumericMethods.ViewModels
     public class LinearEquationPageViewModel : BaseViewModel, INavigatingAware
     {
         //TODO Liczy się tak tak i tak metodą taką i taką pozostawienie niewypełnionego pola oznacza wstawienie 0
+
         public LinearEquationPageViewModel(
             INavigationService navigationService,
             IPageDialogService pageDialogService)
@@ -19,7 +21,7 @@ namespace NumericMethods.ViewModels
         {
             GoToSolveEquationPageCommand = GetBusyDependedCommand(GoToSolveEquationPage);
             ShowHelpCommand = new DelegateCommand(ShowHelp);
-            MaxEquations = 3; //TODO Add popup with choice
+            MaxEquations = 2; //TODO Add popup with choice
         }
 
         private ObservableCollection<Equation> _equationList = new ObservableCollection<Equation>();
@@ -35,9 +37,17 @@ namespace NumericMethods.ViewModels
 
         public DelegateCommand ShowHelpCommand { get; set; }
 
+
+        private string _result;
+        public string Result
+        {
+            get => _result;
+            set => SetProperty(ref _result, value);
+        }
+
         private async void ShowHelp()
         {
-            HelpPopup popup = new HelpPopup();
+            var popup = new HelpPopup();
 
             await PopupNavigation.Instance.PushAsync(popup);
         }
@@ -46,13 +56,22 @@ namespace NumericMethods.ViewModels
         {
             IsBusy = true;
 
-            await NavigationService.NavigateAsync(NavSettings.SolveEquationPage);
+            await NavigationService.NavigateAsync(NavSettings.SolveEquationPage,
+                new NavigationParameters
+                {
+                    { NavParams.Equations, EquationList.ToList() }
+                });
 
             IsBusy = false;
         }
 
         private void PopulateEquations()
         {
+            if (EquationList.Count >= MaxEquations)
+            {
+                return;
+            }
+
             for (var i = 0; i < MaxEquations; i++)
             {
                 EquationList.Add(new Equation());

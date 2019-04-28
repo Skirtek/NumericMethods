@@ -15,39 +15,41 @@
             Order="Primary" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <ScrollView>
-                <controls:CustomListControl ItemsSource="{Binding EquationList}">
-                    <controls:CustomListControl.ItemTemplate>
-                        <DataTemplate>
-                            <controls:LinearEquationControl
-                                ConstantTerm="{Binding ConstantTerm}"
-                                SelectedSign="{Binding SelectedSign}"
-                                XValue="{Binding X}"
-                                YValue="{Binding Y}" />
-                        </DataTemplate>
-                    </controls:CustomListControl.ItemTemplate>
-                </controls:CustomListControl>
-            </ScrollView>
-            <StackLayout
-                Margin="16,0,16,16"
-                BackgroundColor="#BF0C34"
-                VerticalOptions="EndAndExpand">
-                <Label
-                    Margin="16"
-                    FontAttributes="Bold"
-                    FontSize="16"
-                    HorizontalOptions="StartAndExpand"
-                    Text="x = 1"
-                    TextColor="White"
-                    VerticalOptions="CenterAndExpand" />
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer />
-                </StackLayout.GestureRecognizers>
-                <StackLayout.Behaviors>
-                    <behaviors:ViewTappedWithAnimationBehavior Command="{Binding BindingContext.GoToSolveEquationPageCommand, Source={x:Reference LinearEquationPageName}}" />
-                </StackLayout.Behaviors>
+        <Grid>
+            <StackLayout>
+                <ScrollView>
+                    <controls:CustomListControl ItemsSource="{Binding EquationList}">
+                        <controls:CustomListControl.ItemTemplate>
+                            <DataTemplate>
+                                <controls:LinearEquationControl
+                                    ConstantTerm="{Binding ConstantTerm}"
+                                    XValue="{Binding X}"
+                                    YValue="{Binding Y}" />
+                            </DataTemplate>
+                        </controls:CustomListControl.ItemTemplate>
+                    </controls:CustomListControl>
+                </ScrollView>
+                <StackLayout
+                    Margin="16,0,16,16"
+                    BackgroundColor="#BF0C34"
+                    VerticalOptions="EndAndExpand">
+                    <Label
+                        Margin="16"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Oblicz"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer />
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout.Behaviors>
+                        <behaviors:ViewTappedWithAnimationBehavior Command="{Binding BindingContext.GoToSolveEquationPageCommand, Source={x:Reference LinearEquationPageName}}" />
+                    </StackLayout.Behaviors>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
+            <controls:LoaderView BackgroundColor="{StaticResource WhiteColor}" IsVisible="{Binding IsBusy}" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -30,18 +30,6 @@ namespace NumericMethods.Views.Controls
             set => SetValue(XValueProperty, value);
         }
 
-        public static readonly BindableProperty SelectedSignProperty =
-            BindableProperty.Create(nameof(SelectedSign),
-                typeof(short),
-                typeof(LinearEquationControl),
-                default(short), BindingMode.TwoWay);
-
-        public short SelectedSign
-        {
-            get => (short)GetValue(SelectedSignProperty);
-            set => SetValue(SelectedSignProperty, value);
-        }
-
         public static readonly BindableProperty ConstantTermProperty =
             BindableProperty.Create(nameof(ConstantTerm),
                 typeof(string),
