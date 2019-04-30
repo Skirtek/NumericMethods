@@ -25,7 +25,6 @@ namespace NumericMethods.Services
                 {
                     Operations.Add(new Operation
                     {
-                        IsNegative = IsNegative(lastExpression),
                         Value = GetValue(lastExpression),
                         Weight = 0
                     });
@@ -71,9 +70,7 @@ namespace NumericMethods.Services
 
                         Operations.Add(new Operation
                         {
-                            IsNegative = IsNegative(part),
-                            Value =
-                                part.Equals("x") || part.Equals("X") ? 1 : GetValue(part.Remove(part.Length - 1, 1)),
+                            Value = GetSingleValue(part),
                             Weight = weight
                         });
                     }
@@ -81,19 +78,13 @@ namespace NumericMethods.Services
                     {
                         Operations.Add(new Operation
                         {
-                            IsNegative = IsNegative(exp),
-                            Value = exp.Equals("x") || exp.Equals("X") ? 1 : GetValue(exp.Remove(exp.Length - 1, 1)),
+                            Value = GetSingleValue(exp),
                             Weight = 1
                         });
                     }
                 }
 
-                if (PrepareFunctionErrors)
-                {
-                    return new Function { IsSuccess = false, ResponseCode = FunctionResponse.WrongFunction };
-                }
-
-                return new Function { IsSuccess = true, Operations = Operations };
+                return PrepareFunctionErrors ? new Function { IsSuccess = false, ResponseCode = FunctionResponse.WrongFunction } : new Function { IsSuccess = true, Operations = Operations };
             }
             catch (DivideByZeroException)
             {
@@ -105,7 +96,44 @@ namespace NumericMethods.Services
                 return new Function { IsSuccess = false, ResponseCode = FunctionResponse.CriticalError };
             }
         }
-        private bool IsNegative(string expression) => expression.Substring(0, 1).Equals("-");
+
+        public List<Operation> CalculateDerivative(IEnumerable<Operation> operations)
+        {
+            var list = new List<Operation>();
+            foreach (var operation in operations)
+            {
+                if (!(Math.Abs(operation.Weight) > AppSettings.Epsilon))
+                {
+                    continue;
+                }
+
+                list.Add(new Operation
+                {
+                    Value = operation.Value * operation.Weight,
+                    Weight = operation.Weight - 1
+                });
+            }
+
+            return list;
+        }
+
+        public float FunctionResult(float x, List<Operation> operations)
+        {
+            float result = 0;
+            foreach (var operation in operations)
+            {
+                result += operation.Value * (float)Math.Pow(x, operation.Weight);
+            }
+
+            return result;
+        }
+
+        private float GetSingleValue(string expression) =>
+            expression.Equals("x") || expression.Equals("X")
+                ? 1
+                : expression.Equals("-x") || expression.Equals("-X")
+                    ? -1
+                    : GetValue(expression.Remove(expression.Length - 1, 1));
 
         private float GetValue(string expression)
         {

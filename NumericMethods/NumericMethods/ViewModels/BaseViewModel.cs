@@ -68,5 +68,11 @@ namespace NumericMethods.ViewModels
 
         protected async Task ShowAlert(string title, string message)
             => await PageDialogService.DisplayAlertAsync(title, message, AppResources.Common_Ok);
+
+        protected async Task ShowError(string message)
+        {
+            await ShowAlert(AppResources.Common_Ups, message);
+            await NavigationService.GoBackAsync();
+        }
     }
 }

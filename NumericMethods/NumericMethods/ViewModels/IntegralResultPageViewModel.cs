@@ -16,6 +16,7 @@ namespace NumericMethods.ViewModels
         private readonly ICommonFunctions _commonFunctions;
 
         #region CTOR
+
         public IntegralResultPageViewModel(
             INavigationService navigationService,
             IPageDialogService pageDialogService,
@@ -24,10 +25,13 @@ namespace NumericMethods.ViewModels
         {
             _commonFunctions = commonFunctions;
         }
+
         #endregion
 
         #region Properties
+
         private string _resultTrapezeMethod;
+
         public string ResultTrapezeMethod
         {
             get => _resultTrapezeMethod;
@@ -35,6 +39,7 @@ namespace NumericMethods.ViewModels
         }
 
         private string _resultRectangleMethod;
+
         public string ResultRectangleMethod
         {
             get => _resultRectangleMethod;
@@ -42,6 +47,7 @@ namespace NumericMethods.ViewModels
         }
 
         private string _upperLimit;
+
         public string UpperLimit
         {
             get => _upperLimit;
@@ -49,6 +55,7 @@ namespace NumericMethods.ViewModels
         }
 
         private string _lowerLimit;
+
         public string LowerLimit
         {
             get => _lowerLimit;
@@ -56,6 +63,7 @@ namespace NumericMethods.ViewModels
         }
 
         private float _precision;
+
         public float Precision
         {
             get => _precision;
@@ -63,9 +71,11 @@ namespace NumericMethods.ViewModels
         }
 
         private List<Operation> _operations = new List<Operation>();
+
         #endregion
 
         #region OnNavigating*
+
         public void OnNavigatedFrom(INavigationParameters parameters)
         {
         }
@@ -88,9 +98,11 @@ namespace NumericMethods.ViewModels
 
             IsBusy = false;
         }
+
         #endregion
 
         #region Private Methods
+
         private float GetPrecision(Integral integral)
         {
             var precision = (PrecisionLevels)integral.SelectedPrecision;
@@ -111,17 +123,19 @@ namespace NumericMethods.ViewModels
                     return 100;
             }
         }
+
         private float Area(float lowerLimit, float upperLimit, float precision)
         {
             float height = (upperLimit - lowerLimit) / precision;
             float areas = 0;
-            float center = lowerLimit + (upperLimit - lowerLimit) / (2 * precision); 
+            float center = lowerLimit + (upperLimit - lowerLimit) / (2 * precision);
 
             for (int i = 0; i < precision; i++)
             {
-                areas += FunctionResult(center);
-                center += height;  
+                areas += _commonFunctions.FunctionResult(center, _operations);
+                center += height;
             }
+
             return areas * height;
         }
 
@@ -167,39 +181,15 @@ namespace NumericMethods.ViewModels
 
             for (var i = 1; i < precision; i++)
             {
-                integralResult += FunctionResult(lowerLimit + i * height);
+                integralResult += _commonFunctions.FunctionResult(lowerLimit + i * height, _operations);
             }
 
-            integralResult += FunctionResult(lowerLimit) / 2;
-            integralResult += FunctionResult(upperLimit) / 2;
+            integralResult += _commonFunctions.FunctionResult(lowerLimit,_operations) / 2;
+            integralResult += _commonFunctions.FunctionResult(upperLimit, _operations) / 2;
             integralResult *= height;
 
             ResultTrapezeMethod = $"{integralResult}";
             ResultRectangleMethod = $"{Area(lowerLimit, upperLimit, precision)}";
-        }
-
-        private float FunctionResult(float x)
-        {
-            float result = 0;
-            foreach (var operation in _operations)
-            {
-                if (operation.IsNegative)
-                {
-                    result -= operation.Value * (float)Math.Pow(x, operation.Weight);
-                }
-                else
-                {
-                    result += operation.Value * (float)Math.Pow(x, operation.Weight);
-                }
-            }
-
-            return result;
-        }
-
-        private async Task ShowError(string message)
-        {
-            await ShowAlert(AppResources.Common_Ups, message);
-            await NavigationService.GoBackAsync();
         }
         #endregion
     }
