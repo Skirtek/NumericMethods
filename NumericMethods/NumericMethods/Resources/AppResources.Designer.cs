@@ -115,6 +115,33 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dzielenie przez zero jest niedozwolone..
+        /// </summary>
+        internal static string FunctionResponse_DivideByZero_Message {
+            get {
+                return ResourceManager.GetString("FunctionResponse_DivideByZero_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Twoja funkcja zawiera niezamknięte nawiasy. Spróbuj jeszcze raz..
+        /// </summary>
+        internal static string FunctionResponse_UnclosedParentheses_Message {
+            get {
+                return ResourceManager.GetString("FunctionResponse_UnclosedParentheses_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Twoja funkcja zawiera błędy, które należy poprawić..
+        /// </summary>
+        internal static string FunctionResponse_WrongFunction_Message {
+            get {
+                return ResourceManager.GetString("FunctionResponse_WrongFunction_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 5. Podaj własną dokładność całkowania.
         /// </summary>
         internal static string IntegralPage_CustomPrecision {

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NumericMethods.Views.DifferentialEquationPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:NumericMethods.Views.Controls;assembly=NumericMethods"
+    xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
+    Title="Wprowadź dane">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="24">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Równania różniczkowe"
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Podaj wzór równania, którego różniczka ma zostać obliczona"
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <controls:ValidationEntry
+                    EntryFontSize="18"
+                    EntryText="{Binding Formula}"
+                    MaximumLength="40"
+                    PropertyName="Formula" />
+                <Button
+                    Margin="0,0,0,24"
+                    Command="{Binding CalculateDifferentialCommand}"
+                    Style="{StaticResource GreenButtonStyle}"
+                    Text="{resources:Translate Common_Calculate}"
+                    VerticalOptions="EndAndExpand" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

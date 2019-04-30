@@ -26,22 +26,13 @@
                 HorizontalOptions="Center">
                 <StackLayout Margin="16" IsClippedToBounds="True">
                     <Label
+                        x:Name="DescriptionLabel"
                         FontSize="16"
                         HorizontalOptions="CenterAndExpand"
                         HorizontalTextAlignment="Center"
-                        Text="Wybierz ilość niewiadomych w równaniach"
                         TextColor="{StaticResource NavyBlueColor}"
                         VerticalOptions="StartAndExpand" />
-                    <Picker
-                        x:Name="EquationsNumberPicker"
-                        Title="Ilość niewiadomych"
-                        SelectedIndex="0">
-                        <Picker.Items>
-                            <x:String>2</x:String>
-                            <x:String>3</x:String>
-                            <x:String>4</x:String>
-                        </Picker.Items>
-                    </Picker>
+                    <Picker x:Name="EquationsNumberPicker" SelectedIndex="0" />
                     <Grid Margin="0,16,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0.5*" />

@@ -26,10 +26,16 @@ namespace NumericMethods.ViewModels
 
         private List<Equation> EquationsList { get; set; }
 
+        private bool _isLinearEquation;
+        public bool IsLinearEquation
+        {
+            get => _isLinearEquation;
+            set => SetProperty(ref _isLinearEquation, value);
+        }
+
         public DelegateCommand GoToLinearChartPageCommand { get; set; }
 
         private string _result;
-
         public string Result
         {
             get => _result;
@@ -40,7 +46,7 @@ namespace NumericMethods.ViewModels
         {
             IsBusy = true;
 
-            await NavigationService.NavigateAsync(NavSettings.LinearChart);
+            await NavigationService.NavigateAsync(NavSettings.LinearChart, new NavigationParameters { { NavParams.Equations, EquationsList } });
 
             IsBusy = false;
         }
@@ -49,9 +55,7 @@ namespace NumericMethods.ViewModels
         {
             try
             {
-                bool canGetList = parameters.TryGetValue(NavParams.Equations, out List<Equation> equations);
-
-                if (!canGetList)
+                if (!parameters.TryGetValue(NavParams.Equations, out List<Equation> equations))
                 {
                     await ShowAlert(AppResources.Common_Ups, AppResources.Common_SomethingWentWrong);
                     await NavigationService.GoBackAsync();
@@ -59,6 +63,8 @@ namespace NumericMethods.ViewModels
                 }
 
                 EquationsList = equations;
+
+                IsLinearEquation = EquationsList.Count == 2;
 
                 switch (EquationsList.Count)
                 {

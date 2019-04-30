@@ -35,6 +35,10 @@ namespace NumericMethods
             containerRegistry.RegisterForNavigation<SolveEquationPage, SolveEquationPageViewModel>(NavSettings.SolveEquationPage);
             containerRegistry.RegisterForNavigation<IntegralPage, IntegralPageViewModel>(NavSettings.IntegralPage);
             containerRegistry.RegisterForNavigation<IntegralResultPage, IntegralResultPageViewModel>(NavSettings.IntegralResultPage);
+            containerRegistry.RegisterForNavigation<DifferentialEquationPage, DifferentialEquationPageViewModel>(NavSettings.DifferentialEquationPage);
+            containerRegistry.RegisterForNavigation<SolveDifferentialEquationPage, SolveDifferentialEquationPageViewModel>(NavSettings.SolveDifferentialEquationPage);
+            containerRegistry.RegisterForNavigation<NonLinearEquationPage, NonLinearEquationPageViewModel>(NavSettings.NonLinearEquationPage);
+            containerRegistry.RegisterForNavigation<SolveNonLinearEquationPage, SolveNonLinearEquationPageViewModel>(NavSettings.SolveNonLinearEquationPage);
 
         }
         private void RegisterAddOns(IContainerRegistry containerRegistry)
@@ -47,6 +51,7 @@ namespace NumericMethods
         {
             containerRegistry.Register<IMatrix, Matrix>();
             containerRegistry.Register<IEquation, EquationService>();
+            containerRegistry.Register<ICommonFunctions, CommonFunctions>();
         }
 
         protected override async void OnInitialized()

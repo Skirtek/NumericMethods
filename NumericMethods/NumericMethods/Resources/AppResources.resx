@@ -212,4 +212,13 @@ Wykorzystano ikonki pochodzące z zasobów icons8.com
   <data name="Common_Result" xml:space="preserve">
     <value>Wynik</value>
   </data>
+  <data name="FunctionResponse_UnclosedParentheses_Message" xml:space="preserve">
+    <value>Twoja funkcja zawiera niezamknięte nawiasy. Spróbuj jeszcze raz.</value>
+  </data>
+  <data name="FunctionResponse_DivideByZero_Message" xml:space="preserve">
+    <value>Dzielenie przez zero jest niedozwolone.</value>
+  </data>
+  <data name="FunctionResponse_WrongFunction_Message" xml:space="preserve">
+    <value>Twoja funkcja zawiera błędy, które należy poprawić.</value>
+  </data>
 </root>

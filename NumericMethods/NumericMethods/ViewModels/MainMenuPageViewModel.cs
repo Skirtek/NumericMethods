@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using NumericMethods.Resources;
-using NumericMethods.Settings;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;

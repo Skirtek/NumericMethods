@@ -33,8 +33,10 @@
                 <controls:MenuItemRow
                     Grid.Row="0"
                     Grid.Column="1"
+                    Command="{Binding BindingContext.NavigateToPageCommand, Source={x:Reference MainMenuPageName}}"
                     LabelText="{res:Translate Menu_NonLinearEquation}"
-                    MenuIcon="ic_notlinear" />
+                    MenuIcon="ic_notlinear"
+                    Parameter="NonLinearEquationPage" />
                 <controls:MenuItemRow
                     Grid.Row="1"
                     Grid.Column="0"
@@ -55,8 +57,10 @@
                 <controls:MenuItemRow
                     Grid.Row="2"
                     Grid.Column="1"
+                    Command="{Binding BindingContext.NavigateToPageCommand, Source={x:Reference MainMenuPageName}}"
                     LabelText="{res:Translate Menu_DifferentialEquation}"
-                    MenuIcon="ic_differential" />
+                    MenuIcon="ic_differential"
+                    Parameter="DifferentialEquationPage" />
                 <StackLayout
                     Grid.Row="3"
                     Grid.Column="0"

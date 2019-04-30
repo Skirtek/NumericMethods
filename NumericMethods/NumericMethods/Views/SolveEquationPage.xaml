@@ -33,7 +33,8 @@
                     ColorNormal="{StaticResource GreenButtonColor}"
                     ColorPressed="{StaticResource GreenButtonColor}"
                     Command="{Binding GoToLinearChartPageCommand}"
-                    ImageName="ic_linear_plot" />
+                    ImageName="ic_linear_plot"
+                    IsVisible="{Binding IsLinearEquation}" />
             </AbsoluteLayout>
             <controls:LoaderView BackgroundColor="{StaticResource WhiteColor}" IsVisible="{Binding IsBusy}" />
         </Grid>

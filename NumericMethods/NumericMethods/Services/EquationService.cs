@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using NumericMethods.Interfaces;
 using NumericMethods.Models;
+using NumericMethods.Settings;
 
 namespace NumericMethods.Services
 {
     public class EquationService : IEquation
     {
         private readonly IMatrix _matrix;
-
-        private const double SmallestComparer = 0.00000000001;
 
         public EquationService(IMatrix matrix)
         {
@@ -54,13 +53,13 @@ namespace NumericMethods.Services
 
             switch (w)
             {
-                case 0 when (Math.Abs(wx) > SmallestComparer || Math.Abs(wy) > SmallestComparer):
+                case 0 when (Math.Abs(wx) > AppSettings.Epsilon || Math.Abs(wy) > AppSettings.Epsilon):
                     return "Układ sprzeczny";
-                case 0 when Math.Abs(wx) < SmallestComparer && Math.Abs(wy) < SmallestComparer:
+                case 0 when Math.Abs(wx) < AppSettings.Epsilon && Math.Abs(wy) < AppSettings.Epsilon:
                     return "Układ nieoznaczony";
             }
 
-            return $"x = {wx / w} y = {wy / w}";
+            return $"x = {wx / w}{Environment.NewLine}y = {wy / w}";
         }
 
         public string ThreeVariablesEquation(List<Equation> equationsList)
@@ -109,13 +108,13 @@ namespace NumericMethods.Services
 
             switch (w)
             {
-                case 0 when (Math.Abs(wx) > SmallestComparer || Math.Abs(wy) > SmallestComparer || Math.Abs(wz) > SmallestComparer):
+                case 0 when (Math.Abs(wx) > AppSettings.Epsilon || Math.Abs(wy) > AppSettings.Epsilon || Math.Abs(wz) > AppSettings.Epsilon):
                     return "Układ sprzeczny";
-                case 0 when Math.Abs(wx) < SmallestComparer && Math.Abs(wy) < SmallestComparer && Math.Abs(wz) < SmallestComparer:
+                case 0 when Math.Abs(wx) < AppSettings.Epsilon && Math.Abs(wy) < AppSettings.Epsilon && Math.Abs(wz) < AppSettings.Epsilon:
                     return "Układ nieoznaczony";
             }
 
-            return $"x = {wx / w} y = {wy / w} z = {wz / w}";
+            return $"x = {wx / w}{Environment.NewLine}y = {wy / w}{Environment.NewLine}z = {wz / w}";
         }
 
         public string FourVariablesEquation(List<Equation> equationsList)
@@ -168,13 +167,13 @@ namespace NumericMethods.Services
 
             switch (w)
             {
-                case 0 when Math.Abs(wx) > SmallestComparer || Math.Abs(wy) > SmallestComparer || Math.Abs(wz) > SmallestComparer || Math.Abs(wt) > SmallestComparer:
+                case 0 when Math.Abs(wx) > AppSettings.Epsilon || Math.Abs(wy) > AppSettings.Epsilon || Math.Abs(wz) > AppSettings.Epsilon || Math.Abs(wt) > AppSettings.Epsilon:
                     return "Układ sprzeczny";
-                case 0 when Math.Abs(wx) < SmallestComparer && Math.Abs(wy) < SmallestComparer && Math.Abs(wz) < SmallestComparer && Math.Abs(wt) < SmallestComparer:
+                case 0 when Math.Abs(wx) < AppSettings.Epsilon && Math.Abs(wy) < AppSettings.Epsilon && Math.Abs(wz) < AppSettings.Epsilon && Math.Abs(wt) < AppSettings.Epsilon:
                     return "Układ nieoznaczony";
             }
 
-            return $"x = {wx / w} y = {wy / w} z = {wz / w} t = {wt / w}";
+            return $"x = {wx / w}{Environment.NewLine}y = {wy / w}{Environment.NewLine}z = {wz / w}{Environment.NewLine}t = {wt / w}";
         }
     }
 }

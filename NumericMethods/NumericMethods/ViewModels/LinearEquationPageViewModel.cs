@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using NumericMethods.Models;
 using NumericMethods.Settings;
@@ -48,7 +49,14 @@ namespace NumericMethods.ViewModels
 
         private async void ChangeEquationsNumber()
         {
-            var popup = new EquationsNumberPopup();
+            var popup = new EquationsNumberPopup(new EquationPopupHelper
+            {
+                Description = "Wybierz ilość niewiadomych w równaniach",
+                Placeholder = "Ilość niewiadomych",
+                ItemsSource = new List<string> { "2", "3", "4" },
+                Message = AppSettings.ChangeEquationNumber
+            });
+
             popup.SetValue(MaxEquations.ToString());
             await PopupNavigation.Instance.PushAsync(popup);
 

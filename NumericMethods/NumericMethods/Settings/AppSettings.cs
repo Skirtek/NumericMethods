@@ -13,14 +13,18 @@ namespace NumericMethods.Settings
             "Własna..."
         };
 
-        public const string ArgumentRegex = "([+\\-]?)([0-9.,]*)[Xx](\\^\\d)?";
+        public const string ArgumentRegex = "([+\\-]?)([0-9.,]*)[Xx](\\^([0-9]*[.,])?[0-9]+|\\^\\(([0-9]*[.,])?[0-9]+/([0-9]*[.,])?[0-9]+\\))?";
 
-        public const string ConstantTermRegex = "[+\\-]?([0-9]*[.,])?[0-9]+$";
+        public const string ConstantTermRegex = "[\\^]?[+\\-]?([0-9]*[.,])?[0-9]+$";
 
-        public const string FormulaRegex = "^[xX^,.+\\-0-9]+$";
+        public const string FormulaRegex = "^[xX(),.+-^0-9]+$";
 
         public const int DefaultEntryMaxLength = 7;
 
         public const string ChangeEquationNumber = nameof(ChangeEquationNumber);
+
+        public const string ChangePlotSize = nameof(ChangePlotSize);
+
+        public const double Epsilon = 0.00000000001;
     }
 }

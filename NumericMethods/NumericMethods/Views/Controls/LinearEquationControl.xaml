@@ -22,6 +22,7 @@
             <Entry
                 Grid.Column="0"
                 FontSize="16"
+                HorizontalTextAlignment="Center"
                 Keyboard="Numeric"
                 Text="{Binding XValue, Source={x:Reference LinearEquationControlName}}" />
             <Label
@@ -31,6 +32,7 @@
             <Entry
                 Grid.Column="2"
                 FontSize="16"
+                HorizontalTextAlignment="Center"
                 Keyboard="Numeric"
                 Text="{Binding YValue, Source={x:Reference LinearEquationControlName}}" />
             <Label
@@ -50,6 +52,7 @@
             <Entry
                 Grid.Column="4"
                 FontSize="16"
+                HorizontalTextAlignment="Center"
                 IsVisible="True"
                 Keyboard="Numeric"
                 Text="{Binding ZValue, Source={x:Reference LinearEquationControlName}}">
@@ -65,6 +68,7 @@
             <Label
                 Grid.Column="5"
                 FontSize="16"
+                HorizontalTextAlignment="Center"
                 IsVisible="True"
                 Text="z"
                 VerticalOptions="CenterAndExpand">
@@ -86,6 +90,7 @@
             <Entry
                 Grid.Column="6"
                 FontSize="16"
+                HorizontalTextAlignment="Center"
                 IsVisible="False"
                 Keyboard="Numeric"
                 Text="{Binding TValue, Source={x:Reference LinearEquationControlName}}">

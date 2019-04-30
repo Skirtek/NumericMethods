@@ -6,6 +6,6 @@
 
         public bool IsNegative { get; set; }
 
-        public int Weight { get; set; }
+        public float Weight { get; set; }
     }
 }

@@ -9,6 +9,10 @@
         public const string SolveEquationPage = nameof(SolveEquationPage);
         public const string IntegralPage = nameof(IntegralPage);
         public const string IntegralResultPage = nameof(IntegralResultPage);
+        public const string DifferentialEquationPage = nameof(DifferentialEquationPage);
+        public const string SolveDifferentialEquationPage = nameof(SolveDifferentialEquationPage);
+        public const string NonLinearEquationPage = nameof(NonLinearEquationPage);
+        public const string SolveNonLinearEquationPage = nameof(SolveNonLinearEquationPage);
     }
 
     public static class NavParams

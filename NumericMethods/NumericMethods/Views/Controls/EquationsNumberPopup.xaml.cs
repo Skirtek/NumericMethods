@@ -1,4 +1,5 @@
 using System;
+using NumericMethods.Models;
 using NumericMethods.Settings;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
@@ -8,9 +9,15 @@ namespace NumericMethods.Views.Controls
 {
     public partial class EquationsNumberPopup : PopupPage
     {
-        public EquationsNumberPopup()
+        private string Message { get; set; }
+
+        public EquationsNumberPopup(EquationPopupHelper helper)
         {
             InitializeComponent();
+            DescriptionLabel.Text = helper.Description;
+            EquationsNumberPicker.Title = helper.Placeholder;
+            EquationsNumberPicker.ItemsSource = helper.ItemsSource;
+            Message = helper.Message;
         }
 
         private async void OnClosed(object sender, EventArgs e)
@@ -20,7 +27,7 @@ namespace NumericMethods.Views.Controls
 
         private async void OnApply(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, AppSettings.ChangeEquationNumber, EquationsNumberPicker.SelectedItem);
+            MessagingCenter.Send(this, Message, EquationsNumberPicker.SelectedItem);
             await PopupNavigation.Instance.PopAsync();
         }
 

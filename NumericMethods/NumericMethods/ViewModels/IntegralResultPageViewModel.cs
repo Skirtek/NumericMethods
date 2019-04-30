@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using NumericMethods.Enums;
+using NumericMethods.Interfaces;
 using NumericMethods.Models;
 using NumericMethods.Resources;
 using NumericMethods.Settings;
@@ -13,12 +13,16 @@ namespace NumericMethods.ViewModels
 {
     public class IntegralResultPageViewModel : BaseViewModel, INavigatedAware
     {
+        private readonly ICommonFunctions _commonFunctions;
+
         #region CTOR
         public IntegralResultPageViewModel(
             INavigationService navigationService,
-            IPageDialogService pageDialogService)
+            IPageDialogService pageDialogService,
+            ICommonFunctions commonFunctions)
             : base(navigationService, pageDialogService)
         {
+            _commonFunctions = commonFunctions;
         }
         #endregion
 
@@ -58,9 +62,7 @@ namespace NumericMethods.ViewModels
             set => SetProperty(ref _precision, value);
         }
 
-        private bool PrepareFunctionErrors { get; set; }
-
-        private List<Operation> Operations = new List<Operation>();
+        private List<Operation> _operations = new List<Operation>();
         #endregion
 
         #region OnNavigating*
@@ -109,7 +111,7 @@ namespace NumericMethods.ViewModels
                     return 100;
             }
         }
-        private float Pole(float lowerLimit, float upperLimit, float precision)
+        private float Area(float lowerLimit, float upperLimit, float precision)
         {
             float height = (upperLimit - lowerLimit) / precision;
             float areas = 0;
@@ -138,7 +140,30 @@ namespace NumericMethods.ViewModels
             float height = (upperLimit - lowerLimit) / precision;
             float integralResult = 0;
 
-            await PrepareFunction(integral.Formula);
+            var result = _commonFunctions.PrepareFunction(integral.Formula);
+
+            if (!result.IsSuccess)
+            {
+                switch (result.ResponseCode)
+                {
+                    case FunctionResponse.UnclosedParentheses:
+                        await ShowError(AppResources.FunctionResponse_UnclosedParentheses_Message);
+                        break;
+                    case FunctionResponse.DivideByZero:
+                        await ShowError(AppResources.FunctionResponse_DivideByZero_Message);
+                        break;
+                    case FunctionResponse.WrongFunction:
+                        await ShowError(AppResources.FunctionResponse_WrongFunction_Message);
+                        break;
+                    case FunctionResponse.CriticalError:
+                        await ShowError(AppResources.Common_SomethingWentWrong);
+                        break;
+                }
+
+                return;
+            }
+
+            _operations = result.Operations;
 
             for (var i = 1; i < precision; i++)
             {
@@ -150,13 +175,13 @@ namespace NumericMethods.ViewModels
             integralResult *= height;
 
             ResultTrapezeMethod = $"{integralResult}";
-            ResultRectangleMethod = $"{Pole(lowerLimit, upperLimit, precision)}";
+            ResultRectangleMethod = $"{Area(lowerLimit, upperLimit, precision)}";
         }
 
         private float FunctionResult(float x)
         {
             float result = 0;
-            foreach (var operation in Operations)
+            foreach (var operation in _operations)
             {
                 if (operation.IsNegative)
                 {
@@ -169,87 +194,6 @@ namespace NumericMethods.ViewModels
             }
 
             return result;
-        }
-
-        private async Task PrepareFunction(string formula)
-        {
-            try
-            {
-                string lastExpression = Regex.Match(formula, AppSettings.ConstantTermRegex, RegexOptions.RightToLeft).ToString();
-
-                if (!string.IsNullOrWhiteSpace(lastExpression))
-                {
-                    Operations.Add(new Operation
-                    {
-                        IsNegative = IsNegative(lastExpression),
-                        Value = GetValue(lastExpression),
-                        Weight = 0
-                    });
-                }
-
-                var expressions = Regex.Matches(formula, AppSettings.ArgumentRegex);
-
-                foreach (var expression in expressions)
-                {
-                    string exp = expression.ToString();
-
-                    if (exp.Contains("^"))
-                    {
-                        var split = exp.Split('^');
-                        string part = split[0];
-
-                        if (!int.TryParse(split[1], out int weight))
-                        {
-                            await ShowError(AppResources.Common_WrongFunction);
-                            return;
-                        }
-
-                        Operations.Add(new Operation
-                        {
-                            IsNegative = IsNegative(part),
-                            Value = part.Equals("x") || part.Equals("X") ? 1 : GetValue(part.Remove(part.Length - 1, 1)),
-                            Weight = weight
-                        });
-                    }
-                    else
-                    {
-                        Operations.Add(new Operation
-                        {
-                            IsNegative = IsNegative(exp),
-                            Value = exp.Equals("x") || exp.Equals("X") ? 1 : GetValue(exp.Remove(exp.Length - 1, 1)),
-                            Weight = 1
-                        });
-                    }
-                }
-
-                if (PrepareFunctionErrors)
-                {
-                    await ShowError(AppResources.Common_WrongFunction);
-                }
-            }
-            catch (Exception)
-            {
-                await ShowError(AppResources.Common_SomethingWentWrong);
-            }
-        }
-
-        private bool IsNegative(string expression) => expression.Substring(0, 1).Equals("-");
-
-        private float GetValue(string expression)
-        {
-            if (expression.Substring(0, 1).Equals("-") || expression.Substring(0, 1).Equals("+"))
-            {
-                expression = expression.Remove(0, 1);
-            }
-
-            if (expression.Contains("."))
-            {
-                expression = expression.Replace(".", ",");
-            }
-
-            PrepareFunctionErrors = !float.TryParse(expression, out float value);
-
-            return value;
         }
 
         private async Task ShowError(string message)
