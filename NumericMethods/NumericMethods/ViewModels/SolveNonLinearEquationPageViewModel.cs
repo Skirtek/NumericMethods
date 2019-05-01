@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using NumericMethods.Enums;
 using NumericMethods.Interfaces;
 using NumericMethods.Models;
 using NumericMethods.Resources;
 using NumericMethods.Settings;
+using Prism.AppModel;
 using Prism.Navigation;
 using Prism.Services;
 
@@ -31,17 +33,34 @@ namespace NumericMethods.ViewModels
             set => SetProperty(ref _result, value);
         }
 
+        private string _formula;
+        public string Formula
+        {
+            get => _formula;
+            set => SetProperty(ref _formula, value);
+        }
+
         private List<Operation> _operations = new List<Operation>();
 
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
+            if (!parameters.TryGetValue(NavParams.Equations, out string formula))
+            {
+                await ShowAlert(AppResources.Common_Ups, AppResources.Common_SomethingWentWrong);
+                await NavigationService.GoBackAsync();
+                return;
+            }
+
+            IsBusy = true;
+            Formula = formula;
             await Calculate();
+            IsBusy = false;
         }
 
         private async Task Calculate()
         {
             //TODO dodać przekazywanie realnej funkcji
-            var result = _commonFunctions.PrepareFunction("x^3-x^2+2");
+            var result = _commonFunctions.PrepareFunction(Formula);
 
             if (!result.IsSuccess)
             {
@@ -68,35 +87,93 @@ namespace NumericMethods.ViewModels
 
             //TODO zmienić na dziedzinę
             CalculateNewtonRaphsonMethod(-20);
-            var x = Sieczne(-100, 100);
+            CalculateBisectionMethod(-20, 20);
+            //var x = GraeffeMethod(100);
         }
 
-        //TODO Nazwać to zgodnie z konwencją
-        private float Sieczne(float x1, float x2)
+        private float CalculateBisectionMethod(float a, float b)
         {
-            float x0 = 0;
-            float f1 = _commonFunctions.FunctionResult(x1,_operations);
-            float f2 = _commonFunctions.FunctionResult(x2, _operations);
-            int i = 64;
-            while (i > 0 && Math.Abs(x1 - x2) > AppSettings.Epsilon)
+            float solution = (a + b) / 2;
+            uint iterationsNumber = 0;
+
+            while (Math.Abs(_commonFunctions.FunctionResult(solution, _operations)) > AppSettings.Epsilon)
             {
-                if (Math.Abs(f1 - f2) < AppSettings.Epsilon)
+                if (_commonFunctions.FunctionResult(a, _operations) * _commonFunctions.FunctionResult(solution, _operations) > 0)
                 {
-                    break;
+                    a = solution;
                 }
-
-                x0 = x1 - f1 * (x1 - x2) / (f1 - f2);
-                float f0 = _commonFunctions.FunctionResult(x0, _operations);
-                if (Math.Abs(f0) < AppSettings.Epsilon)
+                else
                 {
-                    break;
+                    b = solution;
                 }
-
-                x2 = x1; f2 = f1;
-                x1 = x0; f1 = f0;
+                solution = (a + b) / 2;
+                iterationsNumber++;
             }
 
-            return x0;
+            return solution;
+        }
+
+        private List<double> GraeffeMethod(int maxIterations)
+        {
+            var roots = new List<double>();
+            var negated = NegateFunction(_operations);
+            var multipled = MultipleFunctions(_operations, negated);
+            var squared = FindSquares(MultipleFunctions(_operations, negated));
+
+            for (int i = 0; i < maxIterations; i++)
+            {
+                multipled = MultipleFunctions(squared, NegateFunction(squared));
+                squared = FindSquares(multipled);
+            }
+
+            for (int i = multipled.Count; i > 0; i--)
+            {
+                roots.Add(Math.Pow(Math.Abs((double)multipled[i].Value)/Math.Abs((double)multipled[i-1].Value),1.0/2*maxIterations));
+            }
+
+            return roots;
+        }
+
+        private List<Operation> FindSquares(List<Operation> operations)
+        {
+            foreach (var operation in operations)
+            {
+                operation.Weight /= 2;
+            }
+
+            return operations;
+        }
+
+        private List<Operation> NegateFunction(List<Operation> operations)
+        {
+            foreach (var operation in operations)
+            {
+                if (Math.Abs(operation.Weight % 2) > AppSettings.Epsilon)
+                {
+                    operation.Value *= -1;
+                }
+            }
+
+            return operations;
+        }
+
+        private List<Operation> MultipleFunctions(List<Operation> firstFunction, List<Operation> secondFunction)
+        {
+            var operations = new List<Operation>();
+
+            foreach (var operation in firstFunction)
+            {
+                foreach (var secondOperation in secondFunction)
+                {
+                    operations.Add(new Operation
+                    {
+                        Value = operation.Value * secondOperation.Value,
+                        Weight = operation.Weight + secondOperation.Weight
+                    });
+                }
+            }
+            //TODO konieczne jest grupowanie 
+            return operations;
         }
 
         private void CalculateNewtonRaphsonMethod(float x)
@@ -104,11 +181,11 @@ namespace NumericMethods.ViewModels
             var derivativeOperations = _commonFunctions.CalculateDerivative(_operations);
 
             float h = _commonFunctions.FunctionResult(x, _operations) / _commonFunctions.FunctionResult(x, derivativeOperations);
-            while (Math.Abs(h) >= AppSettings.Epsilon)
+            while (Math.Abs(h) >= 0.001)
             {
                 h = _commonFunctions.FunctionResult(x, _operations) / _commonFunctions.FunctionResult(x, derivativeOperations);
 
-                x = x - h;
+                x -= h;
             }
 
             Result = $"{Math.Round(x * 100.0) / 100.0}";

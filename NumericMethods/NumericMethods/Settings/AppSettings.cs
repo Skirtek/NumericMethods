@@ -25,6 +25,6 @@ namespace NumericMethods.Settings
 
         public const string ChangePlotSize = nameof(ChangePlotSize);
 
-        public const double Epsilon = 0.00000000001;
+        public const double Epsilon = 0.00001;
     }
 }

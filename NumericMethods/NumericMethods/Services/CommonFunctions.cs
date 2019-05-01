@@ -137,7 +137,7 @@ namespace NumericMethods.Services
 
         private float GetValue(string expression)
         {
-            if (expression.Substring(0, 1).Equals("-") || expression.Substring(0, 1).Equals("+"))
+            if (expression.Substring(0, 1).Equals("+"))
             {
                 expression = expression.Remove(0, 1);
             }

@@ -34,9 +34,14 @@ namespace NumericMethods.ViewModels
 
         private async void CalculateNonLinearEquation()
         {
+            if (HasErrors)
+            {
+                return;
+            }
+
             IsBusy = true;
 
-            await NavigationService.NavigateAsync(NavSettings.SolveNonLinearEquationPage);
+            await NavigationService.NavigateAsync(NavSettings.SolveNonLinearEquationPage, new NavigationParameters { { NavParams.Equations, Formula } });
 
             IsBusy = false;
         }
