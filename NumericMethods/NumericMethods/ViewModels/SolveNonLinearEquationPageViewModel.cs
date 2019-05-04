@@ -84,11 +84,10 @@ namespace NumericMethods.ViewModels
             }
 
             _operations = result.Operations;
-
             //TODO zmienić na dziedzinę
-            CalculateNewtonRaphsonMethod(-20);
-            CalculateBisectionMethod(-20, 20);
-            //var x = GraeffeMethod(100);
+            //CalculateNewtonRaphsonMethod(-20);
+            //CalculateBisectionMethod(-20, 20);
+            var x = GraeffeMethod(2);
         }
 
         private float CalculateBisectionMethod(float a, float b)
@@ -115,65 +114,75 @@ namespace NumericMethods.ViewModels
 
         private List<double> GraeffeMethod(int maxIterations)
         {
-            var roots = new List<double>();
-            var negated = NegateFunction(_operations);
-            var multipled = MultipleFunctions(_operations, negated);
-            var squared = FindSquares(MultipleFunctions(_operations, negated));
 
-            for (int i = 0; i < maxIterations; i++)
+            for (int i = 0; i < maxIterations-1; i++)
             {
-                multipled = MultipleFunctions(squared, NegateFunction(squared));
-                squared = FindSquares(multipled);
+                MultipleFunctions();
+                FindSquares();
             }
 
-            for (int i = multipled.Count; i > 0; i--)
+            MultipleFunctions();
+            var roots = new List<double>();
+
+            for (int i = 0 ; i < _operations.Count-2; i++)
             {
-                roots.Add(Math.Pow(Math.Abs((double)multipled[i].Value)/Math.Abs((double)multipled[i-1].Value),1.0/2*maxIterations));
+                roots.Add(Math.Pow(_operations[i].Value / _operations[i + 1].Value, 1.0 / 2 * maxIterations));
             }
 
             return roots;
         }
 
-        private List<Operation> FindSquares(List<Operation> operations)
+        private void FindSquares()
         {
-            foreach (var operation in operations)
+            foreach (var operation in _operations)
             {
                 operation.Weight /= 2;
             }
-
-            return operations;
         }
 
-        private List<Operation> NegateFunction(List<Operation> operations)
+        private void MultipleFunctions()
         {
-            foreach (var operation in operations)
+            var operationsList = new List<Operation>();
+            var negatedOperationsList = new List<Operation>();
+
+            foreach (var operation in _operations)
             {
-                if (Math.Abs(operation.Weight % 2) > AppSettings.Epsilon)
+                operationsList.Add(new Operation { Value = operation.Value, Weight = operation.Weight });
+                negatedOperationsList.Add(new Operation { Value = Math.Abs(operation.Weight % 2) > AppSettings.Epsilon ? operation.Value * -1 : operation.Value, Weight = operation.Weight });
+            }
+
+            var result = MultiplyFunctions(operationsList, negatedOperationsList, operationsList.Count);
+            var summed = new List<Operation>();
+
+            foreach (var operation in result)
+            {
+                float sum = result.Where(c => c.Weight == operation.Weight).Sum(f => f.Value);
+                if (sum != 0)
                 {
-                    operation.Value *= -1;
+                    summed.Add(new Operation { Value = Math.Abs(sum), Weight = operation.Weight });
                 }
             }
 
-            return operations;
+            _operations = summed.GroupBy(y => y.Weight).Select(group => group.First()).ToList();
         }
 
-        private List<Operation> MultipleFunctions(List<Operation> firstFunction, List<Operation> secondFunction)
+        private List<Operation> MultiplyFunctions(List<Operation> operationsList, List<Operation> negatedOperationsList, int count)
         {
-            var operations = new List<Operation>();
+            var prod = new List<Operation>();
 
-            foreach (var operation in firstFunction)
+            for (var i = 0; i < count; i++)
             {
-                foreach (var secondOperation in secondFunction)
+                for (var j = 0; j < count; j++)
                 {
-                    operations.Add(new Operation
+                    prod.Add(new Operation
                     {
-                        Value = operation.Value * secondOperation.Value,
-                        Weight = operation.Weight + secondOperation.Weight
+                        Value = operationsList[i].Value * negatedOperationsList[j].Value,
+                        Weight = operationsList[i].Weight + negatedOperationsList[j].Weight
                     });
                 }
             }
-            //TODO konieczne jest grupowanie 
-            return operations;
+
+            return prod;
         }
 
         private void CalculateNewtonRaphsonMethod(float x)

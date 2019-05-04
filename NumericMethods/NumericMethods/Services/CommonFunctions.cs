@@ -30,7 +30,7 @@ namespace NumericMethods.Services
                     });
                 }
 
-                var expressions = Regex.Matches(formula, AppSettings.ArgumentRegex);
+                var expressions = Regex.Matches(formula, AppSettings.ArgumentRegex, RegexOptions.RightToLeft);
 
                 foreach (var expression in expressions)
                 {
