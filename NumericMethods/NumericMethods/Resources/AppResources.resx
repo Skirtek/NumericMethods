@@ -221,4 +221,7 @@ Wykorzystano ikonki pochodzące z zasobów icons8.com
   <data name="FunctionResponse_WrongFunction_Message" xml:space="preserve">
     <value>Twoja funkcja zawiera błędy, które należy poprawić.</value>
   </data>
+  <data name="Common_InputData" xml:space="preserve">
+    <value>Wprowadź dane</value>
+  </data>
 </root>

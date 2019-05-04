@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using NumericMethods.Enums;
@@ -7,7 +8,6 @@ using NumericMethods.Interfaces;
 using NumericMethods.Models;
 using NumericMethods.Resources;
 using NumericMethods.Settings;
-using Prism.AppModel;
 using Prism.Navigation;
 using Prism.Services;
 
@@ -33,11 +33,25 @@ namespace NumericMethods.ViewModels
             set => SetProperty(ref _result, value);
         }
 
+        private string _biResult;
+        public string BiResult
+        {
+            get => _biResult;
+            set => SetProperty(ref _biResult, value);
+        }
+
         private string _formula;
         public string Formula
         {
             get => _formula;
             set => SetProperty(ref _formula, value);
+        }
+
+        private ObservableCollection<ResultList> _resultList = new ObservableCollection<ResultList>();
+        public ObservableCollection<ResultList> ResultList
+        {
+            get => _resultList;
+            set => SetProperty(ref _resultList, value);
         }
 
         private List<Operation> _operations = new List<Operation>();
@@ -59,7 +73,6 @@ namespace NumericMethods.ViewModels
 
         private async Task Calculate()
         {
-            //TODO dodać przekazywanie realnej funkcji
             var result = _commonFunctions.PrepareFunction(Formula);
 
             if (!result.IsSuccess)
@@ -85,12 +98,12 @@ namespace NumericMethods.ViewModels
 
             _operations = result.Operations;
             //TODO zmienić na dziedzinę
-            //CalculateNewtonRaphsonMethod(-20);
-            //CalculateBisectionMethod(-20, 20);
-            var x = GraeffeMethod(2);
+            CalculateNewtonRaphsonMethod(-20);
+            CalculateBisectionMethod(-20, 20);
+            GraeffesMethod(5);
         }
 
-        private float CalculateBisectionMethod(float a, float b)
+        private void CalculateBisectionMethod(float a, float b)
         {
             float solution = (a + b) / 2;
             uint iterationsNumber = 0;
@@ -109,27 +122,29 @@ namespace NumericMethods.ViewModels
                 iterationsNumber++;
             }
 
-            return solution;
+            BiResult = $"{solution}";
         }
 
-        private List<double> GraeffeMethod(int maxIterations)
+        private void GraeffesMethod(int maxIterations)
         {
 
-            for (int i = 0; i < maxIterations-1; i++)
+            for (int i = 0; i < maxIterations - 1; i++)
             {
                 MultipleFunctions();
                 FindSquares();
             }
 
             MultipleFunctions();
-            var roots = new List<double>();
 
-            for (int i = 0 ; i < _operations.Count-2; i++)
+            var roots = new List<ResultList>();
+
+            for (int i = 0; i < _operations.Count - 1; i++)
             {
-                roots.Add(Math.Pow(_operations[i].Value / _operations[i + 1].Value, 1.0 / 2 * maxIterations));
+                roots.Add(new ResultList{Value = Math.Pow(_operations[i].Value / _operations[i + 1].Value, 1.0 / Math.Pow(2, maxIterations)), Position = $"{i+1}. "});
             }
 
-            return roots;
+            //TODO oznaczanie ujemnych pierwiastków + odrzucanie pierwiastków nie spełniajacych warunków
+            ResultList = new ObservableCollection<ResultList>(roots);
         }
 
         private void FindSquares()

@@ -70,6 +70,15 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wprowadź dane.
+        /// </summary>
+        internal static string Common_InputData {
+            get {
+                return ResourceManager.GetString("Common_InputData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string Common_Ok {
