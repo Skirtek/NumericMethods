@@ -40,6 +40,8 @@ namespace NumericMethods
             containerRegistry.RegisterForNavigation<NonLinearEquationPage, NonLinearEquationPageViewModel>(NavSettings.NonLinearEquationPage);
             containerRegistry.RegisterForNavigation<SolveNonLinearEquationPage, SolveNonLinearEquationPageViewModel>(NavSettings.SolveNonLinearEquationPage);
             containerRegistry.RegisterForNavigation<NonLinearChartPage, NonLinearChartPageViewModel>(NavSettings.NonLinearChartPage);
+            containerRegistry.RegisterForNavigation<InterpolationPage, InterpolationPageViewModel>(NavSettings.InterpolationPage);
+            containerRegistry.RegisterForNavigation<SolveInterpolationPage, SolveInterpolationPageViewModel>(NavSettings.SolveInterpolationPage);
         }
         private void RegisterAddOns(IContainerRegistry containerRegistry)
         {

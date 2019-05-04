@@ -40,8 +40,10 @@
                 <controls:MenuItemRow
                     Grid.Row="1"
                     Grid.Column="0"
+                    Command="{Binding BindingContext.NavigateToPageCommand, Source={x:Reference MainMenuPageName}}"
                     LabelText="{res:Translate Menu_Interpolation}"
-                    MenuIcon="ic_interpolation" />
+                    MenuIcon="ic_interpolation"
+                    Parameter="InterpolationPage" />
                 <controls:MenuItemRow
                     Grid.Row="1"
                     Grid.Column="1"
