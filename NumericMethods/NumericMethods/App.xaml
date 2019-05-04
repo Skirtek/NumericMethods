@@ -32,6 +32,11 @@
                 <Setter Property="CornerRadius" Value="25" />
             </Style>
 
+            <Style x:Key="InstructionLabelStyle" TargetType="{x:Type Label}">
+                <Setter Property="TextColor" Value="{StaticResource NavyBlueColor}" />
+                <Setter Property="FontSize" Value="18" />
+            </Style>
+
             <!--  Converters  -->
             <converters:EquationSizeToStarSizeConverter x:Key="EquationSizeToStarSizeConverter" />
             <converters:EquationSizeToAutoSizeConverter x:Key="EquationSizeToAutoSizeConverter" />

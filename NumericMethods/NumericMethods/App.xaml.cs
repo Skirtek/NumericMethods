@@ -39,7 +39,7 @@ namespace NumericMethods
             containerRegistry.RegisterForNavigation<SolveDifferentialEquationPage, SolveDifferentialEquationPageViewModel>(NavSettings.SolveDifferentialEquationPage);
             containerRegistry.RegisterForNavigation<NonLinearEquationPage, NonLinearEquationPageViewModel>(NavSettings.NonLinearEquationPage);
             containerRegistry.RegisterForNavigation<SolveNonLinearEquationPage, SolveNonLinearEquationPageViewModel>(NavSettings.SolveNonLinearEquationPage);
-
+            containerRegistry.RegisterForNavigation<NonLinearChartPage, NonLinearChartPageViewModel>(NavSettings.NonLinearChartPage);
         }
         private void RegisterAddOns(IContainerRegistry containerRegistry)
         {

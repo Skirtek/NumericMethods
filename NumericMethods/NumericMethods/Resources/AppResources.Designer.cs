@@ -70,6 +70,15 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wykres.
+        /// </summary>
+        internal static string Common_Chart {
+            get {
+                return ResourceManager.GetString("Common_Chart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wprowadź dane.
         /// </summary>
         internal static string Common_InputData {
@@ -326,6 +335,33 @@ namespace NumericMethods.Resources {
         internal static string Menu_NonLinearEquation {
             get {
                 return ResourceManager.GetString("Menu_NonLinearEquation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to y₀ = {0}.
+        /// </summary>
+        internal static string NonLinearChart_Function {
+            get {
+                return ResourceManager.GetString("NonLinearChart_Function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Funkcja.
+        /// </summary>
+        internal static string NonLinearChart_LegendTitle {
+            get {
+                return ResourceManager.GetString("NonLinearChart_LegendTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wybierz dokładność metody obliczającej.
+        /// </summary>
+        internal static string NonLinearEquation_Precision {
+            get {
+                return ResourceManager.GetString("NonLinearEquation_Precision", resourceCulture);
             }
         }
         

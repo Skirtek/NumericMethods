@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using NumericMethods.Enums;
 using NumericMethods.Resources;
 using NumericMethods.Settings;
 using Prism.Commands;
@@ -30,6 +31,13 @@ namespace NumericMethods.ViewModels
             }
         }
 
+        private short _selectedPrecision = 1;
+        public short SelectedPrecision
+        {
+            get => _selectedPrecision;
+            set => SetProperty(ref _selectedPrecision, value);
+        }
+
         public DelegateCommand CalculateNonLinearEquationCommand { get; set; }
 
         private async void CalculateNonLinearEquation()
@@ -41,7 +49,11 @@ namespace NumericMethods.ViewModels
 
             IsBusy = true;
 
-            await NavigationService.NavigateAsync(NavSettings.SolveNonLinearEquationPage, new NavigationParameters { { NavParams.Equations, Formula } });
+            await NavigationService.NavigateAsync(NavSettings.SolveNonLinearEquationPage, new NavigationParameters
+            {
+                { NavParams.Equations, Formula },
+                { NavParams.Precision, (PrecisionLevels)SelectedPrecision}
+            });
 
             IsBusy = false;
         }

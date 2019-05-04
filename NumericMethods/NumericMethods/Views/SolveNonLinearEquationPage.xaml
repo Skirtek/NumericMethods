@@ -8,26 +8,77 @@
     x:Name="SolveNonLinearEquationPageName"
     Title="{resources:Translate Common_Result}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding Result}" TextColor="{StaticResource NavyBlueColor}" />
-            <Label Text="{Binding BiResult}" TextColor="{StaticResource NavyBlueColor}" />
-            <controls:CustomListControl ItemsSource="{Binding ResultList}">
-                <controls:CustomListControl.ItemTemplate>
-                    <DataTemplate>
-                        <Label LineBreakMode="TailTruncation">
+        <Grid>
+            <ScrollView>
+                <StackLayout Margin="24">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="Miejsce zerowe obliczone metodą Newtona-Raphsona:"
+                        TextColor="{StaticResource NavyBlueColor}" />
+                    <Label
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        TextColor="{StaticResource NavyBlueColor}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="x₀ = " />
+                                <Span FontAttributes="Bold" Text="{Binding Result}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        Margin="0,16,0,0"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="Miejsca zerowe obliczone metodą Graeff'ego:"
+                        TextColor="{StaticResource NavyBlueColor}" />
+                    <controls:CustomListControl HorizontalOptions="Center" ItemsSource="{Binding ResultList}">
+                        <controls:CustomListControl.ItemTemplate>
+                            <DataTemplate>
+                                <Label HorizontalTextAlignment="Center" LineBreakMode="TailTruncation">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                FontAttributes="Bold"
+                                                Text="{Binding Position, Mode=OneWay}"
+                                                TextColor="{StaticResource NavyBlueColor}" />
+                                            <Span Text="{Binding Value, Mode=OneWay}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </DataTemplate>
+                        </controls:CustomListControl.ItemTemplate>
+                    </controls:CustomListControl>
+                    <StackLayout Margin="16,0,16,16" VerticalOptions="EndAndExpand">
+                        <Label HorizontalOptions="Center" HorizontalTextAlignment="Center">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span
-                                        FontAttributes="Bold"
-                                        Text="{Binding Position, Mode=OneWay}"
+                                        FontSize="16"
+                                        Text="Ilość iteracji w metodzie Graeff'ego: "
                                         TextColor="{StaticResource NavyBlueColor}" />
-                                    <Span Text="{Binding Value, Mode=OneWay}" />
+                                    <Span
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="5"
+                                        TextColor="{StaticResource NavyBlueColor}" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                    </DataTemplate>
-                </controls:CustomListControl.ItemTemplate>
-            </controls:CustomListControl>
-        </StackLayout>
+                        <Button
+                            Command="{Binding GoToNonLinearChartPageCommand}"
+                            Style="{StaticResource GreenButtonStyle}"
+                            Text="Narysuj wykres" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <controls:LoaderView BackgroundColor="{StaticResource WhiteColor}" IsVisible="{Binding IsBusy}" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

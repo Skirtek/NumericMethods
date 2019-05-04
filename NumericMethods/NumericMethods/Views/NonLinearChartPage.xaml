@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="NumericMethods.Views.LinearChart"
+    x:Class="NumericMethods.Views.NonLinearChartPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:forms1="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
+    xmlns:forms="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
     xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
     Title="{resources:Translate Common_Chart}">
     <ContentPage.ToolbarItems>
         <ToolbarItem
             Command="{Binding ChangeChartSizeCommand}"
-            Icon="ic_linear_plot"
+            Icon="ic_square_plot"
             Order="Primary" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <forms1:PlotView
+            <forms:PlotView
                 HorizontalOptions="FillAndExpand"
                 Model="{Binding Model}"
                 VerticalOptions="FillAndExpand" />

@@ -8,6 +8,7 @@ using NumericMethods.Interfaces;
 using NumericMethods.Models;
 using NumericMethods.Resources;
 using NumericMethods.Settings;
+using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
 
@@ -24,6 +25,7 @@ namespace NumericMethods.ViewModels
             : base(navigationService, pageDialogService)
         {
             _commonFunctions = commonFunctions;
+            GoToNonLinearChartPageCommand = GetBusyDependedCommand(GoToNonLinearChartPage);
         }
 
         private string _result;
@@ -31,13 +33,6 @@ namespace NumericMethods.ViewModels
         {
             get => _result;
             set => SetProperty(ref _result, value);
-        }
-
-        private string _biResult;
-        public string BiResult
-        {
-            get => _biResult;
-            set => SetProperty(ref _biResult, value);
         }
 
         private string _formula;
@@ -54,75 +49,104 @@ namespace NumericMethods.ViewModels
             set => SetProperty(ref _resultList, value);
         }
 
+        public DelegateCommand GoToNonLinearChartPageCommand { get; set; }
+
+        private PrecisionLevels Precision { get; set; }
+
         private List<Operation> _operations = new List<Operation>();
+
+        private List<Operation> _initialFunction = new List<Operation>();
 
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
-            if (!parameters.TryGetValue(NavParams.Equations, out string formula))
+            if (!parameters.TryGetValue(NavParams.Equations, out string formula) || !parameters.TryGetValue(NavParams.Precision, out PrecisionLevels precision))
             {
                 await ShowAlert(AppResources.Common_Ups, AppResources.Common_SomethingWentWrong);
                 await NavigationService.GoBackAsync();
                 return;
             }
 
-            IsBusy = true;
             Formula = formula;
+            Precision = precision;
+
             await Calculate();
+        }
+
+        private async void GoToNonLinearChartPage()
+        {
+            IsBusy = true;
+
+            await NavigationService.NavigateAsync(NavSettings.NonLinearChartPage, new NavigationParameters
+            {
+                { NavParams.Function, _initialFunction },
+                { NavParams.Formula, Formula }
+            });
+
             IsBusy = false;
         }
 
         private async Task Calculate()
         {
-            var result = _commonFunctions.PrepareFunction(Formula);
-
-            if (!result.IsSuccess)
+            try
             {
-                switch (result.ResponseCode)
+                IsBusy = true;
+
+                var result = _commonFunctions.PrepareFunction(Formula);
+
+                if (!result.IsSuccess)
                 {
-                    case FunctionResponse.UnclosedParentheses:
-                        await ShowError(AppResources.FunctionResponse_UnclosedParentheses_Message);
+                    switch (result.ResponseCode)
+                    {
+                        case FunctionResponse.UnclosedParentheses:
+                            await ShowError(AppResources.FunctionResponse_UnclosedParentheses_Message);
+                            break;
+                        case FunctionResponse.DivideByZero:
+                            await ShowError(AppResources.FunctionResponse_DivideByZero_Message);
+                            break;
+                        case FunctionResponse.WrongFunction:
+                            await ShowError(AppResources.FunctionResponse_WrongFunction_Message);
+                            break;
+                        case FunctionResponse.CriticalError:
+                            await ShowError(AppResources.Common_SomethingWentWrong);
+                            break;
+                    }
+
+                    return;
+                }
+
+                short precision;
+
+                switch (Precision)
+                {
+                    case PrecisionLevels.Low:
+                        precision = 2;
                         break;
-                    case FunctionResponse.DivideByZero:
-                        await ShowError(AppResources.FunctionResponse_DivideByZero_Message);
+                    case PrecisionLevels.Medium:
+                        precision = 4;
                         break;
-                    case FunctionResponse.WrongFunction:
-                        await ShowError(AppResources.FunctionResponse_WrongFunction_Message);
+                    case PrecisionLevels.High:
+                        precision = 8;
                         break;
-                    case FunctionResponse.CriticalError:
-                        await ShowError(AppResources.Common_SomethingWentWrong);
+                    default:
+                        precision = 4;
                         break;
                 }
 
-                return;
+                _operations = result.Operations;
+                _initialFunction = result.Operations;
+
+                CalculateNewtonRaphsonMethod(AppSettings.InitialX);
+                GraeffesMethod(precision);
             }
-
-            _operations = result.Operations;
-            //TODO zmienić na dziedzinę
-            CalculateNewtonRaphsonMethod(-20);
-            CalculateBisectionMethod(-20, 20);
-            GraeffesMethod(5);
-        }
-
-        private void CalculateBisectionMethod(float a, float b)
-        {
-            float solution = (a + b) / 2;
-            uint iterationsNumber = 0;
-
-            while (Math.Abs(_commonFunctions.FunctionResult(solution, _operations)) > AppSettings.Epsilon)
+            catch (Exception ex)
             {
-                if (_commonFunctions.FunctionResult(a, _operations) * _commonFunctions.FunctionResult(solution, _operations) > 0)
-                {
-                    a = solution;
-                }
-                else
-                {
-                    b = solution;
-                }
-                solution = (a + b) / 2;
-                iterationsNumber++;
+                await ShowAlert(AppResources.Common_Ups, AppResources.Common_SomethingWentWrong);
+                await NavigationService.GoBackAsync();
             }
-
-            BiResult = $"{solution}";
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
         private void GraeffesMethod(int maxIterations)
@@ -137,13 +161,24 @@ namespace NumericMethods.ViewModels
             MultipleFunctions();
 
             var roots = new List<ResultList>();
+            short iterator = 1;
 
             for (int i = 0; i < _operations.Count - 1; i++)
             {
-                roots.Add(new ResultList{Value = Math.Pow(_operations[i].Value / _operations[i + 1].Value, 1.0 / Math.Pow(2, maxIterations)), Position = $"{i+1}. "});
+                var value = (float)Math.Pow(_operations[i].Value / _operations[i + 1].Value,
+                    1.0 / Math.Pow(2, maxIterations));
+                if (Math.Abs(_commonFunctions.FunctionResult(value, _initialFunction)) < 1)
+                {
+                    roots.Add(new ResultList { Value = value, Position = $"{iterator}. " });
+                    iterator++;
+                }
+                else if (Math.Abs(_commonFunctions.FunctionResult(value * -1, _initialFunction)) < 1)
+                {
+                    roots.Add(new ResultList { Value = value * -1, Position = $"{iterator}. " });
+                    iterator++;
+                }
             }
 
-            //TODO oznaczanie ujemnych pierwiastków + odrzucanie pierwiastków nie spełniajacych warunków
             ResultList = new ObservableCollection<ResultList>(roots);
         }
 
@@ -205,14 +240,21 @@ namespace NumericMethods.ViewModels
             var derivativeOperations = _commonFunctions.CalculateDerivative(_operations);
 
             float h = _commonFunctions.FunctionResult(x, _operations) / _commonFunctions.FunctionResult(x, derivativeOperations);
+            uint iterations = 0;
+
             while (Math.Abs(h) >= 0.001)
             {
                 h = _commonFunctions.FunctionResult(x, _operations) / _commonFunctions.FunctionResult(x, derivativeOperations);
 
                 x -= h;
+                iterations++;
+                if (iterations == 100000)
+                {
+                    break;
+                }
             }
 
-            Result = $"{Math.Round(x * 100.0) / 100.0}";
+            Result = iterations == 100000 ? "Brak rozwiązania" : $"{Math.Round(x * 100.0) / 100.0}";
         }
     }
 }

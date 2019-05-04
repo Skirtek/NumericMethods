@@ -13,11 +13,15 @@
         public const string SolveDifferentialEquationPage = nameof(SolveDifferentialEquationPage);
         public const string NonLinearEquationPage = nameof(NonLinearEquationPage);
         public const string SolveNonLinearEquationPage = nameof(SolveNonLinearEquationPage);
+        public const string NonLinearChartPage = nameof(NonLinearChartPage);
     }
 
     public static class NavParams
     {
         public const string Integral = nameof(Integral);
         public const string Equations = nameof(Equations);
+        public const string Function = nameof(Function);
+        public const string Precision = nameof(Precision);
+        public const string Formula = nameof(Formula);
     }
 }

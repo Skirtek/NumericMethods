@@ -13,6 +13,13 @@ namespace NumericMethods.Settings
             "Własna..."
         };
 
+        public static List<string> NonLinearEquationPrecisionOptions = new List<string>
+        {
+            "Niska dokładność",
+            "Średnia dokładność",
+            "Wysoka dokładność",
+        };
+
         public const string ArgumentRegex = "([+\\-]?)([0-9.,]*)[Xx](\\^([0-9]*[.,])?[0-9]+|\\^\\(([0-9]*[.,])?[0-9]+/([0-9]*[.,])?[0-9]+\\))?";
 
         public const string ConstantTermRegex = "[\\^]?[+\\-]?([0-9]*[.,])?[0-9]+$";
@@ -21,10 +28,16 @@ namespace NumericMethods.Settings
 
         public const int DefaultEntryMaxLength = 7;
 
+        #region Messages
         public const string ChangeEquationNumber = nameof(ChangeEquationNumber);
 
         public const string ChangePlotSize = nameof(ChangePlotSize);
 
+        public const string ChangeDomainSize = nameof(ChangeDomainSize);
+        #endregion
+
         public const double Epsilon = 0.00001;
+
+        public const int InitialX = -25;
     }
 }
