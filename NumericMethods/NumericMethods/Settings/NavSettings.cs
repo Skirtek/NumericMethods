@@ -16,6 +16,7 @@
         public const string NonLinearChartPage = nameof(NonLinearChartPage);
         public const string InterpolationPage = nameof(InterpolationPage);
         public const string SolveInterpolationPage = nameof(SolveInterpolationPage);
+        public const string InterpolationChartPage = nameof(InterpolationChartPage);
     }
 
     public static class NavParams

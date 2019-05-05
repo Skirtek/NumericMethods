@@ -31,6 +31,27 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="Wynik interpolacji metodą Aitken'a:"
+                        TextColor="{StaticResource NavyBlueColor}" />
+                    <Label
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        TextColor="{StaticResource NavyBlueColor}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Dla x = " />
+                                <Span FontAttributes="Bold" Text="{Binding Argument}" />
+                                <Span Text=" funkcja przyjmuje wartość y = " />
+                                <Span FontAttributes="Bold" Text="{Binding AitkenResult}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
                     <StackLayout Margin="16,0,16,16" VerticalOptions="EndAndExpand">
                         <Label HorizontalOptions="Center" HorizontalTextAlignment="Center">
                             <Label.FormattedText>
@@ -52,7 +73,7 @@
                             </Label.FormattedText>
                         </Label>
                         <Button
-                            Command="{Binding GoToNonLinearChartPageCommand}"
+                            Command="{Binding GoToInterpolationChartPageCommand}"
                             Style="{StaticResource GreenButtonStyle}"
                             Text="Zaznacz punkty na wykresie" />
                     </StackLayout>

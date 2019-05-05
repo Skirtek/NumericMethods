@@ -236,4 +236,10 @@ Wykorzystano ikonki pochodzące z zasobów icons8.com
   <data name="Common_Chart" xml:space="preserve">
     <value>Wykres</value>
   </data>
+  <data name="Common_InvalidFunction" xml:space="preserve">
+    <value>Błędna funkcja</value>
+  </data>
+  <data name="Common_InvalidFunction_Message" xml:space="preserve">
+    <value>Funkcja nie może przyjmować kilku wartości dla jednego argumentu.</value>
+  </data>
 </root>

@@ -42,6 +42,7 @@ namespace NumericMethods
             containerRegistry.RegisterForNavigation<NonLinearChartPage, NonLinearChartPageViewModel>(NavSettings.NonLinearChartPage);
             containerRegistry.RegisterForNavigation<InterpolationPage, InterpolationPageViewModel>(NavSettings.InterpolationPage);
             containerRegistry.RegisterForNavigation<SolveInterpolationPage, SolveInterpolationPageViewModel>(NavSettings.SolveInterpolationPage);
+            containerRegistry.RegisterForNavigation<InterpolationChartPage, InterpolationChartPageViewModel>(NavSettings.InterpolationChartPage);
         }
         private void RegisterAddOns(IContainerRegistry containerRegistry)
         {

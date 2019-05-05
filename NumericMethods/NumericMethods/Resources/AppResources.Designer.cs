@@ -88,6 +88,24 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Błędna funkcja.
+        /// </summary>
+        internal static string Common_InvalidFunction {
+            get {
+                return ResourceManager.GetString("Common_InvalidFunction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Funkcja nie może przyjmować kilku wartości dla jednego argumentu..
+        /// </summary>
+        internal static string Common_InvalidFunction_Message {
+            get {
+                return ResourceManager.GetString("Common_InvalidFunction_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string Common_Ok {
