@@ -3,19 +3,77 @@
     x:Class="NumericMethods.Views.InterpolationPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods">
+    xmlns:controls="clr-namespace:NumericMethods.Views.Controls;assembly=NumericMethods"
+    xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
+    Title="{resources:Translate Common_InputData}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding ShowHelpCommand}"
+            Icon="ic_help"
+            Order="Primary" />
+        <ToolbarItem
+            Command="{Binding AddPointCommand}"
+            Icon="ic_plus"
+            Order="Primary" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label
-                HorizontalOptions="CenterAndExpand"
-                Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" />
-            <Button
-                Margin="16,0,16,16"
-                Command="{Binding GoToSolveInterpolationPageCommand}"
-                Style="{StaticResource GreenButtonStyle}"
-                Text="{resources:Translate Common_Calculate}"
-                VerticalOptions="EndAndExpand" />
-        </StackLayout>
+        <Grid>
+            <StackLayout>
+                <StackLayout Margin="24">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="Interpolacja"
+                        TextColor="{StaticResource NavyBlueColor}" />
+                    <Label
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="Podaj argument, dla którego ma zostać obliczona wartość funkcji:"
+                        TextColor="{StaticResource NavyBlueColor}" />
+                    <StackLayout Margin="48,8" Orientation="Horizontal">
+                        <Label
+                            Margin="0,0,8,0"
+                            FontSize="18"
+                            Text="x = "
+                            TextColor="{StaticResource NavyBlueColor}"
+                            VerticalTextAlignment="Center" />
+                        <controls:ValidationEntry
+                            EntryFontSize="18"
+                            EntryText="{Binding Argument}"
+                            HorizontalOptions="FillAndExpand"
+                            Keyboard="Numeric"
+                            MaximumLength="11"
+                            PropertyName="Argument" />
+                    </StackLayout>
+                    <Label
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="Podaj minimum trzy punkty należące do funkcji: "
+                        TextColor="{StaticResource NavyBlueColor}" />
+                    <ScrollView>
+                        <StackLayout>
+                            <controls:CustomListControl ItemsSource="{Binding PointsList}">
+                                <controls:CustomListControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <controls:PointCoordinatesControl XValue="{Binding X}" YValue="{Binding Y}" />
+                                    </DataTemplate>
+                                </controls:CustomListControl.ItemTemplate>
+                            </controls:CustomListControl>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+                <Button
+                    Margin="16,0,16,16"
+                    Command="{Binding GoToSolveInterpolationPageCommand}"
+                    Style="{StaticResource GreenButtonStyle}"
+                    Text="{resources:Translate Common_Calculate}"
+                    VerticalOptions="EndAndExpand" />
+            </StackLayout>
+            <controls:LoaderView BackgroundColor="{StaticResource WhiteColor}" IsVisible="{Binding IsBusy}" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

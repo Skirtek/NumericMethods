@@ -25,5 +25,7 @@
         public const string Function = nameof(Function);
         public const string Precision = nameof(Precision);
         public const string Formula = nameof(Formula);
+        public const string Points = nameof(Points);
+        public const string Argument = nameof(Argument);
     }
 }

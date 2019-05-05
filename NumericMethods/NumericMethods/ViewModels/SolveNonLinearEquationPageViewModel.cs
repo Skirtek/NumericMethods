@@ -35,6 +35,13 @@ namespace NumericMethods.ViewModels
             set => SetProperty(ref _result, value);
         }
 
+        private string _iterations;
+        public string Iterations
+        {
+            get => _iterations;
+            set => SetProperty(ref _iterations, value);
+        }
+
         private string _formula;
         public string Formula
         {
@@ -180,6 +187,7 @@ namespace NumericMethods.ViewModels
             }
 
             ResultList = new ObservableCollection<ResultList>(roots);
+            Iterations = $"{maxIterations}";
         }
 
         private void FindSquares()
