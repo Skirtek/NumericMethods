@@ -17,6 +17,8 @@
         public const string InterpolationPage = nameof(InterpolationPage);
         public const string SolveInterpolationPage = nameof(SolveInterpolationPage);
         public const string InterpolationChartPage = nameof(InterpolationChartPage);
+        public const string ApproximationPage = nameof(ApproximationPage);
+        public const string SolveApproximationPage = nameof(SolveApproximationPage);
     }
 
     public static class NavParams

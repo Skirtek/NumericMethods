@@ -47,8 +47,10 @@
                 <controls:MenuItemRow
                     Grid.Row="1"
                     Grid.Column="1"
+                    Command="{Binding BindingContext.NavigateToPageCommand, Source={x:Reference MainMenuPageName}}"
                     LabelText="{res:Translate Menu_Approximation}"
-                    MenuIcon="ic_approx" />
+                    MenuIcon="ic_approx"
+                    Parameter="ApproximationPage" />
                 <controls:MenuItemRow
                     Grid.Row="2"
                     Grid.Column="0"

@@ -43,6 +43,8 @@ namespace NumericMethods
             containerRegistry.RegisterForNavigation<InterpolationPage, InterpolationPageViewModel>(NavSettings.InterpolationPage);
             containerRegistry.RegisterForNavigation<SolveInterpolationPage, SolveInterpolationPageViewModel>(NavSettings.SolveInterpolationPage);
             containerRegistry.RegisterForNavigation<InterpolationChartPage, InterpolationChartPageViewModel>(NavSettings.InterpolationChartPage);
+            containerRegistry.RegisterForNavigation<ApproximationPage, ApproximationPageViewModel>(NavSettings.ApproximationPage);
+            containerRegistry.RegisterForNavigation<SolveApproximationPage, SolveApproximationPageViewModel>(NavSettings.SolveApproximationPage);
         }
         private void RegisterAddOns(IContainerRegistry containerRegistry)
         {

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NumericMethods.Views.ApproximationPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:NumericMethods.Views.Controls;assembly=NumericMethods"
+    xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout>
+                <Button
+                    Margin="16,0,16,16"
+                    Command="{Binding GoToSolveApproximationPageCommand}"
+                    Style="{StaticResource GreenButtonStyle}"
+                    Text="{resources:Translate Common_Calculate}"
+                    VerticalOptions="EndAndExpand" />
+            </StackLayout>
+            <controls:LoaderView BackgroundColor="{StaticResource WhiteColor}" IsVisible="{Binding IsBusy}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
