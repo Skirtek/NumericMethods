@@ -39,5 +39,9 @@ namespace NumericMethods.Settings
         public const double Epsilon = 0.00001;
 
         public const int InitialX = -25;
+
+        public const string OxyPlotWebsite = "https://www.nuget.org/packages/OxyPlot.Xamarin.Forms/";
+
+        public const string IconsWebsite = "https://icons8.com/";
     }
 }

@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
-using NumericMethods.Resources;
+using NumericMethods.Views.Controls;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
+using Rg.Plugins.Popup.Services;
 
 namespace NumericMethods.ViewModels
 {
@@ -32,7 +33,9 @@ namespace NumericMethods.ViewModels
 
         private async Task AboutApp()
         {
-            await ShowAlert(AppResources.Menu_AboutApp, AppResources.Menu_AboutAppDescription);
+            var popup = new AboutPopup();
+
+            await PopupNavigation.Instance.PushAsync(popup);
         }
     }
 }

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="NumericMethods.Views.Controls.AboutPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="300"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+    <ScrollView HorizontalOptions="Center" VerticalOptions="Center">
+        <AbsoluteLayout>
+            <Frame
+                Margin="16"
+                BackgroundColor="White"
+                HorizontalOptions="Center">
+                <StackLayout Margin="16" IsClippedToBounds="True">
+                    <Image HorizontalOptions="End" Source="ic_close">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnClosed" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="Twórcami aplikacji są studenci z grupy 5:"
+                        TextColor="{StaticResource NavyBlueColor}"
+                        VerticalOptions="StartAndExpand" />
+                    <Label
+                        FontSize="16"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="Igor Kowalewski"
+                        TextColor="{StaticResource NavyBlueColor}" />
+                    <Label
+                        FontSize="16"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="Dominik Guziałek"
+                        TextColor="{StaticResource NavyBlueColor}" />
+                    <Label
+                        FontSize="16"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="Mariusz Jackowski"
+                        TextColor="{StaticResource NavyBlueColor}" />
+                    <Label
+                        FontSize="16"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="Bartosz Mróz"
+                        TextColor="{StaticResource NavyBlueColor}" />
+                    <Label
+                        FontSize="16"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        TextColor="{StaticResource NavyBlueColor}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Do rysowania wykresów została użyta darmowa biblioteka " />
+                                <Span
+                                    FontAttributes="Bold"
+                                    Text="OxyPlot"
+                                    TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OxyPlotHyperlink_Tapped" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        FontSize="16"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        TextColor="{StaticResource NavyBlueColor}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Wykorzystano ikonki pochodzące z zasobów " />
+                                <Span
+                                    FontAttributes="Bold"
+                                    Text="icons8.com"
+                                    TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="IconsHyperlink_Tapped" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        Margin="0,0,0,16"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="© 2019"
+                        TextColor="{StaticResource NavyBlueColor}" />
+                </StackLayout>
+            </Frame>
+            <ContentView AbsoluteLayout.LayoutBounds="1, 0, -1, -1" AbsoluteLayout.LayoutFlags="PositionProportional">
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer />
+                </ContentView.GestureRecognizers>
+            </ContentView>
+        </AbsoluteLayout>
+    </ScrollView>
+</pages:PopupPage>

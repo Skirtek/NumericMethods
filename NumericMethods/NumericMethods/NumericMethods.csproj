@@ -32,6 +32,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Controls\AboutPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Controls\EquationsNumberPopup.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

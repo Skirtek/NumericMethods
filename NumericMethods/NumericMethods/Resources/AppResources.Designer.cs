@@ -286,23 +286,6 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Twórcami aplikacji są studenci grupy 5:
-        ///Igor Kowalewski,
-        ///Dominik Guziałek,
-        ///Mariusz Jackowski,
-        ///Bartosz Mróz
-        ///
-        ///Do rysowania wykresów została użyta darmowa biblioteka OxyPlot
-        ///Wykorzystano ikonki pochodzące z zasobów icons8.com
-        ///©2019.
-        /// </summary>
-        internal static string Menu_AboutAppDescription {
-            get {
-                return ResourceManager.GetString("Menu_AboutAppDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Równania różniczkowe.
         /// </summary>
         internal static string Menu_DifferentialEquation {
