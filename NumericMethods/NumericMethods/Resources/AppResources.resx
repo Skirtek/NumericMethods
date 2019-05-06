@@ -126,9 +126,6 @@
   <data name="Menu_Interpolation" xml:space="preserve">
     <value>Interpolacja</value>
   </data>
-  <data name="Menu_Approximation" xml:space="preserve">
-    <value>Aproksymacja</value>
-  </data>
   <data name="Menu_Integral" xml:space="preserve">
     <value>Całkowanie numeryczne</value>
   </data>

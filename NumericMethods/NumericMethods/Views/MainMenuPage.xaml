@@ -17,7 +17,6 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -47,49 +46,23 @@
                 <controls:MenuItemRow
                     Grid.Row="1"
                     Grid.Column="1"
-                    Command="{Binding BindingContext.NavigateToPageCommand, Source={x:Reference MainMenuPageName}}"
-                    LabelText="{res:Translate Menu_Approximation}"
-                    MenuIcon="ic_approx"
-                    Parameter="ApproximationPage" />
-                <controls:MenuItemRow
-                    Grid.Row="2"
-                    Grid.Column="0"
                     Command="{Binding NavigateToPageCommand}"
                     LabelText="{res:Translate Menu_Integral}"
                     MenuIcon="ic_integral"
                     Parameter="IntegralPage" />
                 <controls:MenuItemRow
                     Grid.Row="2"
-                    Grid.Column="1"
+                    Grid.Column="0"
                     Command="{Binding BindingContext.NavigateToPageCommand, Source={x:Reference MainMenuPageName}}"
                     LabelText="{res:Translate Menu_DifferentialEquation}"
                     MenuIcon="ic_differential"
                     Parameter="DifferentialEquationPage" />
-                <StackLayout
-                    Grid.Row="3"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Margin="0,8,0,24"
-                    HorizontalOptions="Center"
-                    Orientation="Horizontal"
-                    VerticalOptions="EndAndExpand">
-                    <Image
-                        Margin="0,0,16,0"
-                        Source="ic_info"
-                        VerticalOptions="Center" />
-                    <Label
-                        FontSize="14"
-                        HorizontalTextAlignment="Center"
-                        Text="{res:Translate Menu_AboutApp}"
-                        TextColor="#002a4b"
-                        VerticalOptions="Center" />
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer />
-                    </StackLayout.GestureRecognizers>
-                    <StackLayout.Behaviors>
-                        <behaviors:ViewTappedWithAnimationBehavior Command="{Binding BindingContext.AboutAppCommand, Source={x:Reference MainMenuPageName}}" />
-                    </StackLayout.Behaviors>
-                </StackLayout>
+                <controls:MenuItemRow
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Command="{Binding BindingContext.AboutAppCommand, Source={x:Reference MainMenuPageName}}"
+                    LabelText="{res:Translate Menu_AboutApp}"
+                    MenuIcon="ic_help" />
             </Grid>
         </ScrollView>
     </ContentPage.Content>

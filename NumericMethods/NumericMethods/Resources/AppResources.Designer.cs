@@ -303,15 +303,6 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Aproksymacja.
-        /// </summary>
-        internal static string Menu_Approximation {
-            get {
-                return ResourceManager.GetString("Menu_Approximation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Równania różniczkowe.
         /// </summary>
         internal static string Menu_DifferentialEquation {
