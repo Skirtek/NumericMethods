@@ -1,4 +1,6 @@
-﻿using NumericMethods.Enums;
+﻿using System.Collections.Generic;
+using NumericMethods.Enums;
+using NumericMethods.Interfaces;
 using NumericMethods.Models;
 using NumericMethods.Resources;
 using NumericMethods.Settings;
@@ -9,11 +11,15 @@ namespace NumericMethods.ViewModels
 {
     public class SolveDifferentialEquationPageViewModel : BaseViewModel, INavigatingAware
     {
+        private readonly IExtendedFunctions _extendedFunctions;
+
         public SolveDifferentialEquationPageViewModel(
             INavigationService navigationService,
-            IPageDialogService pageDialogService)
+            IPageDialogService pageDialogService,
+            IExtendedFunctions extendedFunctions)
             : base(navigationService, pageDialogService)
         {
+            _extendedFunctions = extendedFunctions;
             var y = euler(0, 1, 0.025, 0.1);
             var z = RungeKutta(0, 1, 0.1, 0.025);
         }
@@ -53,6 +59,8 @@ namespace NumericMethods.ViewModels
             get => _result;
             set => SetProperty(ref _result, value);
         }
+
+        private List<ExtendedOperation> _extendedOperations = new List<ExtendedOperation>();
 
         private double func(double x, double y)
         {
@@ -97,7 +105,7 @@ namespace NumericMethods.ViewModels
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
             if (!parameters.TryGetValue(NavParams.Formula, out string formula)
-                || !parameters.TryGetValue(NavParams.Precision, out PrecisionLevels precision)
+                || !parameters.TryGetValue(NavParams.Precision, out short precision)
                 || !parameters.TryGetValue(NavParams.Argument, out string argument)
                 || !parameters.TryGetValue(NavParams.InitialValues, out PointModel point))
             {
@@ -107,7 +115,7 @@ namespace NumericMethods.ViewModels
             }
 
             Formula = formula;
-            Precision = precision;
+            Precision = (PrecisionLevels)precision;
 
             if (!float.TryParse(argument, out float arg))
             {
@@ -118,6 +126,15 @@ namespace NumericMethods.ViewModels
 
             Argument = arg;
             Point = point;
+
+            var result = _extendedFunctions.PrepareFunction(Formula);
+            if (!result.IsSuccess)
+            {
+                await ShowError(HandleResponseCode(result.ResponseCode));
+                return;
+            }
+
+            _extendedOperations = result.ExtendedOperations;
 
         }
     }

@@ -55,6 +55,7 @@ namespace NumericMethods
             containerRegistry.Register<IMatrix, Matrix>();
             containerRegistry.Register<IEquation, EquationService>();
             containerRegistry.Register<ICommonFunctions, CommonFunctions>();
+            containerRegistry.Register<IExtendedFunctions, ExtendedFunctions>();
         }
 
         protected override async void OnInitialized()

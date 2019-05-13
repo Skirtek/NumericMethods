@@ -10,5 +10,7 @@ namespace NumericMethods.Models
         public List<Operation> Operations { get; set; }
 
         public FunctionResponse ResponseCode { get; set; }
+
+        public List<ExtendedOperation> ExtendedOperations { get; set; }
     }
 }

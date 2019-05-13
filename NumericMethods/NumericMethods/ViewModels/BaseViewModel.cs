@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using NumericMethods.Enums;
 using NumericMethods.Resources;
 using NumericMethods.Settings;
 using Prism.Commands;
@@ -15,13 +16,6 @@ namespace NumericMethods.ViewModels
     {
         public IPageDialogService PageDialogService { get; }
         public INavigationService NavigationService { get; }
-
-        private string _pageTitle;
-        public string PageTitle
-        {
-            get => _pageTitle;
-            set => SetProperty(ref _pageTitle, value);
-        }
 
         protected BaseViewModel(IPageDialogService pageDialogService) => PageDialogService = pageDialogService;
 
@@ -73,6 +67,23 @@ namespace NumericMethods.ViewModels
         {
             await ShowAlert(AppResources.Common_Ups, message);
             await NavigationService.GoBackAsync();
+        }
+
+        protected string HandleResponseCode(FunctionResponse code)
+        {
+            switch (code)
+            {
+                case FunctionResponse.UnclosedParentheses:
+                    return AppResources.FunctionResponse_UnclosedParentheses_Message;
+                case FunctionResponse.DivideByZero:
+                    return AppResources.FunctionResponse_DivideByZero_Message;
+                case FunctionResponse.WrongFunction:
+                    return AppResources.FunctionResponse_WrongFunction_Message;
+                case FunctionResponse.CriticalError:
+                    return AppResources.Common_SomethingWentWrong;
+                default:
+                    return AppResources.Common_SomethingWentWrong;
+            }
         }
     }
 }

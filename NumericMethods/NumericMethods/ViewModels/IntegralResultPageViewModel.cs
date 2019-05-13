@@ -158,22 +158,7 @@ namespace NumericMethods.ViewModels
 
             if (!result.IsSuccess)
             {
-                switch (result.ResponseCode)
-                {
-                    case FunctionResponse.UnclosedParentheses:
-                        await ShowError(AppResources.FunctionResponse_UnclosedParentheses_Message);
-                        break;
-                    case FunctionResponse.DivideByZero:
-                        await ShowError(AppResources.FunctionResponse_DivideByZero_Message);
-                        break;
-                    case FunctionResponse.WrongFunction:
-                        await ShowError(AppResources.FunctionResponse_WrongFunction_Message);
-                        break;
-                    case FunctionResponse.CriticalError:
-                        await ShowError(AppResources.Common_SomethingWentWrong);
-                        break;
-                }
-
+                await ShowError(HandleResponseCode(result.ResponseCode));
                 return;
             }
 

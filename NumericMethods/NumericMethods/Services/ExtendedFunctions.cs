@@ -9,26 +9,26 @@ using NumericMethods.Settings;
 
 namespace NumericMethods.Services
 {
-    public class CommonFunctions : ICommonFunctions
+    public class ExtendedFunctions : IExtendedFunctions
     {
         private bool PrepareFunctionErrors { get; set; }
 
-        private List<Operation> Operations = new List<Operation>();
+        private List<ExtendedOperation> Operations = new List<ExtendedOperation>();
 
         public Function PrepareFunction(string formula)
         {
             try
             {
-                formula = formula.Replace("-x", "-1x");
+                formula = formula.Replace("-x", "-1x").Replace("-y","-1y");
                 var parts = Regex.Split(formula, @"(?=-)|(?=\+)").ToList();
                 parts.RemoveAll(string.IsNullOrWhiteSpace);
-                var freeExpressions = parts.Where(x => !x.Contains("^") && !x.Contains("x")).ToList();
+                var freeExpressions = parts.Where(x => !x.Contains("^") && !x.Contains("x") && !x.Contains("y")).ToList();
 
                 if (freeExpressions.Any())
                 {
                     foreach (var expression in freeExpressions)
                     {
-                        Operations.Add(new Operation
+                        Operations.Add(new ExtendedOperation
                         {
                             Value = GetValue(expression),
                             Weight = 0
@@ -36,15 +36,13 @@ namespace NumericMethods.Services
                     }
                 }
 
-                parts.RemoveAll(x => !x.Contains("^") && !x.Contains("x"));
+                parts.RemoveAll(x => !x.Contains("^") && !x.Contains("x") && !x.Contains("y"));
 
                 foreach (var expression in parts)
                 {
-                    string exp = expression;
-
-                    if (exp.Contains("^"))
+                    if (expression.Contains("^"))
                     {
-                        var split = exp.Split('^');
+                        var split = expression.Split('^');
                         string part = split[0];
                         float weight;
 
@@ -74,23 +72,25 @@ namespace NumericMethods.Services
                             }
                         }
 
-                        Operations.Add(new Operation
+                        Operations.Add(new ExtendedOperation
                         {
                             Value = GetSingleValue(part),
-                            Weight = weight
+                            Weight = weight,
+                            IsY = expression.Contains("y")
                         });
                     }
                     else
                     {
-                        Operations.Add(new Operation
+                        Operations.Add(new ExtendedOperation
                         {
-                            Value = GetSingleValue(exp),
-                            Weight = 1
+                            Value = GetSingleValue(expression),
+                            Weight = 1,
+                            IsY = expression.Contains("y")
                         });
                     }
                 }
 
-                return PrepareFunctionErrors ? new Function { IsSuccess = false, ResponseCode = FunctionResponse.WrongFunction } : new Function { IsSuccess = true, Operations = Operations };
+                return PrepareFunctionErrors ? new Function { IsSuccess = false, ResponseCode = FunctionResponse.WrongFunction } : new Function { IsSuccess = true, ExtendedOperations = Operations };
             }
             catch (DivideByZeroException)
             {
@@ -103,32 +103,17 @@ namespace NumericMethods.Services
             }
         }
 
-        public List<Operation> CalculateDerivative(IEnumerable<Operation> operations)
+        public List<ExtendedOperation> CalculateDerivative(IEnumerable<ExtendedOperation> operations)
         {
-            var list = new List<Operation>();
-            foreach (var operation in operations)
-            {
-                if (!(Math.Abs(operation.Weight) > AppSettings.Epsilon))
-                {
-                    continue;
-                }
-
-                list.Add(new Operation
-                {
-                    Value = operation.Value * operation.Weight,
-                    Weight = operation.Weight - 1
-                });
-            }
-
-            return list;
+            return null;
         }
 
-        public float FunctionResult(float x, List<Operation> operations)
+        public float FunctionResult(float x, float y, List<ExtendedOperation> operations)
         {
             float result = 0;
             foreach (var operation in operations)
             {
-                result += operation.Value * (float)Math.Pow(x, operation.Weight);
+                result += operation.IsY ? operation.Value * (float)Math.Pow(y, operation.Weight) : operation.Value * (float)Math.Pow(x, operation.Weight);
             }
 
             return result;
@@ -136,10 +121,10 @@ namespace NumericMethods.Services
 
         private float GetSingleValue(string expression)
         {
-            expression = expression.Replace("+", "").ToLower();
-            return expression.Equals("x")
+            expression = expression.Replace("+","").ToLower();
+            return expression.Equals("x") || expression.Equals("y")
                 ? 1
-                : expression.Equals("-x")
+                : expression.Equals("-x") || expression.Equals("-y")
                     ? -1
                     : GetValue(expression.Remove(expression.Length - 1, 1));
         }
