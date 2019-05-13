@@ -28,5 +28,6 @@
         public const string Formula = nameof(Formula);
         public const string Points = nameof(Points);
         public const string Argument = nameof(Argument);
+        public const string InitialValues = nameof(InitialValues);
     }
 }

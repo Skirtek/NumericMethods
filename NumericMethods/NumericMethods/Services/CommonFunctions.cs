@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using NumericMethods.Enums;
 using NumericMethods.Interfaces;
@@ -18,23 +19,28 @@ namespace NumericMethods.Services
         {
             try
             {
-                string lastExpression = Regex.Match(formula, AppSettings.ConstantTermRegex, RegexOptions.RightToLeft)
-                    .ToString();
+                formula = formula.Replace("-x", "-1x");
+                var parts = Regex.Split(formula, @"(?=-)|(?=\+)").ToList();
+                parts.RemoveAll(string.IsNullOrWhiteSpace);
+                var freeExpressions = parts.Where(x => !x.Contains("^") && !x.Contains("x")).ToList();
 
-                if (!string.IsNullOrWhiteSpace(lastExpression) && !lastExpression.Contains("^"))
+                if (freeExpressions.Any())
                 {
-                    Operations.Add(new Operation
+                    foreach (var expression in freeExpressions)
                     {
-                        Value = GetValue(lastExpression),
-                        Weight = 0
-                    });
+                        Operations.Add(new Operation
+                        {
+                            Value = GetValue(expression),
+                            Weight = 0
+                        });
+                    }
                 }
 
-                var expressions = Regex.Matches(formula, AppSettings.ArgumentRegex, RegexOptions.RightToLeft);
+                parts.RemoveAll(x => !x.Contains("^") && !x.Contains("x"));
 
-                foreach (var expression in expressions)
+                foreach (var expression in parts)
                 {
-                    string exp = expression.ToString();
+                    string exp = expression;
 
                     if (exp.Contains("^"))
                     {
