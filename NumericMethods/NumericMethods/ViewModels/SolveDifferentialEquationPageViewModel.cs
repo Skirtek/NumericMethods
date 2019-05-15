@@ -20,8 +20,6 @@ namespace NumericMethods.ViewModels
             : base(navigationService, pageDialogService)
         {
             _extendedFunctions = extendedFunctions;
-            var y = euler(0, 1, 0.025, 0.1);
-            var z = RungeKutta(0, 1, 0.1, 0.025);
         }
 
         private string _formula;
@@ -46,7 +44,6 @@ namespace NumericMethods.ViewModels
         }
 
         private PointModel _point;
-
         public PointModel Point
         {
             get => _point;
@@ -60,25 +57,37 @@ namespace NumericMethods.ViewModels
             set => SetProperty(ref _result, value);
         }
 
-        private List<ExtendedOperation> _extendedOperations = new List<ExtendedOperation>();
-
-        private double func(double x, double y)
+        private string _resultEuler;
+        public string ResultEuler
         {
-            return 2 * x - 4 * y;
+            get => _resultEuler;
+            set => SetProperty(ref _resultEuler, value);
         }
 
-        private double euler(double x0, double y, double h, double x)
+        private string _step;
+        public string Step
+        {
+            get => _step;
+            set => SetProperty(ref _step, value);
+        }
+
+        private List<ExtendedOperation> _derivativeOperations = new List<ExtendedOperation>();
+
+        private double FunctionResult(double x, double y) =>
+            _extendedFunctions.FunctionResult((float)x, (float)y, _derivativeOperations);
+
+        private double CalculateEulerMethod(double x0, double y, double h, double x)
         {
             while (x0 < x)
             {
-                y += h * func(x0, y);
+                y += h * FunctionResult(x0, y);
                 x0 += h;
             }
 
             return y;
         }
 
-        private double RungeKutta(double x0, double y0, double x, double h)
+        private double CalculateRungeKuttaMethod(double x0, double y0, double h, double x)
         {
             int n = (int)((x - x0) / h);
 
@@ -86,13 +95,13 @@ namespace NumericMethods.ViewModels
 
             for (int i = 1; i <= n; i++)
             {
-                var k1 = h * func(x0, y);
+                var k1 = h * FunctionResult(x0, y);
 
-                var k2 = h * func(x0 + 0.5 * h, y + 0.5 * k1);
+                var k2 = h * FunctionResult(x0 + 0.5 * h, y + 0.5 * k1);
 
-                var k3 = h * func(x0 + 0.5 * h, y + 0.5 * k2);
+                var k3 = h * FunctionResult(x0 + 0.5 * h, y + 0.5 * k2);
 
-                var k4 = h * func(x0 + h, y + k3);
+                var k4 = h * FunctionResult(x0 + h, y + k3);
 
                 y += 1.0 / 6.0 * (k1 + 2 * k2 + 2 * k3 + k4);
 
@@ -100,6 +109,21 @@ namespace NumericMethods.ViewModels
             }
 
             return y;
+        }
+
+        private double GetStepSize()
+        {
+            switch (Precision)
+            {
+                case PrecisionLevels.Low:
+                    return 0.125;
+                case PrecisionLevels.Medium:
+                    return 0.025;
+                case PrecisionLevels.High:
+                    return 0.005;
+                default:
+                    return 0.025;
+            }
         }
 
         public async void OnNavigatingTo(INavigationParameters parameters)
@@ -134,8 +158,14 @@ namespace NumericMethods.ViewModels
                 return;
             }
 
-            _extendedOperations = result.ExtendedOperations;
+            _derivativeOperations = _extendedFunctions.CalculateDerivative(result.ExtendedOperations);
 
+            var stepSize = GetStepSize();
+
+            Result = $"{CalculateRungeKuttaMethod(double.Parse(point.X), double.Parse(point.Y), stepSize, arg)}";
+            ResultEuler = $"{CalculateEulerMethod(double.Parse(point.X), double.Parse(point.Y), stepSize, arg)}";
+
+            Step = $"{stepSize}";
         }
     }
 }

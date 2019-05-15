@@ -22,7 +22,7 @@ namespace NumericMethods.Settings
 
         public const string FormulaRegex = "^[xX(),.+-^0-9]+$";
 
-        public const string ExtendedFormulaRegex = "^[xXyY(),.+-^0-9]+$";
+        public const string ExtendedFormulaRegex = "^[xXyY(),.*+-^0-9]+$";
 
 
         public const int DefaultEntryMaxLength = 7;

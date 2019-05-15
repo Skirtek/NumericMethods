@@ -3,14 +3,71 @@
     x:Class="NumericMethods.Views.SolveDifferentialEquationPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:NumericMethods.Views.Controls;assembly=NumericMethods"
     xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
     Title="{resources:Translate Common_Result}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label
-                HorizontalOptions="CenterAndExpand"
-                Text="{Binding Result}"
-                VerticalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <ScrollView>
+                <StackLayout Margin="24">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="Wartość obliczona algorytmem Rungego-Kutty:"
+                        TextColor="{StaticResource NavyBlueColor}" />
+                    <Label
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        TextColor="{StaticResource NavyBlueColor}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="y = " />
+                                <Span FontAttributes="Bold" Text="{Binding Result, Mode=OneWay}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="Wartość obliczona algorytmem Eulera:"
+                        TextColor="{StaticResource NavyBlueColor}" />
+                    <Label
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        TextColor="{StaticResource NavyBlueColor}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="y = " />
+                                <Span FontAttributes="Bold" Text="{Binding ResultEuler, Mode=OneWay}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <StackLayout Margin="16,0,16,16" VerticalOptions="EndAndExpand">
+                        <Label HorizontalOptions="Center" HorizontalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        FontSize="16"
+                                        Text="Wartość kroku dla obu algorytmów: "
+                                        TextColor="{StaticResource NavyBlueColor}" />
+                                    <Span
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="{Binding Step, Mode=OneWay}"
+                                        TextColor="{StaticResource NavyBlueColor}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <controls:LoaderView BackgroundColor="{StaticResource WhiteColor}" IsVisible="{Binding IsBusy}" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -19,7 +19,7 @@ namespace NumericMethods.Services
         {
             try
             {
-                formula = formula.Replace("-x", "-1x").Replace("-y","-1y");
+                formula = formula.Replace("-x", "-1x").Replace("-y", "-1y");
                 var parts = Regex.Split(formula, @"(?=-)|(?=\+)").ToList();
                 parts.RemoveAll(string.IsNullOrWhiteSpace);
                 var freeExpressions = parts.Where(x => !x.Contains("^") && !x.Contains("x") && !x.Contains("y")).ToList();
@@ -40,53 +40,126 @@ namespace NumericMethods.Services
 
                 foreach (var expression in parts)
                 {
-                    if (expression.Contains("^"))
+                    if (expression.Contains("x") && expression.Contains("y"))
                     {
-                        var split = expression.Split('^');
-                        string part = split[0];
-                        float weight;
+                        var ingredients = Regex.Split(expression, "\\*").ToList();
+                        var result = new Multiplying { IsPositive = ingredients[0].Substring(0, 1).Equals("+") };
+                        ingredients[0] = ingredients[0].Remove(0, 1);
 
-                        if (Regex.Match(split[1], "\\(([0-9]*[.,])?[0-9]+/([0-9]*[.,])?[0-9]+\\)").Success)
+                        foreach (var exp in ingredients)
                         {
-                            split[1] = split[1].Remove(split[1].Length - 1, 1).Remove(0, 1);
-                            var components = split[1].Split('/');
-                            float.TryParse(components[0], out float up);
-                            float.TryParse(components[1], out float down);
-
-                            if (Math.Abs(down) < AppSettings.Epsilon)
+                            bool isX = exp.Contains("x");
+                            if (exp.Contains("^"))
                             {
-                                return new Function { IsSuccess = false, ResponseCode = FunctionResponse.DivideByZero };
-                            }
+                                var split = exp.Split('^');
+                                string part = split[0];
+                                float weight;
 
-                            weight = up / down;
-                        }
-                        else if (Regex.Match(split[1], "\\(.*?\\)").Success)
-                        {
-                            return new Function { IsSuccess = false, ResponseCode = FunctionResponse.UnclosedParentheses };
-                        }
-                        else
-                        {
-                            if (!float.TryParse(split[1].Replace(".", ","), out weight))
+                                if (Regex.Match(split[1], "\\(([0-9]*[.,])?[0-9]+/([0-9]*[.,])?[0-9]+\\)").Success)
+                                {
+                                    split[1] = split[1].Remove(split[1].Length - 1, 1).Remove(0, 1);
+                                    var components = split[1].Split('/');
+                                    float.TryParse(components[0], out float up);
+                                    float.TryParse(components[1], out float down);
+
+                                    if (Math.Abs(down) < AppSettings.Epsilon)
+                                    {
+                                        return new Function { IsSuccess = false, ResponseCode = FunctionResponse.DivideByZero };
+                                    }
+
+                                    weight = up / down;
+                                }
+                                else if (Regex.Match(split[1], "\\(.*?\\)").Success)
+                                {
+                                    return new Function { IsSuccess = false, ResponseCode = FunctionResponse.UnclosedParentheses };
+                                }
+                                else
+                                {
+                                    if (!float.TryParse(split[1].Replace(".", ","), out weight))
+                                    {
+                                        return new Function { IsSuccess = false, ResponseCode = FunctionResponse.WrongFunction };
+                                    }
+                                }
+
+                                if (isX)
+                                {
+                                    result.XValue = GetSingleValue(part);
+                                    result.XWeight = weight;
+                                }
+                                else
+                                {
+                                    result.YValue = GetSingleValue(part);
+                                    result.YWeight = weight;
+                                }
+
+                            }
+                            else
                             {
-                                return new Function { IsSuccess = false, ResponseCode = FunctionResponse.WrongFunction };
+                                if (isX)
+                                {
+                                    result.XValue = GetSingleValue(exp);
+                                    result.XWeight = 1;
+                                }
+                                else
+                                {
+                                    result.YValue = GetSingleValue(exp);
+                                    result.YWeight = 1;
+                                }
                             }
                         }
 
-                        Operations.Add(new ExtendedOperation
-                        {
-                            Value = GetSingleValue(part),
-                            Weight = weight,
-                            IsY = expression.Contains("y")
-                        });
+                        Operations.Add(new ExtendedOperation { Multiplication = result, HasMultiplication = true });
                     }
                     else
                     {
-                        Operations.Add(new ExtendedOperation
+                        if (expression.Contains("^"))
                         {
-                            Value = GetSingleValue(expression),
-                            Weight = 1,
-                            IsY = expression.Contains("y")
-                        });
+                            var split = expression.Split('^');
+                            string part = split[0];
+                            float weight;
+
+                            if (Regex.Match(split[1], "\\(([0-9]*[.,])?[0-9]+/([0-9]*[.,])?[0-9]+\\)").Success)
+                            {
+                                split[1] = split[1].Remove(split[1].Length - 1, 1).Remove(0, 1);
+                                var components = split[1].Split('/');
+                                float.TryParse(components[0], out float up);
+                                float.TryParse(components[1], out float down);
+
+                                if (Math.Abs(down) < AppSettings.Epsilon)
+                                {
+                                    return new Function { IsSuccess = false, ResponseCode = FunctionResponse.DivideByZero };
+                                }
+
+                                weight = up / down;
+                            }
+                            else if (Regex.Match(split[1], "\\(.*?\\)").Success)
+                            {
+                                return new Function { IsSuccess = false, ResponseCode = FunctionResponse.UnclosedParentheses };
+                            }
+                            else
+                            {
+                                if (!float.TryParse(split[1].Replace(".", ","), out weight))
+                                {
+                                    return new Function { IsSuccess = false, ResponseCode = FunctionResponse.WrongFunction };
+                                }
+                            }
+
+                            Operations.Add(new ExtendedOperation
+                            {
+                                Value = GetSingleValue(part),
+                                Weight = weight,
+                                IsY = expression.Contains("y")
+                            });
+                        }
+                        else
+                        {
+                            Operations.Add(new ExtendedOperation
+                            {
+                                Value = GetSingleValue(expression),
+                                Weight = 1,
+                                IsY = expression.Contains("y")
+                            });
+                        }
                     }
                 }
 
@@ -105,7 +178,37 @@ namespace NumericMethods.Services
 
         public List<ExtendedOperation> CalculateDerivative(IEnumerable<ExtendedOperation> operations)
         {
-            return null;
+            var list = new List<ExtendedOperation>();
+
+            foreach (var operation in operations)
+            {
+                if (operation.HasMultiplication)
+                {
+                    list.Add(new ExtendedOperation
+                    {
+                        HasMultiplication = true,
+                        Multiplication = new Multiplying
+                        {
+                            IsPositive = operation.Multiplication.IsPositive,
+                            YValue = operation.Multiplication.YValue,
+                            YWeight = operation.Multiplication.YValue,
+                            XValue = operation.Multiplication.XValue * operation.Multiplication.XWeight,
+                            XWeight = operation.Multiplication.XWeight - 1
+                        }
+                    });
+                }
+                else if (Math.Abs(operation.Weight) > AppSettings.Epsilon && !operation.IsY)
+                {
+                    list.Add(new ExtendedOperation
+                    {
+                        Value = operation.Value * operation.Weight,
+                        Weight = operation.Weight - 1,
+                        IsY = operation.IsY
+                    });
+                }
+            }
+
+            return list;
         }
 
         public float FunctionResult(float x, float y, List<ExtendedOperation> operations)
@@ -113,7 +216,18 @@ namespace NumericMethods.Services
             float result = 0;
             foreach (var operation in operations)
             {
-                result += operation.IsY ? operation.Value * (float)Math.Pow(y, operation.Weight) : operation.Value * (float)Math.Pow(x, operation.Weight);
+                if (operation.HasMultiplication)
+                {
+                    var value = operation.Multiplication.XValue *
+                                (float)Math.Pow(x, operation.Multiplication.XWeight) *
+                                operation.Multiplication.YValue * (float)Math.Pow(y, operation.Multiplication.YWeight);
+
+                    result += operation.Multiplication.IsPositive ? value : value * -1;
+                }
+                else
+                {
+                    result += operation.IsY ? operation.Value * (float)Math.Pow(y, operation.Weight) : operation.Value * (float)Math.Pow(x, operation.Weight);
+                }
             }
 
             return result;
@@ -121,7 +235,7 @@ namespace NumericMethods.Services
 
         private float GetSingleValue(string expression)
         {
-            expression = expression.Replace("+","").ToLower();
+            expression = expression.Replace("+", "").ToLower();
             return expression.Equals("x") || expression.Equals("y")
                 ? 1
                 : expression.Equals("-x") || expression.Equals("-y")

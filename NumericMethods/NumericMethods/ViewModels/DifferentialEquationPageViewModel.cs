@@ -50,8 +50,7 @@ namespace NumericMethods.ViewModels
             set => SetProperty(ref _selectedPrecision, value);
         }
 
-        private PointModel _initialValues;
-
+        private PointModel _initialValues = new PointModel();
         public PointModel InitialValues
         {
             get => _initialValues;
@@ -68,7 +67,6 @@ namespace NumericMethods.ViewModels
             }
 
             IsBusy = true;
-
             await NavigationService.NavigateAsync(NavSettings.SolveDifferentialEquationPage,
                 new NavigationParameters
                 {

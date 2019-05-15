@@ -26,7 +26,7 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="x₀ = " />
-                                <Span FontAttributes="Bold" Text="{Binding Result}" />
+                                <Span FontAttributes="Bold" Text="{Binding Result, Mode=OneWay}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -66,7 +66,7 @@
                                     <Span
                                         FontAttributes="Bold"
                                         FontSize="18"
-                                        Text="{Binding Iterations}"
+                                        Text="{Binding Iterations, Mode=OneWay}"
                                         TextColor="{StaticResource NavyBlueColor}" />
                                 </FormattedString>
                             </Label.FormattedText>

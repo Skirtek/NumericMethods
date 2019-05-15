@@ -34,10 +34,7 @@
                     HorizontalTextAlignment="Center"
                     Text="Podaj wartości początkowe"
                     TextColor="{StaticResource NavyBlueColor}" />
-                <controls:PointCoordinatesControl
-                    BindingContext="{Binding InitialValues}"
-                    XValue="{Binding X}"
-                    YValue="{Binding Y}" />
+                <controls:PointCoordinatesControl XValue="{Binding InitialValues.X}" YValue="{Binding InitialValues.Y}" />
                 <Label
                     FontSize="16"
                     HorizontalOptions="Center"
