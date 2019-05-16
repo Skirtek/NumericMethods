@@ -71,10 +71,10 @@ namespace NumericMethods.ViewModels
             set => SetProperty(ref _step, value);
         }
 
-        private List<ExtendedOperation> _derivativeOperations = new List<ExtendedOperation>();
+        private List<ExtendedOperation> _functionOperations = new List<ExtendedOperation>();
 
         private double FunctionResult(double x, double y) =>
-            _extendedFunctions.FunctionResult((float)x, (float)y, _derivativeOperations);
+            _extendedFunctions.FunctionResult((float)x, (float)y, _functionOperations);
 
         private double CalculateEulerMethod(double x0, double y, double h, double x)
         {
@@ -158,7 +158,7 @@ namespace NumericMethods.ViewModels
                 return;
             }
 
-            _derivativeOperations = _extendedFunctions.CalculateDerivative(result.ExtendedOperations);
+            _functionOperations = result.ExtendedOperations;
 
             var stepSize = GetStepSize();
 

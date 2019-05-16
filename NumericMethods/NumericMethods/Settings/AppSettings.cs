@@ -20,7 +20,7 @@ namespace NumericMethods.Settings
             "Wysoka dokładność",
         };
 
-        public const string FormulaRegex = "^[xX(),.+-^0-9]+$";
+        public const string FormulaRegex = "[xX()sincostgctg,.*+-^0-9elnlog]+$";
 
         public const string ExtendedFormulaRegex = "^[xXyY(),.*+-^0-9]+$";
 
