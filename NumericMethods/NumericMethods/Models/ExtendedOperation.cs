@@ -7,5 +7,8 @@
         public Multiplying Multiplication { get; set; }
 
         public bool HasMultiplication { get; set; }
+
+        public bool HasSpecialOperation { get; set; }
+
     }
 }

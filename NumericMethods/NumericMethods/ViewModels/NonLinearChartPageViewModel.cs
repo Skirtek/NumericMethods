@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using NumericMethods.Enums;
 using NumericMethods.Models;
 using NumericMethods.Resources;
 using NumericMethods.Settings;
@@ -96,9 +98,20 @@ namespace NumericMethods.ViewModels
                 MarkerType = MarkerType.Circle,
                 Title = string.Format(AppResources.NonLinearChart_Function, Formula)
             };
-            for (int i = -Size; i <= Size; i++)
+
+            if (_operations.Count(x => x.Type == OperationType.NaturalLogarithm) == 0)
             {
-                series1.Points.Add(new DataPoint(i, CalculateValue(i)));
+                for (int i = -Size; i <= Size; i++)
+                {
+                    series1.Points.Add(new DataPoint(i, CalculateValue(i)));
+                }
+            }
+            else
+            {
+                for (double i = 2*Size ; i > 0; i-=0.1)
+                {
+                    series1.Points.Add(new DataPoint(i, CalculateValue(i)));
+                }
             }
 
             plot.Series.Add(series1);
@@ -106,16 +119,47 @@ namespace NumericMethods.ViewModels
             Model = plot;
         }
 
-        private float CalculateValue(int argument)
+        private float CalculateValue(double x)
         {
-            float value = 0;
-
+            float result = 0;
             foreach (var operation in _operations)
             {
-                value += operation.Value * (float)Math.Pow(argument, operation.Weight);
+                switch (operation.Type)
+                {
+                    case OperationType.Euler:
+                        result += operation.Value;
+                        break;
+                    case OperationType.Sinus:
+                        result += operation.ParenthesesValue.IsVariable
+                            ? operation.Value * (float)Math.Pow(Math.Sin(Math.Pow(operation.ParenthesesValue.NumberValue * x, operation.ParenthesesValue.NumberWeight)), operation.Weight)
+                            : operation.Value * (float)Math.Pow(Math.Sin(Math.Pow(operation.ParenthesesValue.NumberValue, operation.ParenthesesValue.NumberWeight)), operation.Weight);
+                        break;
+                    case OperationType.Cosinus:
+                        result += operation.ParenthesesValue.IsVariable
+                            ? operation.Value * (float)Math.Pow(Math.Cos(Math.Pow(operation.ParenthesesValue.NumberValue * x, operation.ParenthesesValue.NumberWeight)), operation.Weight)
+                            : operation.Value * (float)Math.Pow(Math.Cos(Math.Pow(operation.ParenthesesValue.NumberValue, operation.ParenthesesValue.NumberWeight)), operation.Weight);
+                        break;
+                    case OperationType.Tangens:
+                        result += operation.ParenthesesValue.IsVariable
+                            ? operation.Value * (float)Math.Pow(Math.Tan(Math.Pow(operation.ParenthesesValue.NumberValue * x, operation.ParenthesesValue.NumberWeight)), operation.Weight)
+                            : operation.Value * (float)Math.Pow(Math.Tan(Math.Pow(operation.ParenthesesValue.NumberValue, operation.ParenthesesValue.NumberWeight)), operation.Weight);
+                        break;
+                    case OperationType.Cotangens:
+                        result += operation.ParenthesesValue.IsVariable
+                            ? operation.Value * (float)Math.Pow(1 / Math.Tan(Math.Pow(operation.ParenthesesValue.NumberValue * x, operation.ParenthesesValue.NumberWeight)), operation.Weight)
+                            : operation.Value * (float)Math.Pow(1 / Math.Tan(Math.Pow(operation.ParenthesesValue.NumberValue, operation.ParenthesesValue.NumberWeight)), operation.Weight);
+                        break;
+                    case OperationType.NaturalLogarithm:
+                        break;
+                    case OperationType.Logarithm:
+                        break;
+                    case OperationType.Common:
+                        result += operation.Value * (float)Math.Pow(x, operation.Weight);
+                        break;
+                }
             }
 
-            return value;
+            return result;
         }
 
         private PlotModel PrepareCoordinateSystem()

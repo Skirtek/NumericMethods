@@ -127,6 +127,12 @@ namespace NumericMethods.ViewModels
                 _operations = result.Operations;
                 _initialFunction = result.Operations;
 
+                if (_operations.Count == 0)
+                {
+                    await ShowAlert(AppResources.Common_Ups, "Nie zostanie wykonana żadna operacja");
+                    return;
+                }
+
                 CalculateNewtonRaphsonMethod(AppSettings.InitialX);
                 GraeffesMethod(precision);
             }
@@ -159,12 +165,12 @@ namespace NumericMethods.ViewModels
             {
                 var value = (float)Math.Pow(_operations[i].Value / _operations[i + 1].Value,
                     1.0 / Math.Pow(2, maxIterations));
-                if (Math.Abs(_commonFunctions.FunctionResult(value, _initialFunction)) < 1)
+                if (Math.Abs(_commonFunctions.FunctionResult(value, _initialFunction)) < 10)
                 {
                     roots.Add(new ResultList { Value = value, Position = $"{iterator}. " });
                     iterator++;
                 }
-                else if (Math.Abs(_commonFunctions.FunctionResult(value * -1, _initialFunction)) < 1)
+                else if (Math.Abs(_commonFunctions.FunctionResult(value * -1, _initialFunction)) < 10)
                 {
                     roots.Add(new ResultList { Value = value * -1, Position = $"{iterator}. " });
                     iterator++;
@@ -247,7 +253,13 @@ namespace NumericMethods.ViewModels
                 }
             }
 
-            Result = iterations == 100000 ? "Brak rozwiązania" : $"{Math.Round(x * 100.0) / 100.0}";
+            if (float.IsNaN(x) || Formula.Contains("ln[x]") && x < 0)
+            {
+                Result = "Brak rozwiązania";
+                return;
+            }
+
+            Result = $"{Math.Round(x * 100.0) / 100.0}";
         }
     }
 }
