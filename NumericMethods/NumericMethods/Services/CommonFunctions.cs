@@ -321,7 +321,7 @@ namespace NumericMethods.Services
                     break;
             }
 
-            split[0] = split[0].Replace("+","1");
+            split[0] = split[0].Replace("+", "1");
 
             split[0] = string.IsNullOrWhiteSpace(split[0]) ? "1" : split[0];
             split[1] = split[1].Replace("^", "");
@@ -450,6 +450,25 @@ namespace NumericMethods.Services
             if (expression.Contains("."))
             {
                 expression = expression.Replace(".", ",");
+            }
+
+            if (expression.Contains("π"))
+            {
+                expression = expression.Replace("π", "");
+
+                if (expression.Equals("-"))
+                {
+                    return -1 * (float)Math.PI;
+                }
+
+                if (string.IsNullOrWhiteSpace(expression))
+                {
+                    return (float)Math.PI;
+                }
+
+                PrepareFunctionErrors = !float.TryParse(expression, out float piValue);
+
+                return piValue * (float)Math.PI;
             }
 
             PrepareFunctionErrors = !float.TryParse(expression, out float value);
