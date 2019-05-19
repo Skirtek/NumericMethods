@@ -9,7 +9,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem
             Command="{Binding ShowHelpCommand}"
-            Icon="ic_help"
+            Icon="ic_help_white"
             Order="Primary" />
         <ToolbarItem
             Command="{Binding ChangeEquationsNumberCommand}"

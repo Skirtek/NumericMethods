@@ -10,7 +10,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem
             Command="{Binding ShowHelpCommand}"
-            Icon="ic_help"
+            Icon="ic_help_white"
             Order="Primary" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
@@ -69,7 +69,7 @@
                     ItemsSource="{Binding Source={x:Static local:AppSettings.NonLinearEquationPrecisionOptions}}"
                     SelectedIndex="{Binding SelectedPrecision}" />
                 <Button
-                    Margin="0,0,0,24"
+                    Margin="0,24,0,0"
                     Command="{Binding CalculateDifferentialCommand}"
                     Style="{StaticResource GreenButtonStyle}"
                     Text="{resources:Translate Common_Calculate}"
