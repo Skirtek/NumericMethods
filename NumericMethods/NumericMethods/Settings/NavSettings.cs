@@ -21,6 +21,7 @@
         public const string NonLinearEquationHelpPage = nameof(NonLinearEquationHelpPage);
         public const string InterpolationHelpPage = nameof(InterpolationHelpPage);
         public const string IntegralHelpPage = nameof(IntegralHelpPage);
+        public const string DifferentialHelpPage = nameof(DifferentialHelpPage);
     }
 
     public static class NavParams

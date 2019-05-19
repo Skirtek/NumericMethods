@@ -3,7 +3,6 @@ using NumericMethods.Services;
 using NumericMethods.Settings;
 using NumericMethods.ViewModels;
 using NumericMethods.Views;
-using Plugin.Connectivity;
 using Prism;
 using Prism.Ioc;
 using Prism.Unity;
@@ -47,10 +46,11 @@ namespace NumericMethods
             containerRegistry.RegisterForNavigation<NonLinearEquationHelpPage, HelpPagesViewModel>(NavSettings.NonLinearEquationHelpPage);
             containerRegistry.RegisterForNavigation<InterpolationHelpPage, HelpPagesViewModel>(NavSettings.InterpolationHelpPage);
             containerRegistry.RegisterForNavigation<IntegralHelpPage, HelpPagesViewModel>(NavSettings.IntegralHelpPage);
+            containerRegistry.RegisterForNavigation<DifferentialHelpPage, HelpPagesViewModel>(NavSettings.DifferentialHelpPage);
         }
+
         private void RegisterAddOns(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterInstance(CrossConnectivity.Current);
             containerRegistry.RegisterInstance(UserSettings.Instance);
         }
 

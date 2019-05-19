@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="NumericMethods.Views.NonLinearEquationHelpPage"
+    x:Class="NumericMethods.Views.DifferentialHelpPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
@@ -13,19 +13,19 @@
                     FontSize="18"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
-                    Text="Funkcje nieliniowe - pomoc"
+                    Text="Równania różniczkowe - pomoc"
                     TextColor="{StaticResource NavyBlueColor}" />
                 <Label
                     FontSize="16"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
-                    Text="Moduł pozwala na znalezienie miejsc zerowych wielomianu dowolnego stopnia. Do obliczeń używane są metody: Newtona-Raphsona oraz Graeff'ego"
+                    Text="Moduł pozwala na wyliczenie wartości różniczki dy/dx wybranej funkcji, dla wskazanego argumentu. Obliczenia dokonywane są metodą Eulera oraz algorytmem Rungego-Kutty"
                     TextColor="{StaticResource NavyBlueColor}" />
                 <Label
                     FontSize="16"
                     HorizontalOptions="Start"
                     HorizontalTextAlignment="Start"
-                    Text="1. Wzory funkcji powinny zawierać tylko jedną niewiadomą - x"
+                    Text="1. We wzorze funkcji możliwe jest użycie dwóch zmiennych tj. x i y. Możliwe jest też ich mnożenie za pomocą znaku * np. x*y"
                     TextColor="{StaticResource NavyBlueColor}" />
                 <Label
                     FontSize="16"
@@ -37,26 +37,20 @@
                     FontSize="16"
                     HorizontalOptions="Start"
                     HorizontalTextAlignment="Start"
-                    Text="3. Możliwe jest użycie, we wzorze funkcji, liczby Eulera oraz liczby Pi. Przykładowy wzór funkcji: x^3+4e+π"
+                    Text="3. Konieczne jest podanie wartości początkowych x i y. W razie pozostawienia pól pustymi, za wartość początkową zostanie przyjęte x = 0 i y = 0"
                     TextColor="{StaticResource NavyBlueColor}" />
                 <Label
                     FontSize="16"
                     HorizontalOptions="Start"
                     HorizontalTextAlignment="Start"
-                    Text="4. Aby zwiększyć dokładność metody Graeff'ego można ustalić ilość iteracji. Dla niskiej dokładności są to 2 iteracje, dla średniej dokładności (domyślnie) są to 4 iteracje, a dla wysokiej dokładnosci metoda wykonuje 8 iteracji."
-                    TextColor="{StaticResource NavyBlueColor}" />
-                <Label
-                    FontSize="16"
-                    HorizontalOptions="Start"
-                    HorizontalTextAlignment="Start"
-                    Text="5. Po znalezieniu miejsc zerowych możliwe jest narysowanie wykresu funkcji w celu graficznego potwierdzenia poprawności rozwiązania. W tym celu należy nacisnąć przycisk 'Narysuj wykres'"
+                    Text="4. Konieczne jest podanie argumentu, dla którego ma zostać obliczona wartość różniczki."
                     TextColor="{StaticResource NavyBlueColor}" />
                 <Label
                     Margin="0,0,0,24"
                     FontSize="16"
                     HorizontalOptions="Start"
                     HorizontalTextAlignment="Start"
-                    Text="6. Aby zwiększyć dziedzinę wykresu funkcji, należy nacisnąć przycisk symbolizujący wykres funkcji w górnym prawym rogu i wybrać odpowiednią wartość. Domyślną wartością jest 50, co znaczy, że wykres będzie rysowany dla argumentów od -50 do 50."
+                    Text="5. Możliwa jest zmiana dokładności metody obliczającej. Dla niskiej dokładności wartość kroku to 0.125, dla średniej dokładności to 0.025, a dla wysokiej dokładności to 0.005"
                     TextColor="{StaticResource NavyBlueColor}" />
             </StackLayout>
         </ScrollView>
