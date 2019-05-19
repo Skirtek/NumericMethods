@@ -44,7 +44,7 @@ namespace NumericMethods.Services
                     {
                         var ingredients = Regex.Split(expression, "\\*").ToList();
                         var result = new Multiplying { IsPositive = ingredients[0].Substring(0, 1).Equals("+") };
-                        ingredients[0] = ingredients[0].Remove(0, 1);
+                        ingredients[0] = ingredients[0].Replace("+","");
 
                         foreach (var exp in ingredients)
                         {

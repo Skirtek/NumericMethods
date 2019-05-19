@@ -25,7 +25,7 @@
                     FontSize="16"
                     HorizontalOptions="Start"
                     HorizontalTextAlignment="Start"
-                    Text="1. We wzorze funkcji możliwe jest użycie dwóch zmiennych tj. x i y. Możliwe jest też ich mnożenie za pomocą znaku * np. x*y"
+                    Text="1. We wzorze funkcji możliwe jest użycie dwóch zmiennych tj. x i y. Możliwe jest też ich mnożenie za pomocą znaku * np. x*4y"
                     TextColor="{StaticResource NavyBlueColor}" />
                 <Label
                     FontSize="16"

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using NumericMethods.Enums;
 using NumericMethods.Interfaces;
 using NumericMethods.Models;
@@ -128,44 +129,63 @@ namespace NumericMethods.ViewModels
 
         public async void OnNavigatingTo(INavigationParameters parameters)
         {
-            if (!parameters.TryGetValue(NavParams.Formula, out string formula)
-                || !parameters.TryGetValue(NavParams.Precision, out short precision)
-                || !parameters.TryGetValue(NavParams.Argument, out string argument)
-                || !parameters.TryGetValue(NavParams.InitialValues, out PointModel point))
+            try
+            {
+                if (!parameters.TryGetValue(NavParams.Formula, out string formula)
+                    || !parameters.TryGetValue(NavParams.Precision, out short precision)
+                    || !parameters.TryGetValue(NavParams.Argument, out string argument)
+                    || !parameters.TryGetValue(NavParams.InitialValues, out PointModel point))
+                {
+                    await ShowAlert(AppResources.Common_Ups, AppResources.Common_SomethingWentWrong);
+                    await NavigationService.GoBackAsync();
+                    return;
+                }
+
+                Formula = formula;
+                Precision = (PrecisionLevels)precision;
+
+                if (!float.TryParse(argument, out float arg))
+                {
+                    await ShowAlert(AppResources.Common_Ups, AppResources.Common_SomethingWentWrong);
+                    await NavigationService.GoBackAsync();
+                    return;
+                }
+
+                Argument = arg;
+                Point = point;
+
+                if (point.X == null)
+                {
+                    point.X = "0";
+                }
+
+                if (point.Y == null)
+                {
+                    point.Y = "0";
+                }
+
+                var result = _extendedFunctions.PrepareFunction(Formula);
+
+                if (!result.IsSuccess)
+                {
+                    await ShowError(HandleResponseCode(result.ResponseCode));
+                    return;
+                }
+
+                _functionOperations = result.ExtendedOperations;
+
+                var stepSize = GetStepSize();
+
+                Result = $"{CalculateRungeKuttaMethod(double.Parse(point.X), double.Parse(point.Y), stepSize, arg)}";
+                ResultEuler = $"{CalculateEulerMethod(double.Parse(point.X), double.Parse(point.Y), stepSize, arg)}";
+
+                Step = $"{stepSize}";
+            }
+            catch (Exception ex)
             {
                 await ShowAlert(AppResources.Common_Ups, AppResources.Common_SomethingWentWrong);
                 await NavigationService.GoBackAsync();
-                return;
             }
-
-            Formula = formula;
-            Precision = (PrecisionLevels)precision;
-
-            if (!float.TryParse(argument, out float arg))
-            {
-                await ShowAlert(AppResources.Common_Ups, AppResources.Common_SomethingWentWrong);
-                await NavigationService.GoBackAsync();
-                return;
-            }
-
-            Argument = arg;
-            Point = point;
-
-            var result = _extendedFunctions.PrepareFunction(Formula);
-            if (!result.IsSuccess)
-            {
-                await ShowError(HandleResponseCode(result.ResponseCode));
-                return;
-            }
-
-            _functionOperations = result.ExtendedOperations;
-
-            var stepSize = GetStepSize();
-
-            Result = $"{CalculateRungeKuttaMethod(double.Parse(point.X), double.Parse(point.Y), stepSize, arg)}";
-            ResultEuler = $"{CalculateEulerMethod(double.Parse(point.X), double.Parse(point.Y), stepSize, arg)}";
-
-            Step = $"{stepSize}";
         }
     }
 }
