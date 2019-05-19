@@ -121,7 +121,7 @@
     <value>Równania liniowe</value>
   </data>
   <data name="Menu_NonLinearEquation" xml:space="preserve">
-    <value>Równania nieliniowe</value>
+    <value>Funkcje nieliniowe</value>
   </data>
   <data name="Menu_Interpolation" xml:space="preserve">
     <value>Interpolacja</value>
@@ -227,5 +227,11 @@
   </data>
   <data name="Common_InvalidFunction_Message" xml:space="preserve">
     <value>Funkcja nie może przyjmować kilku wartości dla jednego argumentu.</value>
+  </data>
+  <data name="Common_Help" xml:space="preserve">
+    <value>Pomoc</value>
+  </data>
+  <data name="HelpPage_Power" xml:space="preserve">
+    <value>2. Aby użyć potęgi we wzorze, konieczne jest użycie znaku ^. Przykładowy wzór funkcji: x^4+7x^2-4</value>
   </data>
 </root>

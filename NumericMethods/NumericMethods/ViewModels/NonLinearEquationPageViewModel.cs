@@ -16,6 +16,7 @@ namespace NumericMethods.ViewModels
             : base(navigationService, pageDialogService)
         {
             CalculateNonLinearEquationCommand = new DelegateCommand(CalculateNonLinearEquation);
+            ShowHelpCommand = new DelegateCommand(ShowHelp);
         }
 
         private string _formula;
@@ -39,6 +40,17 @@ namespace NumericMethods.ViewModels
         }
 
         public DelegateCommand CalculateNonLinearEquationCommand { get; set; }
+
+        public DelegateCommand ShowHelpCommand { get; set; }
+
+        private async void ShowHelp()
+        {
+            IsBusy = true;
+
+            await NavigationService.NavigateAsync(NavSettings.NonLinearEquationHelpPage);
+
+            IsBusy = false;
+        }
 
         private async void CalculateNonLinearEquation()
         {

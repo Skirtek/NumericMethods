@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NumericMethods.Views.IntegralHelpPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
+    Title="{resources:Translate Common_Help}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="24" Spacing="16">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Całkowanie numeryczne - pomoc"
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Moduł pozwala na wyliczenie wartości całki oznaczonej. Obliczenia dokonywane są metodą trapezów oraz metodą prostokątów."
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Start"
+                    Text="1. Należy pamiętać, że dolna granica całkowania musi być mniejsza niż górna granica. W innym przypadku obliczenia nie zostaną dokonane."
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Start"
+                    Text="{resources:Translate HelpPage_Power}"
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Start"
+                    Text="3. We wzorze funkcji możliwe jest użycie: liczby Eulera (e), liczby Pi (π), funkcji trygonometrycznych (sin,cos,tan,ctg) oraz logarytmu naturalnego (ln). Przykładowa funkcja: 4e+π+x^4-ln[x]+3sin^3[x^3]"
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label
+                    Margin="0,0,0,24"
+                    FontSize="16"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Start"
+                    Text="4. Możliwa jest zmiana ilości iteracji metody na własną. W tym celu jako dokładność całkowania należy wybrać opcję 'Własna...' i wpisać liczbę iteracji. Maksymalną ilością iteracji jest 999999"
+                    TextColor="{StaticResource NavyBlueColor}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

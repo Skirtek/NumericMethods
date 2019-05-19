@@ -79,6 +79,15 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pomoc.
+        /// </summary>
+        internal static string Common_Help {
+            get {
+                return ResourceManager.GetString("Common_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wprowadź dane.
         /// </summary>
         internal static string Common_InputData {
@@ -174,6 +183,15 @@ namespace NumericMethods.Resources {
         internal static string FunctionResponse_WrongFunction_Message {
             get {
                 return ResourceManager.GetString("FunctionResponse_WrongFunction_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2. Aby użyć potęgi we wzorze, konieczne jest użycie znaku ^. Przykładowy wzór funkcji: x^4+7x^2-4.
+        /// </summary>
+        internal static string HelpPage_Power {
+            get {
+                return ResourceManager.GetString("HelpPage_Power", resourceCulture);
             }
         }
         
@@ -322,7 +340,7 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Równania nieliniowe.
+        ///   Looks up a localized string similar to Funkcje nieliniowe.
         /// </summary>
         internal static string Menu_NonLinearEquation {
             get {
