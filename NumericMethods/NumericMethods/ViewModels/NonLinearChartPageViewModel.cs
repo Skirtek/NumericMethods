@@ -116,6 +116,20 @@ namespace NumericMethods.ViewModels
 
             plot.Series.Add(series1);
 
+            var series2 = new LineSeries
+            {
+                MarkerType = MarkerType.None,
+                Color = OxyColor.FromRgb(0, 0, 255),
+                Title = "y = 0"
+            };
+
+            for (int i = -Size; i <= Size; i++)
+            {
+                series2.Points.Add(new DataPoint(i, 0));
+            }
+
+            plot.Series.Add(series2);
+
             Model = plot;
         }
 

@@ -44,7 +44,11 @@ namespace NumericMethods.ViewModels
 
         private async void ShowHelp()
         {
+            IsBusy = true;
 
+            await NavigationService.NavigateAsync(NavSettings.EquationHelpPage);
+
+            IsBusy = false;
         }
 
         private async void ChangeEquationsNumber()

@@ -17,6 +17,11 @@
         public const string InterpolationPage = nameof(InterpolationPage);
         public const string SolveInterpolationPage = nameof(SolveInterpolationPage);
         public const string InterpolationChartPage = nameof(InterpolationChartPage);
+        public const string EquationHelpPage = nameof(EquationHelpPage);
+        public const string NonLinearEquationHelpPage = nameof(NonLinearEquationHelpPage);
+        public const string InterpolationHelpPage = nameof(InterpolationHelpPage);
+        public const string IntegralHelpPage = nameof(IntegralHelpPage);
+        public const string DifferentialHelpPage = nameof(DifferentialHelpPage);
     }
 
     public static class NavParams

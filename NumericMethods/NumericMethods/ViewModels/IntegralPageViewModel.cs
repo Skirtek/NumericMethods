@@ -21,6 +21,7 @@ namespace NumericMethods.ViewModels
         {
             PrecisionChangedCommand = new DelegateCommand(PrecisionChanged);
             SolveIntegralCommand = GetBusyDependedCommand(SolveIntegral);
+            ShowHelpCommand = new DelegateCommand(ShowHelp);
             _toast = toast;
         }
 
@@ -85,12 +86,26 @@ namespace NumericMethods.ViewModels
         #endregion
 
         #region Commands
+
         public DelegateCommand SolveIntegralCommand { get; set; }
 
         public DelegateCommand PrecisionChangedCommand { get; set; }
+
+        public DelegateCommand ShowHelpCommand { get; set; }
+
         #endregion
 
         #region Private Methods
+
+        private async void ShowHelp()
+        {
+            IsBusy = true;
+
+            await NavigationService.NavigateAsync(NavSettings.IntegralHelpPage);
+
+            IsBusy = false;
+        }
+
         private void PrecisionChanged()
         {
             IsCustomPrecisionSet = SelectedPrecision == 4;

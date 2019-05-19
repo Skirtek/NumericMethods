@@ -16,6 +16,7 @@ namespace NumericMethods.ViewModels
             : base(navigationService, pageDialogService)
         {
             CalculateDifferentialCommand = new DelegateCommand(CalculateDifferential);
+            ShowHelpCommand = new DelegateCommand(ShowHelp);
         }
 
         private string _formula;
@@ -59,6 +60,16 @@ namespace NumericMethods.ViewModels
 
         public DelegateCommand CalculateDifferentialCommand { get; set; }
 
+        public DelegateCommand ShowHelpCommand { get; set; }
+
+        private async void ShowHelp()
+        {
+            IsBusy = true;
+
+            await NavigationService.NavigateAsync(NavSettings.DifferentialHelpPage);
+
+            IsBusy = false;
+        }
         private async void CalculateDifferential()
         {
             if (HasErrors)

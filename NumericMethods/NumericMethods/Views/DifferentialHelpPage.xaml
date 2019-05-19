@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NumericMethods.Views.DifferentialHelpPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
+    Title="{resources:Translate Common_Help}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="24" Spacing="16">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Równania różniczkowe - pomoc"
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Moduł pozwala na wyliczenie wartości różniczki dy/dx wybranej funkcji, dla wskazanego argumentu. Obliczenia dokonywane są metodą Eulera oraz algorytmem Rungego-Kutty"
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Start"
+                    Text="1. We wzorze funkcji możliwe jest użycie dwóch zmiennych tj. x i y. Możliwe jest też ich mnożenie za pomocą znaku * np. x*y"
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Start"
+                    Text="{resources:Translate HelpPage_Power}"
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Start"
+                    Text="3. Konieczne jest podanie wartości początkowych x i y. W razie pozostawienia pól pustymi, za wartość początkową zostanie przyjęte x = 0 i y = 0"
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Start"
+                    Text="4. Konieczne jest podanie argumentu, dla którego ma zostać obliczona wartość różniczki."
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label
+                    Margin="0,0,0,24"
+                    FontSize="16"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Start"
+                    Text="5. Możliwa jest zmiana dokładności metody obliczającej. Dla niskiej dokładności wartość kroku to 0.125, dla średniej dokładności to 0.025, a dla wysokiej dokładności to 0.005"
+                    TextColor="{StaticResource NavyBlueColor}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

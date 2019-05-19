@@ -10,7 +10,10 @@
     x:Name="IntegralPageName"
     Title="{resources:Translate Menu_Integral}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="ic_help" Order="Primary" />
+        <ToolbarItem
+            Command="{Binding ShowHelpCommand}"
+            Icon="ic_help"
+            Order="Primary" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>

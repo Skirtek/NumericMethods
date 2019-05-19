@@ -19,6 +19,7 @@ namespace NumericMethods.ViewModels
         {
             GoToSolveInterpolationPageCommand = new DelegateCommand(GoToSolveInterpolationPage);
             AddPointCommand = new DelegateCommand(AddPoint);
+            ShowHelpCommand = new DelegateCommand(ShowHelp);
         }
 
         private ObservableCollection<PointModel> _pointsList = new ObservableCollection<PointModel> { new PointModel(), new PointModel(), new PointModel() };
@@ -43,6 +44,17 @@ namespace NumericMethods.ViewModels
         public DelegateCommand AddPointCommand { get; set; }
 
         public DelegateCommand GoToSolveInterpolationPageCommand { get; set; }
+
+        public DelegateCommand ShowHelpCommand { get; set; }
+
+        private async void ShowHelp()
+        {
+            IsBusy = true;
+
+            await NavigationService.NavigateAsync(NavSettings.InterpolationHelpPage);
+
+            IsBusy = false;
+        }
 
         private async void GoToSolveInterpolationPage()
         {

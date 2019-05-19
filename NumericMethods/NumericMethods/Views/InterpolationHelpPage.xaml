@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NumericMethods.Views.InterpolationHelpPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
+    Title="{resources:Translate Common_Help}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="24" Spacing="16">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Interpolacja - pomoc"
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Moduł pozwala na znalezienie wartości funkcji dla podanego argumentu. Wartość wyliczana jest na podstawie podanych punktów. Do obliczeń używane są metody: Lagrange'a oraz Aitkena"
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Start"
+                    Text="1. Aby dokonać wyliczenia konieczne jest podanie argumentu, dla którego ma zostać wyliczone wartość funkcji."
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Start"
+                    Text="2. Minimalną ilością punktów koniecznych do dokonania wyliczenia są trzy punkty. Kolejne punkty można dodawać klikając plusa w górnym prawym rogu."
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Start"
+                    Text="3. Przy podawaniu punktów, niemożliwe jest dodanie dwóch lub większej ilości wartości dla tego samego argumentu, ponieważ jest to sprzeczne z definicją funkcji."
+                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label
+                    Margin="0,0,0,24"
+                    FontSize="16"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Start"
+                    Text="4. Po dokonaniu wyliczenia możliwe jest zaznaczenie punktów oraz rozwiązania, na układzie współrzędnych"
+                    TextColor="{StaticResource NavyBlueColor}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

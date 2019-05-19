@@ -7,6 +7,12 @@
     xmlns:local="clr-namespace:NumericMethods.Settings;assembly=NumericMethods"
     xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
     Title="{resources:Translate Common_InputData}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding ShowHelpCommand}"
+            Icon="ic_help"
+            Order="Primary" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="24" Spacing="0">
