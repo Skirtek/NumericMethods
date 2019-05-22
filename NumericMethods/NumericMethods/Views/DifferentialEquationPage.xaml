@@ -59,7 +59,7 @@
                         EntryText="{Binding Argument}"
                         HorizontalOptions="FillAndExpand"
                         Keyboard="Numeric"
-                        MaximumLength="11"
+                        MaximumLength="7"
                         PropertyName="Argument" />
                 </StackLayout>
                 <Label Style="{StaticResource InstructionLabelStyle}" Text="{resources:Translate NonLinearEquation_Precision}" />

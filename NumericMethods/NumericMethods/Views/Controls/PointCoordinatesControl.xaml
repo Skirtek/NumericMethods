@@ -23,6 +23,7 @@
                 FontSize="16"
                 HorizontalTextAlignment="Center"
                 Keyboard="Numeric"
+                MaxLength="7"
                 Text="{Binding XValue, Source={x:Reference PointCoordinatesControlName}}" />
             <Label
                 Grid.Column="2"
@@ -35,6 +36,7 @@
                 FontSize="16"
                 HorizontalTextAlignment="Center"
                 Keyboard="Numeric"
+                MaxLength="7"
                 Text="{Binding YValue, Source={x:Reference PointCoordinatesControlName}}" />
 
         </Grid>

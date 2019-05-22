@@ -79,10 +79,18 @@ namespace NumericMethods.ViewModels
 
         private double CalculateEulerMethod(double x0, double y, double h, double x)
         {
+            uint iteration = 0;
+
             while (x0 < x)
             {
                 y += h * FunctionResult(x0, y);
                 x0 += h;
+                iteration++;
+
+                if (iteration == 100000)
+                {
+                    break;
+                }
             }
 
             return y;
@@ -93,6 +101,7 @@ namespace NumericMethods.ViewModels
             int n = (int)((x - x0) / h);
 
             double y = y0;
+            uint iteration = 0;
 
             for (int i = 1; i <= n; i++)
             {
@@ -107,6 +116,11 @@ namespace NumericMethods.ViewModels
                 y += 1.0 / 6.0 * (k1 + 2 * k2 + 2 * k3 + k4);
 
                 x0 += h;
+
+                if (iteration == 100000)
+                {
+                    break;
+                }
             }
 
             return y;
