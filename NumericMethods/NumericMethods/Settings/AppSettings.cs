@@ -27,6 +27,7 @@ namespace NumericMethods.Settings
 
         public const string ExtendedFormulaRegex = "^[xXyY(),.*+-^0-9]+$";
 
+        public const int CustomPrecisionIndex = 4;
 
         public const int DefaultEntryMaxLength = 7;
 

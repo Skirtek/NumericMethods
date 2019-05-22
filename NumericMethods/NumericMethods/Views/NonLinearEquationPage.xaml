@@ -17,19 +17,8 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="24">
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="18"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Text="Funkcja nieliniowa"
-                    TextColor="{StaticResource NavyBlueColor}" />
-                <Label
-                    FontSize="16"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Text="Podaj wzór funkcji, a aplikacja obliczy jej miejsca zerowe"
-                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label Style="{StaticResource ModuleHeaderLabelStyle}" Text="{resources:Translate Menu_NonLinearEquation}" />
+                <Label Style="{StaticResource ModuleStepsLabelStyle}" Text="{resources:Translate NonLinearEquationPage_Description}" />
                 <controls:ValidationEntry
                     EntryFontSize="18"
                     EntryText="{Binding Formula}"

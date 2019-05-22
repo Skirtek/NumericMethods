@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using NumericMethods.Models;
+using NumericMethods.Resources;
 using NumericMethods.Settings;
 using NumericMethods.Views.Controls;
 using Prism.Commands;
@@ -14,8 +15,6 @@ namespace NumericMethods.ViewModels
 {
     public class LinearEquationPageViewModel : BaseViewModel, INavigatingAware
     {
-        //TODO Liczy się tak tak i tak metodą taką i taką pozostawienie niewypełnionego pola oznacza wstawienie 0
-
         public LinearEquationPageViewModel(
             INavigationService navigationService,
             IPageDialogService pageDialogService)
@@ -27,6 +26,7 @@ namespace NumericMethods.ViewModels
             MaxEquations = 2;
         }
 
+        #region Properties
         private ObservableCollection<Equation> _equationList = new ObservableCollection<Equation>();
         public ObservableCollection<Equation> EquationList
         {
@@ -35,18 +35,37 @@ namespace NumericMethods.ViewModels
         }
 
         private short MaxEquations { get; set; }
+        #endregion
 
+        #region Delegate Commands
         public DelegateCommand GoToSolveEquationPageCommand { get; set; }
 
         public DelegateCommand ShowHelpCommand { get; set; }
 
         public DelegateCommand ChangeEquationsNumberCommand { get; set; }
+        #endregion
 
+        #region Private methods
         private async void ShowHelp()
         {
             IsBusy = true;
 
-            await NavigationService.NavigateAsync(NavSettings.EquationHelpPage);
+            var navParams = new NavigationParameters
+            {
+                { NavParams.Header, AppResources.EquationHelp_Header },
+                { NavParams.Description, AppResources.EquationHelp_Description },
+                { NavParams.Steps,
+                    new List<string>
+                    {
+                        AppResources.EquationHelp_FirstStep,
+                        AppResources.EquationHelp_SecondStep,
+                        AppResources.EquationHelp_ThirdStep,
+                        AppResources.EquationHelp_FourthStep,
+                        AppResources.EquationHelp_FifthStep
+                    } }
+            };
+
+            await NavigationService.NavigateAsync(NavSettings.HelpPages, navParams);
 
             IsBusy = false;
         }
@@ -55,8 +74,8 @@ namespace NumericMethods.ViewModels
         {
             var popup = new EquationsNumberPopup(new EquationPopupHelper
             {
-                Description = "Wybierz ilość niewiadomych w równaniach",
-                Placeholder = "Ilość niewiadomych",
+                Description = AppResources.EquationsNumberPopup_Description,
+                Placeholder = AppResources.EquationsNumberPopup_Placeholder,
                 ItemsSource = new List<string> { "2", "3", "4" },
                 Message = AppSettings.ChangeEquationNumber
             });
@@ -100,6 +119,7 @@ namespace NumericMethods.ViewModels
                 EquationList.Add(new Equation { EquationCount = (EquationSize)MaxEquations });
             }
         }
+        #endregion
 
         public void OnNavigatingTo(INavigationParameters parameters)
         {

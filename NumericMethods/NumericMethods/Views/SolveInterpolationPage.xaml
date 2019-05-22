@@ -10,44 +10,24 @@
         <Grid>
             <ScrollView>
                 <StackLayout Margin="24">
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="18"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        Text="Wynik interpolacji metodą Lagrange'a:"
-                        TextColor="{StaticResource NavyBlueColor}" />
-                    <Label
-                        FontSize="16"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        TextColor="{StaticResource NavyBlueColor}">
+                    <Label Style="{StaticResource ModuleHeaderLabelStyle}" Text="{resources:Translate SolveInterpolationPage_LagrangeSolution}" />
+                    <Label Style="{StaticResource ModuleStepsLabelStyle}">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="Dla x = " />
+                                <Span Text="{resources:Translate SolveInterpolationPage_ForArgument}" />
                                 <Span FontAttributes="Bold" Text="{Binding Argument}" />
-                                <Span Text=" funkcja przyjmuje wartość y = " />
+                                <Span Text="{resources:Translate SolveInterpolationPage_ArgumentValue}" />
                                 <Span FontAttributes="Bold" Text="{Binding Result}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="18"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        Text="Wynik interpolacji metodą Aitken'a:"
-                        TextColor="{StaticResource NavyBlueColor}" />
-                    <Label
-                        FontSize="16"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        TextColor="{StaticResource NavyBlueColor}">
+                    <Label Style="{StaticResource ModuleHeaderLabelStyle}" Text="{resources:Translate SolveInterpolationPage_AitkenSolution}" />
+                    <Label Style="{StaticResource ModuleStepsLabelStyle}">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="Dla x = " />
+                                <Span Text="{resources:Translate SolveInterpolationPage_ForArgument}" />
                                 <Span FontAttributes="Bold" Text="{Binding Argument}" />
-                                <Span Text=" funkcja przyjmuje wartość y = " />
+                                <Span Text="{resources:Translate SolveInterpolationPage_ArgumentValue}" />
                                 <Span FontAttributes="Bold" Text="{Binding AitkenResult}" />
                             </FormattedString>
                         </Label.FormattedText>
@@ -58,7 +38,7 @@
                                 <FormattedString>
                                     <Span
                                         FontSize="16"
-                                        Text="Interpolacja dokonana na podstawie "
+                                        Text="{resources:Translate SolveInterpolationPage_InterpolationPoints_FirstPart}"
                                         TextColor="{StaticResource NavyBlueColor}" />
                                     <Span
                                         FontAttributes="Bold"
@@ -67,7 +47,7 @@
                                         TextColor="{StaticResource NavyBlueColor}" />
                                     <Span
                                         FontSize="16"
-                                        Text=" punktów"
+                                        Text="{resources:Translate SolveInterpolationPage_InterpolationPoints_SecondPart}"
                                         TextColor="{StaticResource NavyBlueColor}" />
                                 </FormattedString>
                             </Label.FormattedText>
@@ -75,7 +55,7 @@
                         <Button
                             Command="{Binding GoToInterpolationChartPageCommand}"
                             Style="{StaticResource GreenButtonStyle}"
-                            Text="Zaznacz punkty na wykresie" />
+                            Text="{resources:Translate SolveInterpolationPage_DrawPoints}" />
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

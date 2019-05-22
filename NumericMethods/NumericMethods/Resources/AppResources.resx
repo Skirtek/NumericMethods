@@ -234,4 +234,244 @@
   <data name="HelpPage_Power" xml:space="preserve">
     <value>2. Aby użyć potęgi we wzorze, konieczne jest użycie znaku ^. Przykładowy wzór funkcji: x^4+7x^2-4</value>
   </data>
+  <data name="EquationService_Consistency" xml:space="preserve">
+    <value>Układ sprzeczny</value>
+  </data>
+  <data name="EquationService_Equivalence" xml:space="preserve">
+    <value>Układ nieoznaczony</value>
+  </data>
+  <data name="Common_NoOperations" xml:space="preserve">
+    <value>Nie zostanie wykonana żadna operacja</value>
+  </data>
+  <data name="Common_NoSolutions" xml:space="preserve">
+    <value>Brak rozwiązań</value>
+  </data>
+  <data name="NonLinearChartPage_ZeroPlot" xml:space="preserve">
+    <value>y = 0</value>
+  </data>
+    <data name="EquationsNumberPopup_Placeholder" xml:space="preserve">
+    <value>Ilość niewiadomych</value>
+  </data>
+  <data name="EquationsNumberPopup_Description" xml:space="preserve">
+    <value>Wybierz ilość niewiadomych w równaniach</value>
+  </data>
+  <data name="LinearChartPopup_Placeholder" xml:space="preserve">
+    <value>Ilość liczb</value>
+  </data>
+  <data name="LinearChartPopup_Description" xml:space="preserve">
+    <value>Wybierz ile liczb całkowitych ma wchodzić w skład dziedziny</value>
+  </data>
+  <data name="AboutPopup_Header" xml:space="preserve">
+    <value>Twórcami aplikacji są studenci z grupy 5:</value>
+  </data>
+  <data name="AboutPopup_Igor" xml:space="preserve">
+    <value>Igor Kowalewski</value>
+  </data>
+  <data name="AboutPopup_Dominik" xml:space="preserve">
+    <value>Dominik Guziałek</value>
+  </data>
+  <data name="AboutPopup_Mariusz" xml:space="preserve">
+    <value>Mariusz Jackowski</value>
+  </data>
+  <data name="AboutPopup_Bartosz" xml:space="preserve">
+    <value>Bartosz Mróz</value>
+  </data>
+  <data name="AboutPopup_OxyPlotDescription" xml:space="preserve">
+    <value>Do rysowania wykresów została użyta darmowa biblioteka </value>
+  </data>
+  <data name="AboutPopup_IconsDescription" xml:space="preserve">
+    <value>Wykorzystano ikonki pochodzące z zasobów serwisu </value>
+  </data>
+  <data name="AboutPopup_Year" xml:space="preserve">
+    <value>© 2019</value>
+  </data>
+  <data name="Common_Cancel" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="Common_Confirm" xml:space="preserve">
+    <value>Zastosuj</value>
+  </data>
+  <data name="LoaderView_LoadingText" xml:space="preserve">
+    <value>Trwa obliczanie...</value>
+  </data>
+  <data name="Common_X" xml:space="preserve">
+    <value>x = </value>
+  </data>
+  <data name="Common_Y" xml:space="preserve">
+    <value>y = </value>
+  </data>
+  <data name="DifferentialEquationPage_Formula" xml:space="preserve">
+    <value>Podaj wzór równania, którego wartość różniczki ma zostać obliczona</value>
+  </data>
+  <data name="DifferentialEquationPage_Argument" xml:space="preserve">
+    <value>Podaj argument, dla którego ma zostać obliczona wartość różniczki: </value>
+  </data>
+  <data name="DifferentialEquationPage_InitialValues" xml:space="preserve">
+    <value>Podaj wartości początkowe</value>
+  </data>
+  <data name="IntegralHelp_Header" xml:space="preserve">
+    <value>Całkowanie numeryczne - pomoc</value>
+  </data>
+  <data name="IntegralHelp_Description" xml:space="preserve">
+    <value>Moduł pozwala na wyliczenie wartości całki oznaczonej. Obliczenia dokonywane są metodą trapezów oraz metodą prostokątów.</value>
+  </data>
+  <data name="IntegralHelp_FirstStep" xml:space="preserve">
+    <value>1. Należy pamiętać, że dolna granica całkowania musi być mniejsza niż górna granica. W innym przypadku obliczenia nie zostaną dokonane.</value>
+  </data>
+    <data name="IntegralHelp_ThirdStep" xml:space="preserve">
+    <value>3. We wzorze funkcji możliwe jest użycie: liczby Eulera (e), liczby Pi (π), funkcji trygonometrycznych (sin,cos,tan,ctg) oraz logarytmu naturalnego (ln). Przykładowa funkcja: 4e+π+x^4-ln[x]+3sin^3[x^3]</value>
+  </data>
+  <data name="IntegralHelp_FourthStep" xml:space="preserve">
+    <value>4. Możliwa jest zmiana ilości iteracji metody na własną. W tym celu jako dokładność całkowania należy wybrać opcję 'Własna...' i wpisać liczbę iteracji. Maksymalną ilością iteracji jest 999999</value>
+  </data>
+  <data name="DifferentialHelp_Header" xml:space="preserve">
+    <value>Równania różniczkowe - pomoc</value>
+  </data>
+  <data name="DifferentialHelp_Description" xml:space="preserve">
+    <value>Moduł pozwala na wyliczenie wartości różniczki dy/dx wybranej funkcji, dla wskazanego argumentu. Obliczenia dokonywane są metodą Eulera oraz algorytmem Rungego-Kutty</value>
+  </data>
+  <data name="DifferentialHelp_FirstStep" xml:space="preserve">
+    <value>1. We wzorze funkcji możliwe jest użycie dwóch zmiennych tj. x i y. Możliwe jest też ich mnożenie za pomocą znaku * np. x*4y</value>
+  </data>
+  <data name="DifferentialHelp_ThirdStep" xml:space="preserve">
+    <value>3. Konieczne jest podanie wartości początkowych x i y. W razie pozostawienia pól pustymi, za wartość początkową zostanie przyjęte x = 0 i y = 0</value>
+  </data>
+  <data name="DifferentialHelp_FourthStep" xml:space="preserve">
+    <value>4. Konieczne jest podanie argumentu, dla którego ma zostać obliczona wartość różniczki.</value>
+  </data>
+  <data name="DifferentialHelp_FifthStep" xml:space="preserve">
+    <value>5. Możliwa jest zmiana dokładności metody obliczającej. Dla niskiej dokładności wartość kroku to 0.125, dla średniej dokładności to 0.025, a dla wysokiej dokładności to 0.005</value>
+  </data>
+  <data name="EquationHelp_Header" xml:space="preserve">
+    <value>Równania liniowe - pomoc</value>
+  </data>
+  <data name="EquationHelp_Description" xml:space="preserve">
+    <value>Moduł pozwala rozwiązać układ równań z maksymalnie czterema niewiadomymi. Do rozwiązania układu używana jest metoda Cramera.</value>
+  </data>
+  <data name="EquationHelp_FirstStep" xml:space="preserve">
+    <value>1. Aby zmienić liczbę równań należy kliknąć przycisk w górnym prawym rogu.</value>
+  </data>
+  <data name="EquationHelp_SecondStep" xml:space="preserve">
+    <value>2. Możliwe jest tylko wpisywanie liczb rzeczywistych w wyznaczone pola.</value>
+  </data>
+  <data name="EquationHelp_ThirdStep" xml:space="preserve">
+    <value>3. Jeżeli pole nie zostanie wypełnione, do obliczeń w tym miejscu zostanie przyjęte 0</value>
+  </data>
+  <data name="EquationHelp_FourthStep" xml:space="preserve">
+    <value>4. Po rozwiązaniu układu równań dla dwóch niewiadomych, możliwe jest narysowanie ich wykresu, w celu graficznego potwierdzenia poprawności rozwiązania. W tym celu należy nacisnąć przycisk wykresu, na ekranie z rozwiązaniem układu</value>
+  </data>
+  <data name="EquationHelp_FifthStep" xml:space="preserve">
+    <value>5. Aby zwiększyć dziedzinę wykresu funkcji, należy nacisnąć przycisk symbolizujący wykres funkcji w górnym prawym rogu i wybrać odpowiednią wartość. Domyślną wartością jest 50, co znaczy, że wykres będzie rysowany dla argumentów od -50 do 50.</value>
+  </data>
+  <data name="InterpolationHelp_Header" xml:space="preserve">
+    <value>Interpolacja - pomoc</value>
+  </data>
+  <data name="InterpolationHelp_Description" xml:space="preserve">
+    <value>Moduł pozwala na znalezienie wartości funkcji dla podanego argumentu. Wartość wyliczana jest na podstawie podanych punktów. Do obliczeń używane są metody: Lagrange'a oraz Aitkena</value>
+  </data>
+  <data name="InterpolationHelp_FirstStep" xml:space="preserve">
+    <value>1. Aby dokonać wyliczenia konieczne jest podanie argumentu, dla którego ma zostać wyliczone wartość funkcji.</value>
+  </data>
+  <data name="InterpolationHelp_SecondStep" xml:space="preserve">
+    <value>2. Minimalną ilością punktów koniecznych do dokonania wyliczenia są trzy punkty. Kolejne punkty można dodawać klikając plusa w górnym prawym rogu.</value>
+  </data>
+  <data name="InterpolationHelp_ThirdStep" xml:space="preserve">
+    <value>3. Przy podawaniu punktów, niemożliwe jest dodanie dwóch lub większej ilości wartości dla tego samego argumentu, ponieważ jest to sprzeczne z definicją funkcji.</value>
+  </data>
+  <data name="InterpolationHelp_FourthStep" xml:space="preserve">
+    <value>4. Po dokonaniu wyliczenia możliwe jest zaznaczenie punktów oraz rozwiązania, na układzie współrzędnych</value>
+  </data>
+  <data name="NonLinearEquationHelp_Header" xml:space="preserve">
+    <value>Funkcje nieliniowe - pomoc</value>
+  </data>
+  <data name="NonLinearEquationHelp_Description" xml:space="preserve">
+    <value>Moduł pozwala na znalezienie miejsc zerowych wielomianu dowolnego stopnia. Do obliczeń używane są metody: Newtona-Raphsona oraz Graeff'ego</value>
+  </data>
+  <data name="NonLinearEquationHelp_FirstStep" xml:space="preserve">
+    <value>1. Wzory funkcji powinny zawierać tylko jedną niewiadomą - x</value>
+  </data>
+  <data name="NonLinearEquationHelp_ThirdStep" xml:space="preserve">
+    <value>3. Możliwe jest użycie, we wzorze funkcji, liczby Eulera oraz liczby Pi. Przykładowy wzór funkcji: x^3+4e+π</value>
+  </data>
+  <data name="NonLinearEquationHelp_FourthStep" xml:space="preserve">
+    <value>4. Aby zwiększyć dokładność metody Graeff'ego można ustalić ilość iteracji. Dla niskiej dokładności są to 2 iteracje, dla średniej dokładności (domyślnie) są to 4 iteracje, a dla wysokiej dokładnosci metoda wykonuje 8 iteracji.</value>
+  </data>
+  <data name="NonLinearEquationHelp_FifthStep" xml:space="preserve">
+    <value>5. Po znalezieniu miejsc zerowych możliwe jest narysowanie wykresu funkcji w celu graficznego potwierdzenia poprawności rozwiązania. W tym celu należy nacisnąć przycisk 'Narysuj wykres'</value>
+  </data>
+  <data name="NonLinearEquationHelp_SixthStep" xml:space="preserve">
+    <value>6. Aby zwiększyć dziedzinę wykresu funkcji, należy nacisnąć przycisk symbolizujący wykres funkcji w górnym prawym rogu i wybrać odpowiednią wartość. Domyślną wartością jest 50, co znaczy, że wykres będzie rysowany dla argumentów od -50 do 50.</value>
+  </data>
+  <data name="SolveNonLinearEquationPage_NewtonRaphsonSolution" xml:space="preserve">
+    <value>Miejsce zerowe obliczone metodą Newtona-Raphsona:</value>
+  </data>
+  <data name="SolveNonLinearEquationPage_GraeffeSolution" xml:space="preserve">
+    <value>Miejsca zerowe obliczone metodą Graeff'ego:</value>
+  </data>
+  <data name="SolveNonLinearEquationPage_GraeffeIterations" xml:space="preserve">
+    <value>Ilość iteracji w metodzie Graeff'ego: </value>
+  </data>
+  <data name="Common_DrawPlot" xml:space="preserve">
+    <value>Narysuj wykres</value>
+  </data>
+  <data name="SolveEquationPage_Solution" xml:space="preserve">
+    <value>Rozwiązanie układu równań to:</value>
+  </data>
+  <data name="NonLinearEquationPage_Description" xml:space="preserve">
+    <value>Podaj wzór funkcji, a aplikacja obliczy jej miejsca zerowe</value>
+  </data>
+  <data name="SolveDifferentialEquationPage_RungeKuttaSolution" xml:space="preserve">
+    <value>Wartość obliczona algorytmem Rungego-Kutty:</value>
+  </data>
+  <data name="SolveDifferentialEquationPage_EulerSolution" xml:space="preserve">
+    <value>Wartość obliczona algorytmem Eulera:</value>
+  </data>
+  <data name="SolveDifferentialEquationPage_StepValue" xml:space="preserve">
+    <value>Wartość kroku dla obu algorytmów: </value>
+  </data>
+  <data name="InterpolationPage_Argument" xml:space="preserve">
+    <value>Podaj argument, dla którego ma zostać obliczona wartość funkcji:</value>
+  </data>
+  <data name="InterpolationPage_Points" xml:space="preserve">
+    <value>Podaj minimum trzy punkty należące do funkcji: </value>
+  </data>
+  <data name="SolveInterpolationPage_LagrangeSolution" xml:space="preserve">
+    <value>Wynik interpolacji metodą Lagrange'a:</value>
+  </data>
+  <data name="SolveInterpolationPage_AitkenSolution" xml:space="preserve">
+    <value>Wynik interpolacji metodą Aitken'a:</value>
+  </data>
+  <data name="SolveInterpolationPage_ForArgument" xml:space="preserve">
+    <value>Dla x = </value>
+  </data>
+  <data name="SolveInterpolationPage_ArgumentValue" xml:space="preserve">
+    <value> funkcja przyjmuje wartość y = </value>
+  </data>
+  <data name="SolveInterpolationPage_InterpolationPoints_FirstPart" xml:space="preserve">
+    <value>Interpolacja dokonana na podstawie </value>
+  </data>
+  <data name="SolveInterpolationPage_InterpolationPoints_SecondPart" xml:space="preserve">
+    <value> punktów</value>
+  </data>
+  <data name="SolveInterpolationPage_DrawPoints" xml:space="preserve">
+    <value>Zaznacz punkty na wykresie</value>
+  </data>
+  <data name="IntegralResultPage_TrapezeSolution" xml:space="preserve">
+    <value>Wartość całki obliczona metodą trapezów: </value>
+  </data>
+  <data name="IntegralResultPage_RectangleSolution" xml:space="preserve">
+    <value>Wartość całki obliczona metodą prostokątów: </value>
+  </data>
+  <data name="IntegralResultPage_Parameters" xml:space="preserve">
+    <value>Wartość całki została obliczona dla parametrów</value>
+  </data>
+  <data name="IntegralResultPage_UpperLimit" xml:space="preserve">
+    <value>Górna granica całkowania: </value>
+  </data>
+  <data name="IntegralResultPage_LowerLimit" xml:space="preserve">
+    <value>Dolna granica całkowania: </value>
+  </data>
+  <data name="IntegralResultPage_Precision" xml:space="preserve">
+    <value>Dokładność całkowania: </value>
+  </data>
 </root>

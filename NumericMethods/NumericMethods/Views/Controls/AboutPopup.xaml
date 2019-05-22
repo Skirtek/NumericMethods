@@ -4,7 +4,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods">
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation
             DurationIn="300"
@@ -17,12 +18,20 @@
             ScaleIn="1.2"
             ScaleOut="0.8" />
     </pages:PopupPage.Animation>
+    <pages:PopupPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="CenteredPopupText" TargetType="{x:Type Label}">
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>
     <ScrollView HorizontalOptions="Center" VerticalOptions="Center">
         <AbsoluteLayout>
-            <Frame
-                Margin="16"
-                BackgroundColor="White"
-                HorizontalOptions="Center">
+            <Frame Style="{StaticResource PopupFrameStyle}">
                 <StackLayout Margin="16" IsClippedToBounds="True">
                     <Image HorizontalOptions="End" Source="ic_close">
                         <Image.GestureRecognizers>
@@ -34,41 +43,29 @@
                         FontSize="18"
                         HorizontalOptions="CenterAndExpand"
                         HorizontalTextAlignment="Center"
-                        Text="Twórcami aplikacji są studenci z grupy 5:"
+                        Text="{resources:Translate AboutPopup_Header}"
                         TextColor="{StaticResource NavyBlueColor}"
                         VerticalOptions="StartAndExpand" />
                     <Label
-                        FontSize="16"
-                        HorizontalOptions="CenterAndExpand"
-                        HorizontalTextAlignment="Center"
-                        Text="Igor Kowalewski"
+                        Style="{StaticResource CenteredPopupText}"
+                        Text="{resources:Translate AboutPopup_Igor}"
                         TextColor="{StaticResource NavyBlueColor}" />
                     <Label
-                        FontSize="16"
-                        HorizontalOptions="CenterAndExpand"
-                        HorizontalTextAlignment="Center"
-                        Text="Dominik Guziałek"
+                        Style="{StaticResource CenteredPopupText}"
+                        Text="{resources:Translate AboutPopup_Dominik}"
                         TextColor="{StaticResource NavyBlueColor}" />
                     <Label
-                        FontSize="16"
-                        HorizontalOptions="CenterAndExpand"
-                        HorizontalTextAlignment="Center"
-                        Text="Mariusz Jackowski"
+                        Style="{StaticResource CenteredPopupText}"
+                        Text="{resources:Translate AboutPopup_Mariusz}"
                         TextColor="{StaticResource NavyBlueColor}" />
                     <Label
-                        FontSize="16"
-                        HorizontalOptions="CenterAndExpand"
-                        HorizontalTextAlignment="Center"
-                        Text="Bartosz Mróz"
+                        Style="{StaticResource CenteredPopupText}"
+                        Text="{resources:Translate AboutPopup_Bartosz}"
                         TextColor="{StaticResource NavyBlueColor}" />
-                    <Label
-                        FontSize="16"
-                        HorizontalOptions="CenterAndExpand"
-                        HorizontalTextAlignment="Center"
-                        TextColor="{StaticResource NavyBlueColor}">
+                    <Label Style="{StaticResource CenteredPopupText}" TextColor="{StaticResource NavyBlueColor}">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="Do rysowania wykresów została użyta darmowa biblioteka " />
+                                <Span Text="{resources:Translate AboutPopup_OxyPlotDescription}" />
                                 <Span
                                     FontAttributes="Bold"
                                     Text="OxyPlot"
@@ -80,14 +77,10 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Label
-                        FontSize="16"
-                        HorizontalOptions="CenterAndExpand"
-                        HorizontalTextAlignment="Center"
-                        TextColor="{StaticResource NavyBlueColor}">
+                    <Label Style="{StaticResource CenteredPopupText}" TextColor="{StaticResource NavyBlueColor}">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="Wykorzystano ikonki pochodzące z zasobów " />
+                                <Span Text="{resources:Translate AboutPopup_IconsDescription}" />
                                 <Span
                                     FontAttributes="Bold"
                                     Text="icons8.com"
@@ -105,7 +98,7 @@
                         FontSize="18"
                         HorizontalOptions="CenterAndExpand"
                         HorizontalTextAlignment="Center"
-                        Text="© 2019"
+                        Text="{resources:Translate AboutPopup_Year}"
                         TextColor="{StaticResource NavyBlueColor}" />
                 </StackLayout>
             </Frame>

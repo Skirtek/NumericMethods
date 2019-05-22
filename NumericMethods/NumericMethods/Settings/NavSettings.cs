@@ -17,11 +17,7 @@
         public const string InterpolationPage = nameof(InterpolationPage);
         public const string SolveInterpolationPage = nameof(SolveInterpolationPage);
         public const string InterpolationChartPage = nameof(InterpolationChartPage);
-        public const string EquationHelpPage = nameof(EquationHelpPage);
-        public const string NonLinearEquationHelpPage = nameof(NonLinearEquationHelpPage);
-        public const string InterpolationHelpPage = nameof(InterpolationHelpPage);
-        public const string IntegralHelpPage = nameof(IntegralHelpPage);
-        public const string DifferentialHelpPage = nameof(DifferentialHelpPage);
+        public const string HelpPages = nameof(HelpPages);
     }
 
     public static class NavParams
@@ -34,5 +30,8 @@
         public const string Points = nameof(Points);
         public const string Argument = nameof(Argument);
         public const string InitialValues = nameof(InitialValues);
+        public const string Header = nameof(Header);
+        public const string Description = nameof(Description);
+        public const string Steps = nameof(Steps);
     }
 }

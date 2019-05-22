@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using NumericMethods.Models;
 using NumericMethods.PlatformImplementations;
 using NumericMethods.Resources;
@@ -101,15 +102,19 @@ namespace NumericMethods.ViewModels
         {
             IsBusy = true;
 
-            await NavigationService.NavigateAsync(NavSettings.IntegralHelpPage);
+            var navParams = new NavigationParameters
+            {
+                { NavParams.Header, AppResources.IntegralHelp_Header },
+                { NavParams.Description, AppResources.IntegralHelp_Description },
+                { NavParams.Steps, new List<string>{ AppResources.IntegralHelp_FirstStep, AppResources.HelpPage_Power, AppResources.IntegralHelp_ThirdStep, AppResources.IntegralHelp_FourthStep } }
+            };
+
+            await NavigationService.NavigateAsync(NavSettings.HelpPages, navParams);
 
             IsBusy = false;
         }
 
-        private void PrecisionChanged()
-        {
-            IsCustomPrecisionSet = SelectedPrecision == 4;
-        }
+        private void PrecisionChanged() => IsCustomPrecisionSet = SelectedPrecision == AppSettings.CustomPrecisionIndex;
 
         private async void SolveIntegral()
         {

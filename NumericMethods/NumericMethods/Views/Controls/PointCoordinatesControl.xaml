@@ -3,6 +3,7 @@
     x:Class="NumericMethods.Views.Controls.PointCoordinatesControl"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
     x:Name="PointCoordinatesControlName">
     <ContentView.Content>
         <Grid>
@@ -15,7 +16,7 @@
             <Label
                 Grid.Column="0"
                 FontSize="16"
-                Text="x = "
+                Text="{resources:Translate Common_X}"
                 TextColor="{StaticResource NavyBlueColor}"
                 VerticalTextAlignment="Center" />
             <Entry
@@ -28,7 +29,7 @@
             <Label
                 Grid.Column="2"
                 FontSize="16"
-                Text="y = "
+                Text="{resources:Translate Common_Y}"
                 TextColor="{StaticResource NavyBlueColor}"
                 VerticalTextAlignment="Center" />
             <Entry

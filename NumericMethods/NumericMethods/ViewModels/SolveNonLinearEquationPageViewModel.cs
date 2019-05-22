@@ -129,7 +129,7 @@ namespace NumericMethods.ViewModels
 
                 if (_operations.Count == 0)
                 {
-                    await ShowAlert(AppResources.Common_Ups, "Nie zostanie wykonana żadna operacja");
+                    await ShowAlert(AppResources.Common_Ups, AppResources.Common_NoOperations);
                     return;
                 }
 
@@ -255,7 +255,7 @@ namespace NumericMethods.ViewModels
 
             if (float.IsNaN(x) || Formula.Contains("ln[x]") && x < 0)
             {
-                Result = "Brak rozwiązania";
+                Result = AppResources.Common_NoSolutions;
                 return;
             }
 

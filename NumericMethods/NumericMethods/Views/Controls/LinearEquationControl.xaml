@@ -6,7 +6,6 @@
     xmlns:models="clr-namespace:NumericMethods.Models;assembly=NumericMethods"
     x:Name="LinearEquationControlName">
     <ContentView.Content>
-        <!--  TODO Wyrzucić wszystkie stałe teksty (w całym projekcie) do AppResourców  -->
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

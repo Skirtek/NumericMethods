@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NumericMethods.Views.HelpPages"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:NumericMethods.Views.Controls;assembly=NumericMethods"
+    xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods"
+    Title="{resources:Translate Common_Help}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="24" Spacing="16">
+                <Label Style="{StaticResource ModuleHeaderLabelStyle}" Text="{Binding Header}" />
+                <Label Style="{StaticResource ModuleStepsLabelStyle}" Text="{Binding Description}" />
+                <controls:CustomListControl Margin="0,0,0,16" ItemsSource="{Binding Steps}">
+                    <controls:CustomListControl.ItemTemplate>
+                        <DataTemplate>
+                            <Label
+                                Margin="0,0,0,8"
+                                FontSize="16"
+                                HorizontalOptions="Start"
+                                HorizontalTextAlignment="Start"
+                                Text="{Binding .}"
+                                TextColor="{StaticResource NavyBlueColor}" />
+                        </DataTemplate>
+                    </controls:CustomListControl.ItemTemplate>
+                </controls:CustomListControl>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using NumericMethods.Models;
@@ -51,7 +52,21 @@ namespace NumericMethods.ViewModels
         {
             IsBusy = true;
 
-            await NavigationService.NavigateAsync(NavSettings.InterpolationHelpPage);
+            var navParams = new NavigationParameters
+            {
+                { NavParams.Header, AppResources.InterpolationHelp_Header },
+                { NavParams.Description, AppResources.InterpolationHelp_Description },
+                { NavParams.Steps,
+                    new List<string>
+                    {
+                        AppResources.InterpolationHelp_FirstStep,
+                        AppResources.InterpolationHelp_SecondStep,
+                        AppResources.InterpolationHelp_ThirdStep,
+                        AppResources.InterpolationHelp_FourthStep
+                    } }
+            };
+
+            await NavigationService.NavigateAsync(NavSettings.HelpPages, navParams);
 
             IsBusy = false;
         }

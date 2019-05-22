@@ -11,18 +11,8 @@
         <Grid>
             <ScrollView>
                 <StackLayout Margin="24">
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="18"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        Text="Miejsce zerowe obliczone metodą Newtona-Raphsona:"
-                        TextColor="{StaticResource NavyBlueColor}" />
-                    <Label
-                        FontSize="16"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        TextColor="{StaticResource NavyBlueColor}">
+                    <Label Style="{StaticResource ModuleHeaderLabelStyle}" Text="{resources:Translate SolveNonLinearEquationPage_NewtonRaphsonSolution}" />
+                    <Label Style="{StaticResource ModuleStepsLabelStyle}">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="x₀ = " />
@@ -32,12 +22,8 @@
                     </Label>
                     <Label
                         Margin="0,16,0,0"
-                        FontAttributes="Bold"
-                        FontSize="18"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        Text="Miejsca zerowe obliczone metodą Graeff'ego:"
-                        TextColor="{StaticResource NavyBlueColor}" />
+                        Style="{StaticResource ModuleHeaderLabelStyle}"
+                        Text="{resources:Translate SolveNonLinearEquationPage_GraeffeSolution}" />
                     <controls:CustomListControl HorizontalOptions="Center" ItemsSource="{Binding ResultList}">
                         <controls:CustomListControl.ItemTemplate>
                             <DataTemplate>
@@ -61,7 +47,7 @@
                                 <FormattedString>
                                     <Span
                                         FontSize="16"
-                                        Text="Ilość iteracji w metodzie Graeff'ego: "
+                                        Text="{resources:Translate SolveNonLinearEquationPage_GraeffeIterations}"
                                         TextColor="{StaticResource NavyBlueColor}" />
                                     <Span
                                         FontAttributes="Bold"
@@ -74,7 +60,7 @@
                         <Button
                             Command="{Binding GoToNonLinearChartPageCommand}"
                             Style="{StaticResource GreenButtonStyle}"
-                            Text="Narysuj wykres" />
+                            Text="{resources:Translate Common_DrawPlot}" />
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

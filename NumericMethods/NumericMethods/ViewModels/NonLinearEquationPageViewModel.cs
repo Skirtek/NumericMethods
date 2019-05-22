@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using NumericMethods.Enums;
 using NumericMethods.Resources;
 using NumericMethods.Settings;
@@ -47,7 +48,23 @@ namespace NumericMethods.ViewModels
         {
             IsBusy = true;
 
-            await NavigationService.NavigateAsync(NavSettings.NonLinearEquationHelpPage);
+            var navParams = new NavigationParameters
+            {
+                { NavParams.Header, AppResources.NonLinearEquationHelp_Header },
+                { NavParams.Description, AppResources.NonLinearEquationHelp_Description },
+                { NavParams.Steps,
+                    new List<string>
+                    {
+                        AppResources.NonLinearEquationHelp_FirstStep,
+                        AppResources.HelpPage_Power,
+                        AppResources.NonLinearEquationHelp_ThirdStep,
+                        AppResources.NonLinearEquationHelp_FourthStep,
+                        AppResources.NonLinearEquationHelp_FifthStep,
+                        AppResources.NonLinearEquationHelp_SixthStep
+                    } }
+            };
+
+            await NavigationService.NavigateAsync(NavSettings.HelpPages, navParams);
 
             IsBusy = false;
         }
