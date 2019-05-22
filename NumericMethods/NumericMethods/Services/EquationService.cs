@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using NumericMethods.Interfaces;
 using NumericMethods.Models;
+using NumericMethods.Resources;
 using NumericMethods.Settings;
 
 namespace NumericMethods.Services
@@ -54,9 +55,9 @@ namespace NumericMethods.Services
             switch (w)
             {
                 case 0 when (Math.Abs(wx) > AppSettings.Epsilon || Math.Abs(wy) > AppSettings.Epsilon):
-                    return "Układ sprzeczny";
+                    return AppResources.EquationService_Consistency;
                 case 0 when Math.Abs(wx) < AppSettings.Epsilon && Math.Abs(wy) < AppSettings.Epsilon:
-                    return "Układ nieoznaczony";
+                    return AppResources.EquationService_Equivalence;
             }
 
             return $"x = {wx / w}{Environment.NewLine}y = {wy / w}";
@@ -109,9 +110,9 @@ namespace NumericMethods.Services
             switch (w)
             {
                 case 0 when (Math.Abs(wx) > AppSettings.Epsilon || Math.Abs(wy) > AppSettings.Epsilon || Math.Abs(wz) > AppSettings.Epsilon):
-                    return "Układ sprzeczny";
+                    return AppResources.EquationService_Consistency;
                 case 0 when Math.Abs(wx) < AppSettings.Epsilon && Math.Abs(wy) < AppSettings.Epsilon && Math.Abs(wz) < AppSettings.Epsilon:
-                    return "Układ nieoznaczony";
+                    return AppResources.EquationService_Equivalence;
             }
 
             return $"x = {wx / w}{Environment.NewLine}y = {wy / w}{Environment.NewLine}z = {wz / w}";
@@ -168,9 +169,9 @@ namespace NumericMethods.Services
             switch (w)
             {
                 case 0 when Math.Abs(wx) > AppSettings.Epsilon || Math.Abs(wy) > AppSettings.Epsilon || Math.Abs(wz) > AppSettings.Epsilon || Math.Abs(wt) > AppSettings.Epsilon:
-                    return "Układ sprzeczny";
+                    return AppResources.EquationService_Consistency;
                 case 0 when Math.Abs(wx) < AppSettings.Epsilon && Math.Abs(wy) < AppSettings.Epsilon && Math.Abs(wz) < AppSettings.Epsilon && Math.Abs(wt) < AppSettings.Epsilon:
-                    return "Układ nieoznaczony";
+                    return AppResources.EquationService_Equivalence;
             }
 
             return $"x = {wx / w}{Environment.NewLine}y = {wy / w}{Environment.NewLine}z = {wz / w}{Environment.NewLine}t = {wt / w}";

@@ -20,24 +20,13 @@
         <Grid>
             <StackLayout>
                 <StackLayout Margin="24">
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="18"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        Text="Interpolacja"
-                        TextColor="{StaticResource NavyBlueColor}" />
-                    <Label
-                        FontSize="16"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        Text="Podaj argument, dla którego ma zostać obliczona wartość funkcji:"
-                        TextColor="{StaticResource NavyBlueColor}" />
+                    <Label Style="{StaticResource ModuleHeaderLabelStyle}" Text="{resources:Translate Menu_Interpolation}" />
+                    <Label Style="{StaticResource ModuleStepsLabelStyle}" Text="{resources:Translate InterpolationPage_Argument}" />
                     <StackLayout Margin="48,8" Orientation="Horizontal">
                         <Label
                             Margin="0,0,8,0"
                             FontSize="18"
-                            Text="x = "
+                            Text="{resources:Translate Common_X}"
                             TextColor="{StaticResource NavyBlueColor}"
                             VerticalTextAlignment="Center" />
                         <controls:ValidationEntry
@@ -48,12 +37,7 @@
                             MaximumLength="11"
                             PropertyName="Argument" />
                     </StackLayout>
-                    <Label
-                        FontSize="16"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        Text="Podaj minimum trzy punkty należące do funkcji: "
-                        TextColor="{StaticResource NavyBlueColor}" />
+                    <Label Style="{StaticResource ModuleStepsLabelStyle}" Text="{resources:Translate InterpolationPage_Points}" />
                     <ScrollView>
                         <StackLayout>
                             <controls:CustomListControl ItemsSource="{Binding PointsList}">

@@ -3,7 +3,8 @@
     x:Class="NumericMethods.Views.Controls.LoaderView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms">
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:resources="clr-namespace:NumericMethods.Resources;assembly=NumericMethods">
     <ContentView.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <forms:AnimationView
@@ -16,7 +17,7 @@
                 Margin="16,0"
                 FontSize="16"
                 HorizontalTextAlignment="Center"
-                Text="Trwa obliczanie..."
+                Text="{resources:Translate LoaderView_LoadingText}"
                 TextColor="{StaticResource NavyBlueColor}" />
         </StackLayout>
     </ContentView.Content>

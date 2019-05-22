@@ -42,11 +42,7 @@ namespace NumericMethods
             containerRegistry.RegisterForNavigation<InterpolationPage, InterpolationPageViewModel>(NavSettings.InterpolationPage);
             containerRegistry.RegisterForNavigation<SolveInterpolationPage, SolveInterpolationPageViewModel>(NavSettings.SolveInterpolationPage);
             containerRegistry.RegisterForNavigation<InterpolationChartPage, InterpolationChartPageViewModel>(NavSettings.InterpolationChartPage);
-            containerRegistry.RegisterForNavigation<EquationHelpPage, HelpPagesViewModel>(NavSettings.EquationHelpPage);
-            containerRegistry.RegisterForNavigation<NonLinearEquationHelpPage, HelpPagesViewModel>(NavSettings.NonLinearEquationHelpPage);
-            containerRegistry.RegisterForNavigation<InterpolationHelpPage, HelpPagesViewModel>(NavSettings.InterpolationHelpPage);
-            containerRegistry.RegisterForNavigation<IntegralHelpPage, HelpPagesViewModel>(NavSettings.IntegralHelpPage);
-            containerRegistry.RegisterForNavigation<DifferentialHelpPage, HelpPagesViewModel>(NavSettings.DifferentialHelpPage);
+            containerRegistry.RegisterForNavigation<HelpPages, HelpPagesViewModel>(NavSettings.HelpPages);
         }
 
         private void RegisterAddOns(IContainerRegistry containerRegistry)

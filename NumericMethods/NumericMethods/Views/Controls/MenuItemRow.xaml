@@ -14,7 +14,7 @@
                     FontAttributes="Bold"
                     FontSize="14"
                     HorizontalTextAlignment="Center"
-                    TextColor="#002a4b" />
+                    TextColor="{StaticResource NavyBlueColor}" />
             </StackLayout>
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer CommandParameter="{Binding Parameter, Source={x:Reference MenuItemRowControl}}" />

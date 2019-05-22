@@ -28,6 +28,7 @@ namespace NumericMethods.ViewModels
             ChangeChartSizeCommand = new DelegateCommand(ChangeFunctionDomain);
         }
 
+        #region Properties
         private PlotModel _model;
         public PlotModel Model
         {
@@ -35,13 +36,14 @@ namespace NumericMethods.ViewModels
             set => SetProperty(ref _model, value);
         }
 
-        private List<Operation> _operations = new List<Operation>();
-
-        public DelegateCommand ChangeChartSizeCommand { get; set; }
-
         private string Formula { get; set; }
 
         private short Size { get; set; }
+
+        private List<Operation> _operations = new List<Operation>();
+        #endregion
+
+        public DelegateCommand ChangeChartSizeCommand { get; set; }
 
         public void OnNavigatedFrom(INavigationParameters parameters)
         {
@@ -120,7 +122,7 @@ namespace NumericMethods.ViewModels
             {
                 MarkerType = MarkerType.None,
                 Color = OxyColor.FromRgb(0, 0, 255),
-                Title = "y = 0"
+                Title = AppResources.NonLinearChartPage_ZeroPlot
             };
 
             for (int i = -Size; i <= Size; i++)

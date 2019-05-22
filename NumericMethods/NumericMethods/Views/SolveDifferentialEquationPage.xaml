@@ -10,40 +10,20 @@
         <Grid>
             <ScrollView>
                 <StackLayout Margin="24">
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="18"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        Text="Wartość obliczona algorytmem Rungego-Kutty:"
-                        TextColor="{StaticResource NavyBlueColor}" />
-                    <Label
-                        FontSize="16"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        TextColor="{StaticResource NavyBlueColor}">
+                    <Label Style="{StaticResource ModuleHeaderLabelStyle}" Text="{resources:Translate SolveDifferentialEquationPage_RungeKuttaSolution}" />
+                    <Label Style="{StaticResource ModuleStepsLabelStyle}">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="y = " />
+                                <Span Text="{resources:Translate Common_Y}" />
                                 <Span FontAttributes="Bold" Text="{Binding Result, Mode=OneWay}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="18"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        Text="Wartość obliczona algorytmem Eulera:"
-                        TextColor="{StaticResource NavyBlueColor}" />
-                    <Label
-                        FontSize="16"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        TextColor="{StaticResource NavyBlueColor}">
+                    <Label Style="{StaticResource ModuleHeaderLabelStyle}" Text="{resources:Translate SolveDifferentialEquationPage_EulerSolution}" />
+                    <Label Style="{StaticResource ModuleStepsLabelStyle}">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="y = " />
+                                <Span Text="{resources:Translate Common_Y}" />
                                 <Span FontAttributes="Bold" Text="{Binding ResultEuler, Mode=OneWay}" />
                             </FormattedString>
                         </Label.FormattedText>
@@ -54,7 +34,7 @@
                                 <FormattedString>
                                     <Span
                                         FontSize="16"
-                                        Text="Wartość kroku dla obu algorytmów: "
+                                        Text="{resources:Translate SolveDifferentialEquationPage_StepValue}"
                                         TextColor="{StaticResource NavyBlueColor}" />
                                     <Span
                                         FontAttributes="Bold"

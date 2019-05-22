@@ -61,6 +61,78 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bartosz Mróz.
+        /// </summary>
+        internal static string AboutPopup_Bartosz {
+            get {
+                return ResourceManager.GetString("AboutPopup_Bartosz", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dominik Guziałek.
+        /// </summary>
+        internal static string AboutPopup_Dominik {
+            get {
+                return ResourceManager.GetString("AboutPopup_Dominik", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Twórcami aplikacji są studenci z grupy 5:.
+        /// </summary>
+        internal static string AboutPopup_Header {
+            get {
+                return ResourceManager.GetString("AboutPopup_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wykorzystano ikonki pochodzące z zasobów serwisu .
+        /// </summary>
+        internal static string AboutPopup_IconsDescription {
+            get {
+                return ResourceManager.GetString("AboutPopup_IconsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Igor Kowalewski.
+        /// </summary>
+        internal static string AboutPopup_Igor {
+            get {
+                return ResourceManager.GetString("AboutPopup_Igor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mariusz Jackowski.
+        /// </summary>
+        internal static string AboutPopup_Mariusz {
+            get {
+                return ResourceManager.GetString("AboutPopup_Mariusz", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do rysowania wykresów została użyta darmowa biblioteka .
+        /// </summary>
+        internal static string AboutPopup_OxyPlotDescription {
+            get {
+                return ResourceManager.GetString("AboutPopup_OxyPlotDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to © 2019.
+        /// </summary>
+        internal static string AboutPopup_Year {
+            get {
+                return ResourceManager.GetString("AboutPopup_Year", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Oblicz.
         /// </summary>
         internal static string Common_Calculate {
@@ -70,11 +142,38 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Anuluj.
+        /// </summary>
+        internal static string Common_Cancel {
+            get {
+                return ResourceManager.GetString("Common_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wykres.
         /// </summary>
         internal static string Common_Chart {
             get {
                 return ResourceManager.GetString("Common_Chart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zastosuj.
+        /// </summary>
+        internal static string Common_Confirm {
+            get {
+                return ResourceManager.GetString("Common_Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Narysuj wykres.
+        /// </summary>
+        internal static string Common_DrawPlot {
+            get {
+                return ResourceManager.GetString("Common_DrawPlot", resourceCulture);
             }
         }
         
@@ -111,6 +210,24 @@ namespace NumericMethods.Resources {
         internal static string Common_InvalidFunction_Message {
             get {
                 return ResourceManager.GetString("Common_InvalidFunction_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nie zostanie wykonana żadna operacja.
+        /// </summary>
+        internal static string Common_NoOperations {
+            get {
+                return ResourceManager.GetString("Common_NoOperations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Brak rozwiązań.
+        /// </summary>
+        internal static string Common_NoSolutions {
+            get {
+                return ResourceManager.GetString("Common_NoSolutions", resourceCulture);
             }
         }
         
@@ -160,6 +277,204 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to x = .
+        /// </summary>
+        internal static string Common_X {
+            get {
+                return ResourceManager.GetString("Common_X", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to y = .
+        /// </summary>
+        internal static string Common_Y {
+            get {
+                return ResourceManager.GetString("Common_Y", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Podaj argument, dla którego ma zostać obliczona wartość różniczki: .
+        /// </summary>
+        internal static string DifferentialEquationPage_Argument {
+            get {
+                return ResourceManager.GetString("DifferentialEquationPage_Argument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Podaj wzór równania, którego wartość różniczki ma zostać obliczona.
+        /// </summary>
+        internal static string DifferentialEquationPage_Formula {
+            get {
+                return ResourceManager.GetString("DifferentialEquationPage_Formula", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Podaj wartości początkowe.
+        /// </summary>
+        internal static string DifferentialEquationPage_InitialValues {
+            get {
+                return ResourceManager.GetString("DifferentialEquationPage_InitialValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Moduł pozwala na wyliczenie wartości różniczki dy/dx wybranej funkcji, dla wskazanego argumentu. Obliczenia dokonywane są metodą Eulera oraz algorytmem Rungego-Kutty.
+        /// </summary>
+        internal static string DifferentialHelp_Description {
+            get {
+                return ResourceManager.GetString("DifferentialHelp_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 5. Możliwa jest zmiana dokładności metody obliczającej. Dla niskiej dokładności wartość kroku to 0.125, dla średniej dokładności to 0.025, a dla wysokiej dokładności to 0.005.
+        /// </summary>
+        internal static string DifferentialHelp_FifthStep {
+            get {
+                return ResourceManager.GetString("DifferentialHelp_FifthStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1. We wzorze funkcji możliwe jest użycie dwóch zmiennych tj. x i y. Możliwe jest też ich mnożenie za pomocą znaku * np. x*4y.
+        /// </summary>
+        internal static string DifferentialHelp_FirstStep {
+            get {
+                return ResourceManager.GetString("DifferentialHelp_FirstStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4. Konieczne jest podanie argumentu, dla którego ma zostać obliczona wartość różniczki..
+        /// </summary>
+        internal static string DifferentialHelp_FourthStep {
+            get {
+                return ResourceManager.GetString("DifferentialHelp_FourthStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Równania różniczkowe - pomoc.
+        /// </summary>
+        internal static string DifferentialHelp_Header {
+            get {
+                return ResourceManager.GetString("DifferentialHelp_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3. Konieczne jest podanie wartości początkowych x i y. W razie pozostawienia pól pustymi, za wartość początkową zostanie przyjęte x = 0 i y = 0.
+        /// </summary>
+        internal static string DifferentialHelp_ThirdStep {
+            get {
+                return ResourceManager.GetString("DifferentialHelp_ThirdStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Moduł pozwala rozwiązać układ równań z maksymalnie czterema niewiadomymi. Do rozwiązania układu używana jest metoda Cramera..
+        /// </summary>
+        internal static string EquationHelp_Description {
+            get {
+                return ResourceManager.GetString("EquationHelp_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 5. Aby zwiększyć dziedzinę wykresu funkcji, należy nacisnąć przycisk symbolizujący wykres funkcji w górnym prawym rogu i wybrać odpowiednią wartość. Domyślną wartością jest 50, co znaczy, że wykres będzie rysowany dla argumentów od -50 do 50..
+        /// </summary>
+        internal static string EquationHelp_FifthStep {
+            get {
+                return ResourceManager.GetString("EquationHelp_FifthStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1. Aby zmienić liczbę równań należy kliknąć przycisk w górnym prawym rogu..
+        /// </summary>
+        internal static string EquationHelp_FirstStep {
+            get {
+                return ResourceManager.GetString("EquationHelp_FirstStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4. Po rozwiązaniu układu równań dla dwóch niewiadomych, możliwe jest narysowanie ich wykresu, w celu graficznego potwierdzenia poprawności rozwiązania. W tym celu należy nacisnąć przycisk wykresu, na ekranie z rozwiązaniem układu.
+        /// </summary>
+        internal static string EquationHelp_FourthStep {
+            get {
+                return ResourceManager.GetString("EquationHelp_FourthStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Równania liniowe - pomoc.
+        /// </summary>
+        internal static string EquationHelp_Header {
+            get {
+                return ResourceManager.GetString("EquationHelp_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2. Możliwe jest tylko wpisywanie liczb rzeczywistych w wyznaczone pola..
+        /// </summary>
+        internal static string EquationHelp_SecondStep {
+            get {
+                return ResourceManager.GetString("EquationHelp_SecondStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3. Jeżeli pole nie zostanie wypełnione, do obliczeń w tym miejscu zostanie przyjęte 0.
+        /// </summary>
+        internal static string EquationHelp_ThirdStep {
+            get {
+                return ResourceManager.GetString("EquationHelp_ThirdStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Układ sprzeczny.
+        /// </summary>
+        internal static string EquationService_Consistency {
+            get {
+                return ResourceManager.GetString("EquationService_Consistency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Układ nieoznaczony.
+        /// </summary>
+        internal static string EquationService_Equivalence {
+            get {
+                return ResourceManager.GetString("EquationService_Equivalence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wybierz ilość niewiadomych w równaniach.
+        /// </summary>
+        internal static string EquationsNumberPopup_Description {
+            get {
+                return ResourceManager.GetString("EquationsNumberPopup_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ilość niewiadomych.
+        /// </summary>
+        internal static string EquationsNumberPopup_Placeholder {
+            get {
+                return ResourceManager.GetString("EquationsNumberPopup_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dzielenie przez zero jest niedozwolone..
         /// </summary>
         internal static string FunctionResponse_DivideByZero_Message {
@@ -192,6 +507,51 @@ namespace NumericMethods.Resources {
         internal static string HelpPage_Power {
             get {
                 return ResourceManager.GetString("HelpPage_Power", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Moduł pozwala na wyliczenie wartości całki oznaczonej. Obliczenia dokonywane są metodą trapezów oraz metodą prostokątów..
+        /// </summary>
+        internal static string IntegralHelp_Description {
+            get {
+                return ResourceManager.GetString("IntegralHelp_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1. Należy pamiętać, że dolna granica całkowania musi być mniejsza niż górna granica. W innym przypadku obliczenia nie zostaną dokonane..
+        /// </summary>
+        internal static string IntegralHelp_FirstStep {
+            get {
+                return ResourceManager.GetString("IntegralHelp_FirstStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4. Możliwa jest zmiana ilości iteracji metody na własną. W tym celu jako dokładność całkowania należy wybrać opcję &apos;Własna...&apos; i wpisać liczbę iteracji. Maksymalną ilością iteracji jest 999999.
+        /// </summary>
+        internal static string IntegralHelp_FourthStep {
+            get {
+                return ResourceManager.GetString("IntegralHelp_FourthStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Całkowanie numeryczne - pomoc.
+        /// </summary>
+        internal static string IntegralHelp_Header {
+            get {
+                return ResourceManager.GetString("IntegralHelp_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3. We wzorze funkcji możliwe jest użycie: liczby Eulera (e), liczby Pi (π), funkcji trygonometrycznych (sin,cos,tan,ctg) oraz logarytmu naturalnego (ln). Przykładowa funkcja: 4e+π+x^4-ln[x]+3sin^3[x^3].
+        /// </summary>
+        internal static string IntegralHelp_ThirdStep {
+            get {
+                return ResourceManager.GetString("IntegralHelp_ThirdStep", resourceCulture);
             }
         }
         
@@ -250,6 +610,132 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dolna granica całkowania: .
+        /// </summary>
+        internal static string IntegralResultPage_LowerLimit {
+            get {
+                return ResourceManager.GetString("IntegralResultPage_LowerLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wartość całki została obliczona dla parametrów.
+        /// </summary>
+        internal static string IntegralResultPage_Parameters {
+            get {
+                return ResourceManager.GetString("IntegralResultPage_Parameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dokładność całkowania: .
+        /// </summary>
+        internal static string IntegralResultPage_Precision {
+            get {
+                return ResourceManager.GetString("IntegralResultPage_Precision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wartość całki obliczona metodą prostokątów: .
+        /// </summary>
+        internal static string IntegralResultPage_RectangleSolution {
+            get {
+                return ResourceManager.GetString("IntegralResultPage_RectangleSolution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wartość całki obliczona metodą trapezów: .
+        /// </summary>
+        internal static string IntegralResultPage_TrapezeSolution {
+            get {
+                return ResourceManager.GetString("IntegralResultPage_TrapezeSolution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Górna granica całkowania: .
+        /// </summary>
+        internal static string IntegralResultPage_UpperLimit {
+            get {
+                return ResourceManager.GetString("IntegralResultPage_UpperLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Moduł pozwala na znalezienie wartości funkcji dla podanego argumentu. Wartość wyliczana jest na podstawie podanych punktów. Do obliczeń używane są metody: Lagrange&apos;a oraz Aitkena.
+        /// </summary>
+        internal static string InterpolationHelp_Description {
+            get {
+                return ResourceManager.GetString("InterpolationHelp_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1. Aby dokonać wyliczenia konieczne jest podanie argumentu, dla którego ma zostać wyliczone wartość funkcji..
+        /// </summary>
+        internal static string InterpolationHelp_FirstStep {
+            get {
+                return ResourceManager.GetString("InterpolationHelp_FirstStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4. Po dokonaniu wyliczenia możliwe jest zaznaczenie punktów oraz rozwiązania, na układzie współrzędnych.
+        /// </summary>
+        internal static string InterpolationHelp_FourthStep {
+            get {
+                return ResourceManager.GetString("InterpolationHelp_FourthStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interpolacja - pomoc.
+        /// </summary>
+        internal static string InterpolationHelp_Header {
+            get {
+                return ResourceManager.GetString("InterpolationHelp_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2. Minimalną ilością punktów koniecznych do dokonania wyliczenia są trzy punkty. Kolejne punkty można dodawać klikając plusa w górnym prawym rogu..
+        /// </summary>
+        internal static string InterpolationHelp_SecondStep {
+            get {
+                return ResourceManager.GetString("InterpolationHelp_SecondStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3. Przy podawaniu punktów, niemożliwe jest dodanie dwóch lub większej ilości wartości dla tego samego argumentu, ponieważ jest to sprzeczne z definicją funkcji..
+        /// </summary>
+        internal static string InterpolationHelp_ThirdStep {
+            get {
+                return ResourceManager.GetString("InterpolationHelp_ThirdStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Podaj argument, dla którego ma zostać obliczona wartość funkcji:.
+        /// </summary>
+        internal static string InterpolationPage_Argument {
+            get {
+                return ResourceManager.GetString("InterpolationPage_Argument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Podaj minimum trzy punkty należące do funkcji: .
+        /// </summary>
+        internal static string InterpolationPage_Points {
+            get {
+                return ResourceManager.GetString("InterpolationPage_Points", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to x.
         /// </summary>
         internal static string LinearChart_AxisXDescription {
@@ -291,6 +777,33 @@ namespace NumericMethods.Resources {
         internal static string LinearChart_SecondFunction {
             get {
                 return ResourceManager.GetString("LinearChart_SecondFunction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wybierz ile liczb całkowitych ma wchodzić w skład dziedziny.
+        /// </summary>
+        internal static string LinearChartPopup_Description {
+            get {
+                return ResourceManager.GetString("LinearChartPopup_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ilość liczb.
+        /// </summary>
+        internal static string LinearChartPopup_Placeholder {
+            get {
+                return ResourceManager.GetString("LinearChartPopup_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trwa obliczanie....
+        /// </summary>
+        internal static string LoaderView_LoadingText {
+            get {
+                return ResourceManager.GetString("LoaderView_LoadingText", resourceCulture);
             }
         }
         
@@ -367,11 +880,218 @@ namespace NumericMethods.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to y = 0.
+        /// </summary>
+        internal static string NonLinearChartPage_ZeroPlot {
+            get {
+                return ResourceManager.GetString("NonLinearChartPage_ZeroPlot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wybierz dokładność metody obliczającej.
         /// </summary>
         internal static string NonLinearEquation_Precision {
             get {
                 return ResourceManager.GetString("NonLinearEquation_Precision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Moduł pozwala na znalezienie miejsc zerowych wielomianu dowolnego stopnia. Do obliczeń używane są metody: Newtona-Raphsona oraz Graeff&apos;ego.
+        /// </summary>
+        internal static string NonLinearEquationHelp_Description {
+            get {
+                return ResourceManager.GetString("NonLinearEquationHelp_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 5. Po znalezieniu miejsc zerowych możliwe jest narysowanie wykresu funkcji w celu graficznego potwierdzenia poprawności rozwiązania. W tym celu należy nacisnąć przycisk &apos;Narysuj wykres&apos;.
+        /// </summary>
+        internal static string NonLinearEquationHelp_FifthStep {
+            get {
+                return ResourceManager.GetString("NonLinearEquationHelp_FifthStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1. Wzory funkcji powinny zawierać tylko jedną niewiadomą - x.
+        /// </summary>
+        internal static string NonLinearEquationHelp_FirstStep {
+            get {
+                return ResourceManager.GetString("NonLinearEquationHelp_FirstStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4. Aby zwiększyć dokładność metody Graeff&apos;ego można ustalić ilość iteracji. Dla niskiej dokładności są to 2 iteracje, dla średniej dokładności (domyślnie) są to 4 iteracje, a dla wysokiej dokładnosci metoda wykonuje 8 iteracji..
+        /// </summary>
+        internal static string NonLinearEquationHelp_FourthStep {
+            get {
+                return ResourceManager.GetString("NonLinearEquationHelp_FourthStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Funkcje nieliniowe - pomoc.
+        /// </summary>
+        internal static string NonLinearEquationHelp_Header {
+            get {
+                return ResourceManager.GetString("NonLinearEquationHelp_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 6. Aby zwiększyć dziedzinę wykresu funkcji, należy nacisnąć przycisk symbolizujący wykres funkcji w górnym prawym rogu i wybrać odpowiednią wartość. Domyślną wartością jest 50, co znaczy, że wykres będzie rysowany dla argumentów od -50 do 50..
+        /// </summary>
+        internal static string NonLinearEquationHelp_SixthStep {
+            get {
+                return ResourceManager.GetString("NonLinearEquationHelp_SixthStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3. Możliwe jest użycie, we wzorze funkcji, liczby Eulera oraz liczby Pi. Przykładowy wzór funkcji: x^3+4e+π.
+        /// </summary>
+        internal static string NonLinearEquationHelp_ThirdStep {
+            get {
+                return ResourceManager.GetString("NonLinearEquationHelp_ThirdStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Podaj wzór funkcji, a aplikacja obliczy jej miejsca zerowe.
+        /// </summary>
+        internal static string NonLinearEquationPage_Description {
+            get {
+                return ResourceManager.GetString("NonLinearEquationPage_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wartość obliczona algorytmem Eulera:.
+        /// </summary>
+        internal static string SolveDifferentialEquationPage_EulerSolution {
+            get {
+                return ResourceManager.GetString("SolveDifferentialEquationPage_EulerSolution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wartość obliczona algorytmem Rungego-Kutty:.
+        /// </summary>
+        internal static string SolveDifferentialEquationPage_RungeKuttaSolution {
+            get {
+                return ResourceManager.GetString("SolveDifferentialEquationPage_RungeKuttaSolution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wartość kroku dla obu algorytmów: .
+        /// </summary>
+        internal static string SolveDifferentialEquationPage_StepValue {
+            get {
+                return ResourceManager.GetString("SolveDifferentialEquationPage_StepValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rozwiązanie układu równań to:.
+        /// </summary>
+        internal static string SolveEquationPage_Solution {
+            get {
+                return ResourceManager.GetString("SolveEquationPage_Solution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wynik interpolacji metodą Aitken&apos;a:.
+        /// </summary>
+        internal static string SolveInterpolationPage_AitkenSolution {
+            get {
+                return ResourceManager.GetString("SolveInterpolationPage_AitkenSolution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  funkcja przyjmuje wartość y = .
+        /// </summary>
+        internal static string SolveInterpolationPage_ArgumentValue {
+            get {
+                return ResourceManager.GetString("SolveInterpolationPage_ArgumentValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zaznacz punkty na wykresie.
+        /// </summary>
+        internal static string SolveInterpolationPage_DrawPoints {
+            get {
+                return ResourceManager.GetString("SolveInterpolationPage_DrawPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dla x = .
+        /// </summary>
+        internal static string SolveInterpolationPage_ForArgument {
+            get {
+                return ResourceManager.GetString("SolveInterpolationPage_ForArgument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interpolacja dokonana na podstawie .
+        /// </summary>
+        internal static string SolveInterpolationPage_InterpolationPoints_FirstPart {
+            get {
+                return ResourceManager.GetString("SolveInterpolationPage_InterpolationPoints_FirstPart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  punktów.
+        /// </summary>
+        internal static string SolveInterpolationPage_InterpolationPoints_SecondPart {
+            get {
+                return ResourceManager.GetString("SolveInterpolationPage_InterpolationPoints_SecondPart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wynik interpolacji metodą Lagrange&apos;a:.
+        /// </summary>
+        internal static string SolveInterpolationPage_LagrangeSolution {
+            get {
+                return ResourceManager.GetString("SolveInterpolationPage_LagrangeSolution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ilość iteracji w metodzie Graeff&apos;ego: .
+        /// </summary>
+        internal static string SolveNonLinearEquationPage_GraeffeIterations {
+            get {
+                return ResourceManager.GetString("SolveNonLinearEquationPage_GraeffeIterations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Miejsca zerowe obliczone metodą Graeff&apos;ego:.
+        /// </summary>
+        internal static string SolveNonLinearEquationPage_GraeffeSolution {
+            get {
+                return ResourceManager.GetString("SolveNonLinearEquationPage_GraeffeSolution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Miejsce zerowe obliczone metodą Newtona-Raphsona:.
+        /// </summary>
+        internal static string SolveNonLinearEquationPage_NewtonRaphsonSolution {
+            get {
+                return ResourceManager.GetString("SolveNonLinearEquationPage_NewtonRaphsonSolution", resourceCulture);
             }
         }
         

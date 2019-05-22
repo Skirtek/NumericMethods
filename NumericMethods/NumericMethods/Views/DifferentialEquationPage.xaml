@@ -16,42 +16,24 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="24" Spacing="0">
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="18"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Text="Równania różniczkowe"
-                    TextColor="{StaticResource NavyBlueColor}" />
-                <Label
-                    FontSize="16"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Text="Podaj wzór równania, którego wartość różniczki ma zostać obliczona"
-                    TextColor="{StaticResource NavyBlueColor}" />
+                <Label Style="{StaticResource ModuleHeaderLabelStyle}" Text="{resources:Translate Menu_DifferentialEquation}" />
+
+                <Label Style="{StaticResource ModuleStepsLabelStyle}" Text="{resources:Translate DifferentialEquationPage_Formula}" />
                 <controls:ValidationEntry
                     EntryFontSize="18"
                     EntryText="{Binding Formula}"
                     MaximumLength="40"
                     PropertyName="Formula" />
-                <Label
-                    FontSize="16"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Text="Podaj wartości początkowe"
-                    TextColor="{StaticResource NavyBlueColor}" />
+
+                <Label Style="{StaticResource ModuleStepsLabelStyle}" Text="{resources:Translate DifferentialEquationPage_InitialValues}" />
                 <controls:PointCoordinatesControl XValue="{Binding InitialValues.X}" YValue="{Binding InitialValues.Y}" />
-                <Label
-                    FontSize="16"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Text="Podaj argument, dla którego ma zostać obliczona wartość różniczki:"
-                    TextColor="{StaticResource NavyBlueColor}" />
+
+                <Label Style="{StaticResource ModuleStepsLabelStyle}" Text="{resources:Translate DifferentialEquationPage_Argument}" />
                 <StackLayout Margin="48,0" Orientation="Horizontal">
                     <Label
                         Margin="0,0,8,0"
                         FontSize="18"
-                        Text="x = "
+                        Text="{resources:Translate Common_Y}"
                         TextColor="{StaticResource NavyBlueColor}"
                         VerticalTextAlignment="Center" />
                     <controls:ValidationEntry
@@ -62,12 +44,14 @@
                         MaximumLength="7"
                         PropertyName="Argument" />
                 </StackLayout>
+
                 <Label Style="{StaticResource InstructionLabelStyle}" Text="{resources:Translate NonLinearEquation_Precision}" />
                 <Picker
                     Title="{resources:Translate IntegralPage_Precision_PickerTitle}"
                     Margin="16,0"
                     ItemsSource="{Binding Source={x:Static local:AppSettings.NonLinearEquationPrecisionOptions}}"
                     SelectedIndex="{Binding SelectedPrecision}" />
+
                 <Button
                     Margin="0,24,0,0"
                     Command="{Binding CalculateDifferentialCommand}"

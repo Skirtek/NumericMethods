@@ -14,7 +14,7 @@
                         <FormattedString>
                             <Span
                                 FontSize="16"
-                                Text="Wartość całki obliczona metodą trapezów: "
+                                Text="{resources:Translate IntegralResultPage_TrapezeSolution}"
                                 TextColor="{StaticResource NavyBlueColor}" />
                             <Span
                                 FontAttributes="Bold"
@@ -29,7 +29,7 @@
                         <FormattedString>
                             <Span
                                 FontSize="16"
-                                Text="Wartość całki obliczona metodą prostokątów: "
+                                Text="{resources:Translate IntegralResultPage_RectangleSolution}"
                                 TextColor="{StaticResource NavyBlueColor}" />
                             <Span
                                 FontAttributes="Bold"
@@ -44,14 +44,14 @@
                         FontSize="18"
                         HorizontalOptions="CenterAndExpand"
                         HorizontalTextAlignment="Center"
-                        Text="Wartość całki została obliczona dla parametrów"
+                        Text="{resources:Translate IntegralResultPage_Parameters}"
                         TextColor="{StaticResource NavyBlueColor}" />
                     <Label HorizontalTextAlignment="Center">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span
                                     FontSize="16"
-                                    Text="Dolna granica całkowania: "
+                                    Text="{resources:Translate IntegralResultPage_LowerLimit}"
                                     TextColor="{StaticResource NavyBlueColor}" />
                                 <Span
                                     FontAttributes="Bold"
@@ -66,7 +66,7 @@
                             <FormattedString>
                                 <Span
                                     FontSize="16"
-                                    Text="Górna granica całkowania: "
+                                    Text="{resources:Translate IntegralResultPage_UpperLimit}"
                                     TextColor="{StaticResource NavyBlueColor}" />
                                 <Span
                                     FontAttributes="Bold"
@@ -81,7 +81,7 @@
                             <FormattedString>
                                 <Span
                                     FontSize="16"
-                                    Text="Dokładność całkowania: "
+                                    Text="{resources:Translate IntegralResultPage_Precision}"
                                     TextColor="{StaticResource NavyBlueColor}" />
                                 <Span
                                     FontAttributes="Bold"

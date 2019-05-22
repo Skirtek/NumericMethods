@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace NumericMethods.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NonLinearEquationHelpPage : ContentPage
+    public partial class HelpPages : ContentPage
     {
-        public NonLinearEquationHelpPage()
+        public HelpPages()
         {
             InitializeComponent();
         }

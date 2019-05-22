@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using NumericMethods.Models;
 using NumericMethods.Resources;
 using NumericMethods.Settings;
@@ -66,7 +67,22 @@ namespace NumericMethods.ViewModels
         {
             IsBusy = true;
 
-            await NavigationService.NavigateAsync(NavSettings.DifferentialHelpPage);
+            var navParams = new NavigationParameters
+            {
+                { NavParams.Header, AppResources.DifferentialHelp_Header },
+                { NavParams.Description, AppResources.DifferentialHelp_Description },
+                { NavParams.Steps,
+                    new List<string>
+                {
+                    AppResources.DifferentialHelp_FirstStep,
+                    AppResources.HelpPage_Power,
+                    AppResources.DifferentialHelp_ThirdStep,
+                    AppResources.DifferentialHelp_FourthStep,
+                    AppResources.DifferentialHelp_FifthStep
+                } }
+            };
+
+            await NavigationService.NavigateAsync(NavSettings.HelpPages, navParams);
 
             IsBusy = false;
         }

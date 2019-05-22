@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using NumericMethods.Models;
 using NumericMethods.Resources;
 using NumericMethods.Settings;
@@ -17,7 +16,6 @@ namespace NumericMethods.ViewModels
 {
     public class LinearChartViewModel : BaseViewModel, INavigatedAware
     {
-
         public LinearChartViewModel(
             INavigationService navigationService,
             IPageDialogService pageDialogService)
@@ -27,6 +25,7 @@ namespace NumericMethods.ViewModels
             Size = 50;
         }
 
+        #region Properties
         private PlotModel _model;
         public PlotModel Model
         {
@@ -37,6 +36,7 @@ namespace NumericMethods.ViewModels
         private List<Equation> EquationsList { get; set; }
 
         private short Size { get; set; }
+        #endregion
 
         public DelegateCommand ChangeChartSizeCommand { get; set; }
 
@@ -62,8 +62,8 @@ namespace NumericMethods.ViewModels
         {
             var popup = new EquationsNumberPopup(new EquationPopupHelper
             {
-                Description = "Wybierz ile liczb całkowitych ma wchodzić w skład dziedziny",
-                Placeholder = "Ilość liczb",
+                Description = AppResources.LinearChartPopup_Description,
+                Placeholder = AppResources.LinearChartPopup_Placeholder,
                 ItemsSource = new List<string> { "10", "50", "100", "200", "500" },
                 Message = AppSettings.ChangePlotSize
             });
@@ -90,11 +90,10 @@ namespace NumericMethods.ViewModels
             var plot = PrepareCoordinateSystem();
 
             var equation = EquationsList[0];
-            double xResult, yResult, constantTerm;
 
-            double.TryParse(equation.ConstantTerm, out constantTerm);
-            double.TryParse(equation.X, out xResult);
-            double.TryParse(equation.Y, out yResult);
+            double.TryParse(equation.ConstantTerm, out var constantTerm);
+            double.TryParse(equation.X, out var xResult);
+            double.TryParse(equation.Y, out var yResult);
 
             var series1 = new LineSeries
             {
